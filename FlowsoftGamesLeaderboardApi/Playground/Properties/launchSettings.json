@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Playground": {
-      "commandName": "Project",
-      "commandLineArgs": "https://www.fbonizzi.it:5001 boniz testgame testscore 1500001"
-    }
-  }
-}
