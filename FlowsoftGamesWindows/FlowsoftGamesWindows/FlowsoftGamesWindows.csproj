@@ -32,9 +32,6 @@
     <DocumentationFile>bin\Release\FlowsoftGamesWindows.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FlowsoftGamesMonogame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FlowsoftGamesMonogame.2018.5.21.1\lib\FlowsoftGamesMonogame.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,7 +49,10 @@
     <Compile Include="WindowsWebSiteOpener.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\FlowsoftGamesMonogame\FlowsoftGamesMonogame\FlowsoftGamesMonogame.csproj">
+      <Project>{348cd09e-d912-4fdf-a26b-b4cea9809cb2}</Project>
+      <Name>FlowsoftGamesMonogame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

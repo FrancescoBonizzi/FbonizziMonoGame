@@ -1,4 +1,4 @@
-﻿using FlowsoftGamesMonogame.Assets;
+﻿using FbonizziGames.Assets;
 using System.IO;
 
 namespace FlowsoftGamesWindows
