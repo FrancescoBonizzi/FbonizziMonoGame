@@ -6,7 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace FbonizziMonogame.Assets
+namespace FbonizziMonogame.Assets 
 {
     public class SplashScreenLoader
     {
