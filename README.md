@@ -1,6 +1,6 @@
 # FbonizziMonoGame
 Some libraries that I built over Monogame Framework to make my games 
 
-[![Build Status](https://flowsoftproject.visualstudio.com/GithubOpenSource/_apis/build/status/FrancescoBonizzi.FbonizziMonogame)](https://flowsoftproject.visualstudio.com/GithubOpenSource/_build/latest?definitionId=11)
+master: [![Build Status](https://flowsoftproject.visualstudio.com/GithubOpenSource/_apis/build/status/All%20repository%20compilation)](https://flowsoftproject.visualstudio.com/GithubOpenSource/_build/latest?definitionId=10)
 
 # WORK IN PROGRESS!
