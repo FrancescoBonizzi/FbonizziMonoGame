@@ -1,10 +1,10 @@
-﻿using FbonizziGames.UI;
+﻿using FbonizziMonogame.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Globalization;
 
-namespace FbonizziGames.PlatformStore
+namespace FbonizziMonogame.PlatformStore
 {
     public class RateMeDialog
     {

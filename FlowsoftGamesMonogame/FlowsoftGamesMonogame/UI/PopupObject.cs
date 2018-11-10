@@ -1,8 +1,8 @@
-﻿using FbonizziGames.Extensions;
+﻿using FbonizziMonogame.Extensions;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace FbonizziGames.UI
+namespace FbonizziMonogame.UI
 {
     public class PopupObject
     {

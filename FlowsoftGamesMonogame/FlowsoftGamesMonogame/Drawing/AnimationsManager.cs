@@ -1,9 +1,9 @@
-﻿using FbonizziGames.Extensions;
+﻿using FbonizziMonogame.Extensions;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace FbonizziGames.Drawing
+namespace FbonizziMonogame.Drawing
 {
     public class AnimationsManager
     {

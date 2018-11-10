@@ -1,9 +1,9 @@
-﻿using FbonizziGames.Drawing.ViewportAdapters;
+﻿using FbonizziMonogame.Drawing.ViewportAdapters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace FbonizziGames.Drawing
+namespace FbonizziMonogame.Drawing
 {
     public enum BoxingMode
     {

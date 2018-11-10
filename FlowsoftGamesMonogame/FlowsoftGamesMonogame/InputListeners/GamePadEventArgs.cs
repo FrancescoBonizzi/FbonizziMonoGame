@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace FbonizziGames.InputListeners
+namespace FbonizziMonogame.InputListeners
 {
     public class GamePadEventArgs : EventArgs
     {

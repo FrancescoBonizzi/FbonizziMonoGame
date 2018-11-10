@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziGames.InputListeners
+namespace FbonizziMonogame.InputListeners
 {
     [Flags]
     public enum MouseButton

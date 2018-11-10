@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FbonizziGames.Extensions
+namespace FbonizziMonogame.Extensions
 {
     public static class Texture2DExtensions
     {

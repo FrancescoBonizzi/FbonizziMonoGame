@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace FbonizziGames.UI
+namespace FbonizziMonogame.UI
 {
     public class ColorChangingObject
     {

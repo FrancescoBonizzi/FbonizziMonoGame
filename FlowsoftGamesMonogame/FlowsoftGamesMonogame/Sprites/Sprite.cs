@@ -1,9 +1,9 @@
-﻿using FbonizziGames.Assets;
+﻿using FbonizziMonogame.Assets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace FbonizziGames
+namespace FbonizziMonogame
 {
     /// <summary>
     /// La sprite è un oggetto che contiene le informazioni per identificare un'immagine

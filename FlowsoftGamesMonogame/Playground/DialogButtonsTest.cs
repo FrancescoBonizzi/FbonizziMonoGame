@@ -1,6 +1,6 @@
-﻿using FbonizziGames.Drawing;
-using FbonizziGames.Drawing.ViewportAdapters;
-using FbonizziGames.UI;
+﻿using FbonizziMonogame.Drawing;
+using FbonizziMonogame.Drawing.ViewportAdapters;
+using FbonizziMonogame.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;

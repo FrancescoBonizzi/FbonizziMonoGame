@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziGames.Extensions
+namespace FbonizziMonogame.Extensions
 {
     public static class TimeSpanExtensions
     {

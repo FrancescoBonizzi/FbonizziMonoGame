@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FbonizziGames
+namespace FbonizziMonogame
 {
     /// <summary>
     /// Una lista di sprite in successione rappresenta un'animazione.

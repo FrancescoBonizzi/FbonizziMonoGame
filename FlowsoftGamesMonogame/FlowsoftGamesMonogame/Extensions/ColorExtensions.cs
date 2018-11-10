@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace FbonizziGames.Extensions
+namespace FbonizziMonogame.Extensions
 {
     public static class ColorExtensions
     {

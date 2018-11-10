@@ -1,10 +1,10 @@
-﻿using FbonizziGames.Drawing;
-using FbonizziGames.Extensions;
+﻿using FbonizziMonogame.Drawing;
+using FbonizziMonogame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace FbonizziGames.Achievements
+namespace FbonizziMonogame.Achievements
 {
     public class AchievementToDraw
     {

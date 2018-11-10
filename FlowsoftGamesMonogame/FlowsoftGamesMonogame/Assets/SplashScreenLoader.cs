@@ -1,4 +1,4 @@
-﻿using FbonizziGames.UI;
+﻿using FbonizziMonogame.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,7 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace FbonizziGames.Assets
+namespace FbonizziMonogame.Assets
 {
     public class SplashScreenLoader
     {

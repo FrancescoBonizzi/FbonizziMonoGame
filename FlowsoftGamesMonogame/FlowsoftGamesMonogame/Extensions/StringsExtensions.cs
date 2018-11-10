@@ -1,6 +1,6 @@
-﻿using FbonizziGames.UI;
+﻿using FbonizziMonogame.UI;
 
-namespace FbonizziGames.Extensions
+namespace FbonizziMonogame.Extensions
 {
     public static class StringsExtensions
     {

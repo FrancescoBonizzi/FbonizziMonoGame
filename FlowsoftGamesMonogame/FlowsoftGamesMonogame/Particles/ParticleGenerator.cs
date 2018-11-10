@@ -1,11 +1,11 @@
-﻿using FbonizziGames.Extensions;
+﻿using FbonizziMonogame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FbonizziGames.Particles
+namespace FbonizziMonogame.Particles
 {
     /// <summary>
     /// Motore particellare

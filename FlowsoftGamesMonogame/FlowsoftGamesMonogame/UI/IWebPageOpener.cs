@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziGames.UI
+namespace FbonizziMonogame.UI
 {
     public interface IWebPageOpener
     {

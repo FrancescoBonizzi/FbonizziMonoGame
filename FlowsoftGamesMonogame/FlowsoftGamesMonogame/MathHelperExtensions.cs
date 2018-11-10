@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FbonizziGames
+namespace FbonizziMonogame
 {
     /// <summary>
     /// Funzioni utili a livello matematico

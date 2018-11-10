@@ -1,12 +1,12 @@
-﻿using FbonizziGames.Drawing;
-using FbonizziGames.Extensions;
+﻿using FbonizziMonogame.Drawing;
+using FbonizziMonogame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FbonizziGames.AfterGameManagement
+namespace FbonizziMonogame.AfterGameManagement
 {
     public class Protip
     {

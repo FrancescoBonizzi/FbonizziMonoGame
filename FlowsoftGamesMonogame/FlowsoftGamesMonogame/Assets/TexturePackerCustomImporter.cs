@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FbonizziGames.Assets
+namespace FbonizziMonogame.Assets
 {
     public class TexturePackerCustomImporter
     {
