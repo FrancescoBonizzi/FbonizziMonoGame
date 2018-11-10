@@ -1,6 +1,6 @@
 # Builds on commit
 
-name: All repository build
+name: On commit
 
 pool:
   vmImage: 'VS2017-Win2016'
