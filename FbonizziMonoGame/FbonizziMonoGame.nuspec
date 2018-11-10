@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FbonizziMonoGame</id>
+    <version>$version$</version>
+    <title>FbonizziMonoGame</title>
+    <authors>Francesco Bonizzi</authors>
+    <owners>Francesco Bonizzi</owners>
+    <description>Some libraries that I built over Monogame Framework to make my games</description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>monogame bonizzi games videogames android UWP UAP</tags>
+  </metadata>
+  <files>
+    <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.dll" target="lib" />
+    <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.xml" target="lib" />
+    <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.dll" target="lib\UAP10\FbonizziMonoGame.dll" />
+    <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.xml" target="lib\UAP10\FbonizziMonoGame.xml" />
+    <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.dll" target="lib\monoandroid81\FbonizziMonoGame.dll" />
+    <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.xml" target="lib\monoandroid81\FbonizziMonoGame.xml" />
+  </files>
+</package>
