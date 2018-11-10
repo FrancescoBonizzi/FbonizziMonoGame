@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace FbonizziMonogame.Drawing
 {
     public class AnimationsManager
-    {
+    { 
         private IDictionary<string, SpriteAnimation> _animations;
         public string CurrentAnimationName { get; private set; }
         public SpriteAnimation CurrentAnimation
