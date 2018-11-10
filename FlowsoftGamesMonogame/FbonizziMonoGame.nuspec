@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>FlowsoftGamesMonogame</id>
+    <id>FbonizziMonoGame</id>
     <version>$version$</version>
-    <title>FlowsoftGamesMonogame</title>
-    <authors>Flowsoft Games</authors>
-    <owners>Flowsoft Games</owners>
-    <description>FlowsoftGamesMonogame</description>
+    <title>FbonizziMonoGame</title>
+    <authors>Francesco Bonizzi</authors>
+    <owners>Francesco Bonizzi</owners>
+    <description>Some libraries that I built over Monogame Framework to make my games</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>monogame flowsoft games</tags>
+    <tags>monogame bonizzi games videogames android UWP UAP</tags>
   </metadata>
   <files>
     <file src="FlowsoftGamesMonogame\bin\Release\FlowsoftGamesMonogame.dll" target="lib" />

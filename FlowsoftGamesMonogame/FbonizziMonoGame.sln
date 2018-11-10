@@ -5,10 +5,10 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4BA94ABC-9F03-4196-BCBD-F662F454C4EE}"
 	ProjectSection(SolutionItems) = preProject
-		FlowsoftGamesMonogame.nuspec = FlowsoftGamesMonogame.nuspec
+		FbonizziMonoGame.nuspec = FbonizziMonoGame.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowsoftGamesMonogame", "FlowsoftGamesMonogame\FlowsoftGamesMonogame.csproj", "{348CD09E-D912-4FDF-A26B-B4CEA9809CB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FbonizziMonoGame", "FlowsoftGamesMonogame\FbonizziMonoGame.csproj", "{348CD09E-D912-4FDF-A26B-B4CEA9809CB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
