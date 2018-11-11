@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace FbonizziMonoGame.InputListeners
+namespace FbonizziMonoGame.Input
 {
     public interface IInputListener
     {

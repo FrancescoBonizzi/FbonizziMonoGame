@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using System;
 
-namespace FbonizziMonoGame.InputListeners
+namespace FbonizziMonoGame.Input
 {
     public class TouchListener : IInputListener
     {

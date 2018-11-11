@@ -1,11 +1,13 @@
-﻿using FbonizziMonoGame.UI;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Globalization;
 
-namespace FbonizziMonoGame.PlatformStore
+namespace FbonizziMonoGame.UI
 {
+    /// <summary>
+    /// A dialog to be drawn on the screen to ask for rating the App
+    /// </summary>
     public class RateMeDialog
     {
         private const string _titleTextKey = "RateMe|TitleTextKey";
@@ -24,10 +26,38 @@ namespace FbonizziMonoGame.PlatformStore
         private readonly string _appName;
         private readonly Uri _rateAppUri;
 
-        public bool ShouldShowDialog { get; private set; }
-
         private readonly Dialog _titleButtonButtonDialog;
 
+        /// <summary>
+        /// True when the main GUI should show the dialog
+        /// </summary>
+        public bool ShouldShowDialog { get; private set; }
+
+        /// <summary>
+        /// Constructs the dialog
+        /// </summary>
+        /// <param name="launchesUntilPrompt"></param>
+        /// <param name="maxRateShowTimes"></param>
+        /// <param name="appName"></param>
+        /// <param name="rateAppUri"></param>
+        /// <param name="currentCulture"></param>
+        /// <param name="dialogDefinition"></param>
+        /// <param name="font"></param>
+        /// <param name="localizedStringsRepository"></param>
+        /// <param name="rateMeDialogStrings"></param>
+        /// <param name="webPageOpener"></param>
+        /// <param name="settingsRepository"></param>
+        /// <param name="buttonADefinition"></param>
+        /// <param name="buttonBDefinition"></param>
+        /// <param name="backgroundColor"></param>
+        /// <param name="buttonsBackgroundColor"></param>
+        /// <param name="buttonsShadowColor"></param>
+        /// <param name="backgroundShadowColor"></param>
+        /// <param name="titleColor"></param>
+        /// <param name="buttonsTextColor"></param>
+        /// <param name="titlePositionOffset"></param>
+        /// <param name="buttonTextPadding"></param>
+        /// <param name="titlePadding"></param>
         public RateMeDialog(
             int launchesUntilPrompt,
             int maxRateShowTimes,
@@ -35,7 +65,9 @@ namespace FbonizziMonoGame.PlatformStore
             Uri rateAppUri,
             CultureInfo currentCulture,
             Rectangle dialogDefinition,
-            SpriteFont font,
+            SpriteFont font, // TODO Secondo me è da spacchettare
+            ILocalizedStringsRepository localizedStringsRepository,
+            RateMeDialogStrings rateMeDialogStrings,
             IWebPageOpener webPageOpener,
             ISettingsRepository settingsRepository,
             Rectangle buttonADefinition,
@@ -60,7 +92,7 @@ namespace FbonizziMonoGame.PlatformStore
 
             var buttonA = new ButtonWithText(
                 font: font,
-                text: MultilanguageStrings.Get(_rateItButtonTextKey),
+                text: localizedStringsRepository.Get(_rateItButtonTextKey),
                 collisionRectangle: buttonADefinition,
                 backgroundColor: buttonsBackgroundColor,
                 textColor: buttonsTextColor,
@@ -75,7 +107,7 @@ namespace FbonizziMonoGame.PlatformStore
 
             var buttonB = new ButtonWithText(
                 font: font,
-                text: MultilanguageStrings.Get(_notNowButtonTextKey),
+                text: localizedStringsRepository.Get(_notNowButtonTextKey),
                 collisionRectangle: buttonBDefinition,
                 backgroundColor: buttonsBackgroundColor,
                 textColor: buttonsTextColor,
@@ -93,7 +125,7 @@ namespace FbonizziMonoGame.PlatformStore
             buttonB.TextScale = minScale;
 
             _titleButtonButtonDialog = new Dialog(
-                title: MultilanguageStrings.Get(_messageTextKey),
+                title: localizedStringsRepository.Get(_messageTextKey),
                 font: font,
                 dialogWindowDefinition: dialogDefinition,
                 titlePositionOffset: titlePositionOffset,
@@ -106,6 +138,10 @@ namespace FbonizziMonoGame.PlatformStore
             EvaluateRateMe();
         }
 
+        /// <summary>
+        /// It handles input on the dialog buttons
+        /// </summary>
+        /// <param name="inputPosition"></param>
         public void HandleInput(Vector2 inputPosition)
             => _titleButtonButtonDialog.HandleInput(inputPosition);
 
@@ -132,27 +168,32 @@ namespace FbonizziMonoGame.PlatformStore
                 // After n times that the dialog has been shown, It is never shown anymore.
                 _settingsRepository.SetBool(_dontShowAgainSettingKey, true);
             }
-
         }
 
+        /// <summary>
+        /// Draws the dialog on the screen
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
             => _titleButtonButtonDialog.Draw(spriteBatch);
 
         private void AddStrings(CultureInfo currentCulture)
         {
-            if (MultilanguageStrings.IsItalian(currentCulture))
+            // si fa il rateMeDialogStrings.Add
+            // Al posto di questo prepara dei pacchetti già fatti DefaultItalianRateMeDialogString e DefaultEnglish...
+            if (InMemoryLocalizedStringsRepository.IsItalian(currentCulture))
             {
-                MultilanguageStrings.Add(_titleTextKey, $"Valuta {_appName}");
-                MultilanguageStrings.Add(_messageTextKey, $"Ti piace {_appName}?\nLascia una recensione!\nGrazie!");
-                MultilanguageStrings.Add(_rateItButtonTextKey, "Ok!");
-                MultilanguageStrings.Add(_notNowButtonTextKey, "Non ora");
+                InMemoryLocalizedStringsRepository.Add(_titleTextKey, $"Valuta {_appName}");
+                InMemoryLocalizedStringsRepository.Add(_messageTextKey, $"Ti piace {_appName}?\nLascia una recensione!\nGrazie!");
+                InMemoryLocalizedStringsRepository.Add(_rateItButtonTextKey, "Ok!");
+                InMemoryLocalizedStringsRepository.Add(_notNowButtonTextKey, "Non ora");
             }
             else
             {
-                MultilanguageStrings.Add(_titleTextKey, $"Rate {_appName}");
-                MultilanguageStrings.Add(_messageTextKey, $"Enjoy {_appName}?\nRate it, please!\nThanks!");
-                MultilanguageStrings.Add(_rateItButtonTextKey, "Rate it!");
-                MultilanguageStrings.Add(_notNowButtonTextKey, "Not now");
+                InMemoryLocalizedStringsRepository.Add(_titleTextKey, $"Rate {_appName}");
+                InMemoryLocalizedStringsRepository.Add(_messageTextKey, $"Enjoy {_appName}?\nRate it, please!\nThanks!");
+                InMemoryLocalizedStringsRepository.Add(_rateItButtonTextKey, "Rate it!");
+                InMemoryLocalizedStringsRepository.Add(_notNowButtonTextKey, "Not now");
             }
         }
     }

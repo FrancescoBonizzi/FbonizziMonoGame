@@ -4,21 +4,32 @@ using System.Linq;
 
 namespace FbonizziMonoGame.Assets
 {
+    /// <summary>
+    /// Service that generates a dictionary of SpriteName, SpriteDescription
+    /// given a text file where each row defines a single sprite with format: name|x|y|w|h
+    /// </summary>
     public class TexturePackerCustomImporter
     {
         private ITextFileLoader _txtFileImporter;
 
+        /// <summary>
+        /// A sprite importer given a file
+        /// </summary>
+        /// <param name="txtFileImporter">A text file loader</param>
         public TexturePackerCustomImporter(ITextFileLoader txtFileImporter)
         {
             _txtFileImporter = txtFileImporter ?? throw new ArgumentNullException(nameof(txtFileImporter));
         }
 
+        /// <summary>
+        /// Loads synchronously the file and returns a dictionary of sprites
+        /// </summary>
+        /// <param name="spriteSheetDescriptionFilePath"></param>
+        /// <returns></returns>
         public IDictionary<string, SpriteDescription> Import(string spriteSheetDescriptionFilePath)
         {
             if (string.IsNullOrWhiteSpace(spriteSheetDescriptionFilePath))
                 throw new ArgumentNullException(nameof(spriteSheetDescriptionFilePath));
-
-            var spriteSheetDescription = _txtFileImporter.LoadFile(spriteSheetDescriptionFilePath);
 
             return _txtFileImporter
                 .LoadFile(spriteSheetDescriptionFilePath)
@@ -30,11 +41,13 @@ namespace FbonizziMonoGame.Assets
                     s => s);
         }
 
+        /// <summary>
+        /// It needs a file where each row is: name|x|y|w|h
+        /// </summary>
+        /// <param name="spriteInfoLine"></param>
+        /// <returns></returns>
         private static SpriteDescription ParseLine(string spriteInfoLine)
-        {
-            // FlowosoftGamesExporter
-            // nome|x|y|w|h
-
+        { 
             var splittedRow = spriteInfoLine.Split('|');
             return new SpriteDescription()
             {

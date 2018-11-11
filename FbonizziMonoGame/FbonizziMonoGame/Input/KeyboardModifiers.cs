@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziMonoGame.InputListeners
+namespace FbonizziMonoGame.Input
 {
     [Flags]
     public enum KeyboardModifiers

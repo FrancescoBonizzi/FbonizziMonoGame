@@ -1,4 +1,5 @@
-﻿using FbonizziMonoGame.UI;
+﻿using FbonizziMonoGame.Sprites;
+using FbonizziMonoGame.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,29 +7,52 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace FbonizziMonoGame.Assets 
+namespace FbonizziMonoGame.Assets
 {
+    /// <summary>
+    /// A game splash screen that disappears when all the assets are loaded
+    /// </summary>
     public class SplashScreenLoader
     {
         private readonly Action _loadFunction;
         private readonly ContentManager _contentManager;
         private readonly string _splashScreenPath;
+        private Task _assetsLoadingTask;
         private Sprite _splashScreenSprite;
         private FadeObject _splashScreenFadingObject;
 
+        /// <summary>
+        /// It defines the minimum time in which splash screen will be on the screen
+        /// </summary>
         public TimeSpan MininumSplashScreenDuration { get; set; } = TimeSpan.FromSeconds(2);
+
+        /// <summary>
+        /// Raises an event when the assets loading has completed
+        /// </summary>
         public event EventHandler Completed;
 
+        /// <summary>
+        /// Constructs the splash screen loader
+        /// </summary>
+        /// <param name="loadFunction">The function that loads the assets</param>
+        /// <param name="contentManager">The content manager used to load the splash screen image</param>
+        /// <param name="splashScreenPath">The splash screen path to the image to show when waiting the assets loading. It assumes it isn't in a spritesheet</param>
         public SplashScreenLoader(
             Action loadFunction,
             ContentManager contentManager,
             string splashScreenPath)
         {
+            if (string.IsNullOrWhiteSpace(splashScreenPath))
+                throw new ArgumentNullException(nameof(splashScreenPath));
+
             _loadFunction = loadFunction ?? throw new ArgumentNullException(nameof(loadFunction));
             _contentManager = contentManager ?? throw new ArgumentNullException(nameof(contentManager));
-            _splashScreenPath = splashScreenPath ?? throw new ArgumentNullException(nameof(splashScreenPath));
+
         }
 
+        /// <summary>
+        /// Starts loading the assets
+        /// </summary>
         public void Load()
         {
             var splashScreenTexture = _contentManager.Load<Texture2D>(_splashScreenPath);
@@ -36,7 +60,8 @@ namespace FbonizziMonoGame.Assets
             _splashScreenSprite = new Sprite(
                 new SpriteDescription()
                 {
-                    X = 0, Y = 0,
+                    X = 0,
+                    Y = 0,
                     Width = splashScreenTexture.Width,
                     Height = splashScreenTexture.Height,
                     Name = splashScreenTexture.Name
@@ -46,30 +71,46 @@ namespace FbonizziMonoGame.Assets
             _splashScreenFadingObject.FadeIn();
             _splashScreenFadingObject.FadeOutCompleted += _splashScreen_FadeOutCompleted;
 
-            // Ritorno subito in modo da continuare in background l'esecuzione della funzione
-            Task.Run(() => LoadAndManageSplashScreen());
+            // Loads the assets in background
+            // TODO! It fails silently!
+            _assetsLoadingTask = LoadAndManageSplashScreen();
         }
 
+        /// <summary>
+        /// When SplashScreen fadeout is completed it means the assets are loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _splashScreen_FadeOutCompleted(object sender, EventArgs e)
             => Completed?.Invoke(null, EventArgs.Empty);
 
-        private void LoadAndManageSplashScreen()
+        private async Task LoadAndManageSplashScreen()
         {
             var loadTimer = new Stopwatch();
             loadTimer.Start();
             _loadFunction();
             loadTimer.Stop();
 
+            // MininumSplashScreenDuration management
             var lastingSplashScreenDuration = MininumSplashScreenDuration - loadTimer.Elapsed;
             if (lastingSplashScreenDuration > TimeSpan.Zero)
-                Task.Delay(lastingSplashScreenDuration).GetAwaiter().GetResult();
+                await Task.Delay(lastingSplashScreenDuration);
 
+            // When loading is completed, fade out the SplashScreen image
             _splashScreenFadingObject.FadeOut();
         }
 
+        /// <summary>
+        /// It manages SplashScreen fading logic
+        /// </summary>
+        /// <param name="elapsed"></param>
         public void Update(TimeSpan elapsed)
             => _splashScreenFadingObject.Update(elapsed);
 
+        /// <summary>
+        /// It draws the SplashScreen
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(

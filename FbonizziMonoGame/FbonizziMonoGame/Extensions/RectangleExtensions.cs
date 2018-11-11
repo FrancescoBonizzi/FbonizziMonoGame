@@ -2,8 +2,17 @@
 
 namespace FbonizziMonoGame.Extensions
 {
+    /// <summary>
+    /// Rectangle manipulation extensions
+    /// </summary>
     public static class RectangleExtensions
     {
+        /// <summary>
+        /// Calculates a rectangle within a tolerance, like a "padding"
+        /// </summary>
+        /// <param name="me"></param>
+        /// <param name="tolerance"></param>
+        /// <returns></returns>
         public static Rectangle WithTolerance(
             this Rectangle me,
             Rectangle tolerance)
@@ -15,6 +24,12 @@ namespace FbonizziMonoGame.Extensions
                 me.Height - tolerance.Height);
         }
 
+        /// <summary>
+        /// Calculates a rectangle within a tolerance, like a "padding"
+        /// </summary>
+        /// <param name="me"></param>
+        /// <param name="commonTolerance"></param>
+        /// <returns></returns>
         public static Rectangle WithTolerance(
             this Rectangle me,
             int commonTolerance)

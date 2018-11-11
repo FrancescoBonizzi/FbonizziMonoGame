@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Linq;
 
-namespace FbonizziMonoGame.InputListeners
+namespace FbonizziMonoGame.Input
 {
     public class GamePadListener : IInputListener
     {
