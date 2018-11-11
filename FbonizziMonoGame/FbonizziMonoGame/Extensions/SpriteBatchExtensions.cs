@@ -1,8 +1,8 @@
-﻿using FbonizziMonogame.Drawing;
+﻿using FbonizziMonoGame.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FbonizziMonogame.Extensions
+namespace FbonizziMonoGame.Extensions
 {
     public static class SpriteBatchExtensions
     {

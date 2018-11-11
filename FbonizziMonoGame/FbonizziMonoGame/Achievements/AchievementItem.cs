@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziMonogame.Achievements
+namespace FbonizziMonoGame.Achievements
 {
     public class AchievementItem
     {

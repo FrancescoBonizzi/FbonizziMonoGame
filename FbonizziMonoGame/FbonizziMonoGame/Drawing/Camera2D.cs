@@ -1,8 +1,8 @@
-﻿using FbonizziMonogame.Drawing.ViewportAdapters;
+﻿using FbonizziMonoGame.Drawing.ViewportAdapters;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace FbonizziMonogame.Drawing
+namespace FbonizziMonoGame.Drawing
 {
     public class Camera2D
     {

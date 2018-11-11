@@ -1,4 +1,4 @@
-﻿namespace FbonizziMonogame.Assets
+﻿namespace FbonizziMonoGame.Assets
 {
     public struct SpriteDescription
     {

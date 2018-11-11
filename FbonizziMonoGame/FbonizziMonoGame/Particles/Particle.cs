@@ -1,8 +1,8 @@
-﻿using FbonizziMonogame.Drawing;
+﻿using FbonizziMonoGame.Drawing;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace FbonizziMonogame.Particles
+namespace FbonizziMonoGame.Particles
 {
     /// <summary>
     /// Una particella da utilizzare in un motore particellare,

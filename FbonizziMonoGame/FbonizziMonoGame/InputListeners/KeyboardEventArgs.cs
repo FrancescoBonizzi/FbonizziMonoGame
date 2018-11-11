@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace FbonizziMonogame.InputListeners
+namespace FbonizziMonoGame.InputListeners
 {
     public class KeyboardEventArgs : EventArgs
     {

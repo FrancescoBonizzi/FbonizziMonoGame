@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziMonogame
+namespace FbonizziMonoGame
 {
     public interface IFbonizziGame
     {

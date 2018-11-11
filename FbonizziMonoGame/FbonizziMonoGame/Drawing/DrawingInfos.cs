@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace FbonizziMonogame.Drawing
+namespace FbonizziMonoGame.Drawing
 {
     public class DrawingInfos
     {

@@ -1,6 +1,6 @@
-﻿using FbonizziMonogame.UI;
+﻿using FbonizziMonoGame.UI;
 
-namespace FbonizziMonogame.Achievements
+namespace FbonizziMonoGame.Achievements
 {
     public class PopupAchievement
     {

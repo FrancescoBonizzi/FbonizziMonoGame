@@ -1,12 +1,12 @@
-﻿using FbonizziMonogame.Exceptions;
-using FbonizziMonogame.UI;
+﻿using FbonizziMonoGame.Exceptions;
+using FbonizziMonoGame.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FbonizziMonogame.Achievements
+namespace FbonizziMonoGame.Achievements
 {
     public class AchievementsManager
     {

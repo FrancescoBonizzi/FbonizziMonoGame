@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace FbonizziMonogame.Particles
+namespace FbonizziMonoGame.Particles
 {
     public class ParticleGeneratorTimedEffect
     {

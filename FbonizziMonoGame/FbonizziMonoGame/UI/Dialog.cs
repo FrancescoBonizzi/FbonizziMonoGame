@@ -1,8 +1,8 @@
-﻿using FbonizziMonogame.Extensions;
+﻿using FbonizziMonoGame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FbonizziMonogame.UI
+namespace FbonizziMonoGame.UI
 {
     public class Dialog
     {

@@ -1,4 +1,4 @@
-﻿namespace FbonizziMonogame.AfterGameManagement
+﻿namespace FbonizziMonoGame.AfterGameManagement
 {
     public class AfterGameManager
     {

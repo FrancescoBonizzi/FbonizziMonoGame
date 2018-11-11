@@ -1,9 +1,9 @@
-﻿using FbonizziMonogame.Drawing.ViewportAdapters;
+﻿using FbonizziMonoGame.Drawing.ViewportAdapters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace FbonizziMonogame.InputListeners
+namespace FbonizziMonoGame.InputListeners
 {
     public class MouseListener : IInputListener
     {

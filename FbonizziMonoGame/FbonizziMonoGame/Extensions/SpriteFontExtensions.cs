@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Text;
 
-namespace FbonizziMonogame.Extensions
+namespace FbonizziMonoGame.Extensions
 {
     public static class SpriteFontExtensions
     {

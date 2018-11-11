@@ -1,9 +1,9 @@
-﻿using FbonizziMonogame.Extensions;
+﻿using FbonizziMonoGame.Extensions;
 using Microsoft.Xna.Framework;
 using System;
 using System.Text;
 
-namespace FbonizziMonogame.Drawing
+namespace FbonizziMonoGame.Drawing
 {
     public class FPScounter : DrawingInfos
     {

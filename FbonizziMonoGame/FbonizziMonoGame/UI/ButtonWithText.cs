@@ -1,9 +1,9 @@
-﻿using FbonizziMonogame.Extensions;
+﻿using FbonizziMonoGame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace FbonizziMonogame.UI
+namespace FbonizziMonoGame.UI
 {
     public class ButtonWithText
     {

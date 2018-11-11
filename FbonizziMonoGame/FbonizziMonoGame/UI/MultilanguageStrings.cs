@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 
-namespace FbonizziMonogame.UI
+namespace FbonizziMonoGame.UI
 {
     public static class MultilanguageStrings
     {

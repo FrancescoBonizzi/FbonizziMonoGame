@@ -1,9 +1,9 @@
-﻿using FbonizziMonogame.Drawing.ViewportAdapters;
+﻿using FbonizziMonoGame.Drawing.ViewportAdapters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using System;
 
-namespace FbonizziMonogame.InputListeners
+namespace FbonizziMonoGame.InputListeners
 {
     public class TouchListener : IInputListener
     {
