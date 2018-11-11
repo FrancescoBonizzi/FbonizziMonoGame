@@ -6,7 +6,7 @@
     <title>FbonizziMonoGame</title>
     <authors>Francesco Bonizzi</authors>
     <owners>Francesco Bonizzi</owners>
-    <description>Some libraries that I built over Monogame Framework to make my games</description>
+    <description>Some libraries that I built over MonoGame Framework to make my games</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>monogame bonizzi games videogames android UWP UAP</tags>
   </metadata>
