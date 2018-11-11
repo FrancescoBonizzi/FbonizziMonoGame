@@ -14,11 +14,10 @@ variables:
 
 jobs:
   - job: FbonizziMonoGame build
-  
-  variables:
-    - solution: 'FbonizziMonoGame.sln'
-    
-  steps:
+    variables:
+      solution: 'FbonizziMonoGame.sln'
+
+    steps:
     - task: NuGetToolInstaller@0
 
     - task: NuGetCommand@2
