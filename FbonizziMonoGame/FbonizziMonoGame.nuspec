@@ -16,7 +16,7 @@
     </dependencies>
     
   </metadata>
-  
+   
   <files>
     <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.*" target="lib\net45" />
     <file src="FbonizziMonoGame\bin\Release\FbonizziMonoGame.*" target="lib\uap10" />
