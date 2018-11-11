@@ -16,7 +16,7 @@ jobs:
   - job: FbonizziMonoGame build
   
   variables:
-    solution: 'FbonizziMonoGame.sln'
+    - solution: 'FbonizziMonoGame.sln'
     
   steps:
     - task: NuGetToolInstaller@0
