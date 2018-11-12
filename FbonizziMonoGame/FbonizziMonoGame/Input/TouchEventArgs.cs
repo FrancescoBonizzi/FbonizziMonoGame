@@ -1,4 +1,4 @@
-﻿using FbonizziMonoGame.Drawing.ViewportAdapters;
+﻿using FbonizziMonoGame.Sprites.ViewportAdapters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using System;

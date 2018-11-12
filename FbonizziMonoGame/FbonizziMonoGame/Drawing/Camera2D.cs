@@ -1,9 +1,12 @@
-﻿using FbonizziMonoGame.Drawing.ViewportAdapters;
+﻿using FbonizziMonoGame.Sprites.ViewportAdapters;
 using Microsoft.Xna.Framework;
 using System;
 
 namespace FbonizziMonoGame.Drawing
 {
+    /// <summary>
+    /// A simple camera to show a portion of a world that is larger than the screen
+    /// </summary>
     public class Camera2D
     {
         private readonly ScalingViewportAdapter _viewportAdapter;
@@ -11,6 +14,10 @@ namespace FbonizziMonoGame.Drawing
         private float _minimumZoom;
         private float _zoom;
 
+        /// <summary>
+        /// Camera constructor
+        /// </summary>
+        /// <param name="viewportAdapter"></param>
         public Camera2D(ScalingViewportAdapter viewportAdapter)
         {
             _viewportAdapter = viewportAdapter;
@@ -20,21 +27,30 @@ namespace FbonizziMonoGame.Drawing
             Origin = new Vector2(viewportAdapter.VirtualWidth / 2f, viewportAdapter.VirtualHeight / 2f);
             Position = Vector2.Zero;
         }
-
+        
+        /// <summary>
+        /// Camera origin
+        /// </summary>
         public Vector2 Origin { get; set; }
 
+        /// <summary>
+        /// Zoom of the camera
+        /// </summary>
         public float Zoom
         {
             get { return _zoom; }
             set
             {
-                if ((value < MinimumZoom) || (value > MaximumZoom))
-                    throw new ArgumentException("Zoom must be between MinimumZoom and MaximumZoom");
+                if (value < MinimumZoom || value > MaximumZoom)
+                    throw new ArgumentException($"Zoom must be between {MinimumZoom} and {MaximumZoom}");
 
                 _zoom = value;
             }
         }
 
+        /// <summary>
+        /// Sets the minimum camera zoom
+        /// </summary>
         public float MinimumZoom
         {
             get { return _minimumZoom; }
@@ -50,6 +66,9 @@ namespace FbonizziMonoGame.Drawing
             }
         }
 
+        /// <summary>
+        /// Sets the maximum camera zoom
+        /// </summary>
         public float MaximumZoom
         {
             get { return _maximumZoom; }
@@ -65,6 +84,9 @@ namespace FbonizziMonoGame.Drawing
             }
         }
 
+        /// <summary>
+        /// The camera rectangle representation
+        /// </summary>
         public Rectangle BoundingRectangle
         {
             get
@@ -81,24 +103,47 @@ namespace FbonizziMonoGame.Drawing
             }
         }
 
+        /// <summary>
+        /// The camera position
+        /// </summary>
         public Vector2 Position { get; set; }
+
+        /// <summary>
+        /// The camera rotation
+        /// </summary>
         public float Rotation { get; set; }
 
+        /// <summary>
+        /// Moves the camera position
+        /// </summary>
+        /// <param name="direction"></param>
         public void Move(Vector2 direction)
         {
             Position += Vector2.Transform(direction, Matrix.CreateRotationZ(-Rotation));
         }
 
+        /// <summary>
+        /// Rotates the camera by an amount in radians degrees
+        /// </summary>
+        /// <param name="deltaRadians"></param>
         public void Rotate(float deltaRadians)
         {
             Rotation += deltaRadians;
         }
 
+        /// <summary>
+        /// Zooms in the camera safely
+        /// </summary>
+        /// <param name="deltaZoom"></param>
         public void ZoomIn(float deltaZoom)
         {
             ClampZoom(Zoom + deltaZoom);
         }
 
+        /// <summary>
+        /// Zooms out the camera safely
+        /// </summary>
+        /// <param name="deltaZoom"></param>
         public void ZoomOut(float deltaZoom)
         {
             ClampZoom(Zoom - deltaZoom);
@@ -112,27 +157,53 @@ namespace FbonizziMonoGame.Drawing
                 Zoom = value > MaximumZoom ? MaximumZoom : value;
         }
 
+        /// <summary>
+        /// Sets the camera position
+        /// </summary>
+        /// <param name="position"></param>
         public void LookAt(Vector2 position)
         {
             Position = position - new Vector2(_viewportAdapter.VirtualWidth / 2f, _viewportAdapter.VirtualHeight / 2f);
         }
 
+        /// <summary>
+        /// Transforms the given world coordinates into screen coordinates
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public Vector2 WorldToScreen(float x, float y)
         {
             return WorldToScreen(new Vector2(x, y));
         }
 
+        /// <summary>
+        /// Transforms the given world coordinates into screen coordinates
+        /// </summary>
+        /// <param name="worldPosition"></param>
+        /// <returns></returns>
         public Vector2 WorldToScreen(Vector2 worldPosition)
         {
             var viewport = _viewportAdapter.Viewport;
             return Vector2.Transform(worldPosition + new Vector2(viewport.X, viewport.Y), GetViewMatrix());
         }
 
+        /// <summary>
+        /// Transforms the given screen coordinates into world coordinates
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public Vector2 ScreenToWorld(float x, float y)
         {
             return ScreenToWorld(new Vector2(x, y));
         }
 
+        /// <summary>
+        /// Transforms the given screen coordinates into world coordinates
+        /// </summary>
+        /// <param name="screenPosition"></param>
+        /// <returns></returns>
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
             var viewport = _viewportAdapter.Viewport;
@@ -140,6 +211,11 @@ namespace FbonizziMonoGame.Drawing
                 Matrix.Invert(GetViewMatrix()));
         }
 
+        /// <summary>
+        /// Returns the current camera view matrix with the zoom factor and parallax factor
+        /// </summary>
+        /// <param name="parallaxFactor"></param>
+        /// <returns></returns>
         public Matrix GetViewMatrix(Vector2 parallaxFactor)
         {
             return GetVirtualViewMatrix(parallaxFactor) * _viewportAdapter.ScaleMatrix;
@@ -160,11 +236,19 @@ namespace FbonizziMonoGame.Drawing
             return GetVirtualViewMatrix(Vector2.One);
         }
 
+        /// <summary>
+        /// It returns the current ViewMatrix view matrix with the zoom factor
+        /// </summary>
+        /// <returns></returns>
         public Matrix GetViewMatrix()
         {
             return GetViewMatrix(Vector2.One);
         }
 
+        /// <summary>
+        /// It return the inverse of the view matrix
+        /// </summary>
+        /// <returns></returns>
         public Matrix GetInverseViewMatrix()
         {
             return Matrix.Invert(GetViewMatrix());
@@ -178,6 +262,10 @@ namespace FbonizziMonoGame.Drawing
             return projection;
         }
 
+        /// <summary>
+        /// It returns the current view bounding frustum
+        /// </summary>
+        /// <returns></returns>
         public BoundingFrustum GetBoundingFrustum()
         {
             var viewMatrix = GetVirtualViewMatrix();
@@ -185,16 +273,31 @@ namespace FbonizziMonoGame.Drawing
             return new BoundingFrustum(projectionMatrix);
         }
 
+        /// <summary>
+        /// Checks if the point is contained in the camera view
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
         public ContainmentType Contains(Point point)
         {
             return Contains(point.ToVector2());
         }
 
+        /// <summary>
+        /// Checks if the given coordinates are contained in the camera view
+        /// </summary>
+        /// <param name="vector2"></param>
+        /// <returns></returns>
         public ContainmentType Contains(Vector2 vector2)
         {
             return GetBoundingFrustum().Contains(new Vector3(vector2.X, vector2.Y, 0));
         }
 
+        /// <summary>
+        /// Checks if the given coordinates is contained in the camera view
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <returns></returns>
         public ContainmentType Contains(Rectangle rectangle)
         {
             var max = new Vector3(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height, 0.5f);

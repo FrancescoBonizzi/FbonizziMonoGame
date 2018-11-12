@@ -41,7 +41,7 @@
     <Compile Include="Achievements\PopupAchievement.cs" />
     <Compile Include="AfterGameManagement\AfterGameManager.cs" />
     <Compile Include="AfterGameManagement\ProtipsShower.cs" />
-    <Compile Include="Drawing\AnimationsManager.cs" />
+    <Compile Include="Sprites\AnimationsManager.cs" />
     <Compile Include="Assets\SplashScreenLoader.cs" />
     <Compile Include="Extensions\CollectionsExtensions.cs" />
     <Compile Include="ILocalizedStringsRepository.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Extensions\RectangleExtensions.cs" />
     <Compile Include="Extensions\SpriteBatchExtensions.cs" />
     <Compile Include="Extensions\SpriteFontExtensions.cs" />
-    <Compile Include="Drawing\FPScounter.cs" />
+    <Compile Include="UI\FPScounter.cs" />
     <Compile Include="Drawing\DrawingInfos.cs" />
     <Compile Include="Extensions\Texture2DExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />

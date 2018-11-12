@@ -1,4 +1,4 @@
-﻿using FbonizziMonoGame.Drawing;
+﻿using FbonizziMonoGame.Sprites;
 using Microsoft.Xna.Framework;
 using System;
 

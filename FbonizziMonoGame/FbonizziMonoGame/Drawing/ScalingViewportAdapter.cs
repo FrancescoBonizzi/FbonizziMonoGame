@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace FbonizziMonoGame.Drawing.ViewportAdapters
+namespace FbonizziMonoGame.Drawing
 {
     public class ScalingViewportAdapter
     {
