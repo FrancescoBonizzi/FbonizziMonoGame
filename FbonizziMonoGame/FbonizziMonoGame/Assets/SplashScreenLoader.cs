@@ -1,5 +1,5 @@
 ﻿using FbonizziMonoGame.Sprites;
-using FbonizziMonoGame.UI;
+using FbonizziMonoGame.TransformationObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

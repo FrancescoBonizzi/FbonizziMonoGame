@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FbonizziMonoGame.UI
+namespace FbonizziMonoGame.StringsLocalization
 {
     /// <summary>
     /// It defines an in memory localized string repository
@@ -33,6 +33,11 @@ namespace FbonizziMonoGame.UI
         /// <param name="key"></param>
         /// <returns></returns>
         public string Get(string key)
-            => _stringsRepository[key];
+        { 
+            if (_stringsRepository.ContainsKey(key))
+                return _stringsRepository[key];
+
+            return $"'{key}'";
+        }
     }
 }

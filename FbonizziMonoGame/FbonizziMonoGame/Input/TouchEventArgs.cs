@@ -1,30 +1,53 @@
-﻿using FbonizziMonoGame.Sprites.ViewportAdapters;
+﻿using FbonizziMonoGame.Drawing.Abstractions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using System;
 
 namespace FbonizziMonoGame.Input
 {
+    /// <summary>
+    /// Touch event informations
+    /// </summary>
     public class TouchEventArgs : EventArgs
     {
+        /// <summary>
+        /// Raw touch location
+        /// </summary>
+        public TouchLocation RawTouchLocation { get; }
+
+        /// <summary>
+        /// Touch event duration
+        /// </summary>
+        public TimeSpan Time { get; }
+
+        /// <summary>
+        /// Touch event position
+        /// </summary>
+        public Vector2 Position { get; }
+
+        /// <summary>
+        /// Touch event informations
+        /// </summary>
+        /// <param name="screenTransformationMatrixProvider"></param>
+        /// <param name="time"></param>
+        /// <param name="location"></param>
         public TouchEventArgs(
-            ScalingViewportAdapter viewportAdapter, 
+            IScreenTransformationMatrixProvider screenTransformationMatrixProvider,
             TimeSpan time, 
             TouchLocation location)
         {
-            ViewportAdapter = viewportAdapter;
             RawTouchLocation = location;
             Time = time;
-            var pointPosition = viewportAdapter?.PointToScreen((int)location.Position.X, (int)location.Position.Y)
+            var pointPosition = screenTransformationMatrixProvider?.PointToScreen((int)location.Position.X, (int)location.Position.Y)
                 ?? location.Position.ToPoint();
             Position = new Vector2(pointPosition.X, pointPosition.Y);
         }
 
-        public ScalingViewportAdapter ViewportAdapter { get; }
-        public TouchLocation RawTouchLocation { get; }
-        public TimeSpan Time { get; }
-        public Vector2 Position { get; }
-
+        /// <summary>
+        /// Two TouchEventArgs are equal if their RawTouchLocation.Id is the same
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public override bool Equals(object other)
         {
             var args = other as TouchEventArgs;
@@ -35,6 +58,10 @@ namespace FbonizziMonoGame.Input
             return ReferenceEquals(this, args) || RawTouchLocation.Id.Equals(args.RawTouchLocation.Id);
         }
 
+        /// <summary>
+        /// Two TouchEventArgs are equal if their RawTouchLocation.Id is the same
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return RawTouchLocation.Id.GetHashCode();

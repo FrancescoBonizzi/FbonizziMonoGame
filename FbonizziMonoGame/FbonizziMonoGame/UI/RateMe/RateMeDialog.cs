@@ -1,4 +1,5 @@
 ﻿using FbonizziMonoGame.PlatformAbstractions;
+using FbonizziMonoGame.StringsLocalization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

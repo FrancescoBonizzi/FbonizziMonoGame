@@ -35,25 +35,20 @@
     <DocumentationFile>bin\Release\FbonizziMonoGame.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Achievements\AchievementItem.cs" />
-    <Compile Include="Achievements\AchievementManager.cs" />
-    <Compile Include="Achievements\AchievementToDraw.cs" />
-    <Compile Include="Achievements\PopupAchievement.cs" />
-    <Compile Include="AfterGameManagement\AfterGameManager.cs" />
-    <Compile Include="AfterGameManagement\ProtipsShower.cs" />
+    <Compile Include="UI\RandomImageShower\ImageWithText.cs" />
+    <Compile Include="UI\RandomImageShower\RandomImageShower.cs" />
     <Compile Include="Assets\Abstractions\ISpriteImporter.cs" />
     <Compile Include="Drawing\Abstractions\IScreenTransformationMatrixProvider.cs" />
     <Compile Include="Sprites\AnimationsManager.cs" />
     <Compile Include="Assets\SplashScreenLoader.cs" />
     <Compile Include="Extensions\CollectionsExtensions.cs" />
-    <Compile Include="PlatformAbstractions\ILocalizedStringsRepository.cs" />
+    <Compile Include="StringsLocalization\ILocalizedStringsRepository.cs" />
     <Compile Include="PlatformAbstractions\ITextFileLoader.cs" />
     <Compile Include="Assets\CustomSpriteImporter.cs" />
     <Compile Include="Assets\SpriteDescription.cs" />
     <Compile Include="Drawing\DynamicScalingMatrixProvider.cs" />
     <Compile Include="Drawing\Camera2D.cs" />
     <Compile Include="Drawing\StaticScalingMatrixProvider.cs" />
-    <Compile Include="Achievements\Exceptions\AchievementCheckFuncNotDefinedException.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\RectangleExtensions.cs" />
     <Compile Include="Extensions\SpriteBatchExtensions.cs" />
@@ -81,7 +76,7 @@
     <Compile Include="UI\ButtonWithText.cs" />
     <Compile Include="TransformationObjects\ColorChangingObject.cs" />
     <Compile Include="PlatformAbstractions\IWebPageOpener.cs" />
-    <Compile Include="UI\InMemoryLocalizedStringsRepository.cs" />
+    <Compile Include="StringsLocalization\InMemoryLocalizedStringsRepository.cs" />
     <Compile Include="UI\RateMe\RateMeDialogStrings.cs" />
     <Compile Include="TransformationObjects\ScalingObject.cs" />
     <Compile Include="Extensions\Numbers.cs" />

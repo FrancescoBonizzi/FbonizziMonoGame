@@ -35,5 +35,13 @@ namespace FbonizziMonoGame.Drawing.Abstractions
         /// into <see cref="RealScreenWidth"/> and <see cref="RealScreenHeight"/>
         /// </summary>
         Matrix ScaleMatrix { get; }
+
+        /// <summary>
+        /// Projects the given coordinates into screen coordinates
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        Point PointToScreen(int x, int y);
     }
 }

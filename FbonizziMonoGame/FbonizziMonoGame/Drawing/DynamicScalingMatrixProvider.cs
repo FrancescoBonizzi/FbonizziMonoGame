@@ -41,6 +41,18 @@ namespace FbonizziMonoGame.Drawing
         public Matrix ScaleMatrix { get; private set; }
 
         /// <summary>
+        /// Projects the given coordinates into screen coordinates
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Point PointToScreen(int x, int y)
+        {
+            var invertedMatrix = Matrix.Invert(ScaleMatrix);
+            return Vector2.Transform(new Vector2(x, y), invertedMatrix).ToPoint();
+        }
+
+        /// <summary>
         /// Dynamic scaling matrix provider constructor
         /// </summary>
         /// <param name="window"></param>
