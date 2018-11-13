@@ -1,5 +1,4 @@
-﻿using FbonizziMonoGame.Sprites.ViewportAdapters;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 
 namespace FbonizziMonoGame.Drawing
@@ -9,7 +8,8 @@ namespace FbonizziMonoGame.Drawing
     /// </summary>
     public class Camera2D
     {
-        private readonly ScalingMatrixProvider _viewportAdapter;
+        private readonly StaticScalingMatrixProvider _scalingMatrixProvider;
+
         private float _maximumZoom = float.MaxValue;
         private float _minimumZoom;
         private float _zoom;
@@ -18,9 +18,9 @@ namespace FbonizziMonoGame.Drawing
         /// Camera constructor
         /// </summary>
         /// <param name="viewportAdapter"></param>
-        public Camera2D(ScalingMatrixProvider viewportAdapter)
+        public Camera2D(StaticScalingMatrixProvider viewportAdapter)
         {
-            _viewportAdapter = viewportAdapter;
+            _scalingMatrixProvider = viewportAdapter;
 
             Rotation = 0;
             Zoom = 1;
@@ -163,7 +163,7 @@ namespace FbonizziMonoGame.Drawing
         /// <param name="position"></param>
         public void LookAt(Vector2 position)
         {
-            Position = position - new Vector2(_viewportAdapter.VirtualWidth / 2f, _viewportAdapter.VirtualHeight / 2f);
+            Position = position - new Vector2(_scalingMatrixProvider.VirtualWidth / 2f, _scalingMatrixProvider.VirtualHeight / 2f);
         }
 
         /// <summary>
@@ -184,8 +184,7 @@ namespace FbonizziMonoGame.Drawing
         /// <returns></returns>
         public Vector2 WorldToScreen(Vector2 worldPosition)
         {
-            var viewport = _viewportAdapter.Viewport;
-            return Vector2.Transform(worldPosition + new Vector2(viewport.X, viewport.Y), GetViewMatrix());
+            return Vector2.Transform(worldPosition + new Vector2(_scalingMatrixProvider.RealScreenWidth, _scalingMatrixProvider.RealScreenHeight), GetViewMatrix());
         }
 
         /// <summary>
@@ -206,8 +205,8 @@ namespace FbonizziMonoGame.Drawing
         /// <returns></returns>
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
-            var viewport = _viewportAdapter.Viewport;
-            return Vector2.Transform(screenPosition - new Vector2(viewport.X, viewport.Y),
+
+            return Vector2.Transform(screenPosition - new Vector2(_scalingMatrixProvider.RealScreenWidth, _scalingMatrixProvider.RealScreenHeight),
                 Matrix.Invert(GetViewMatrix()));
         }
 
@@ -218,7 +217,7 @@ namespace FbonizziMonoGame.Drawing
         /// <returns></returns>
         public Matrix GetViewMatrix(Vector2 parallaxFactor)
         {
-            return GetVirtualViewMatrix(parallaxFactor) * _viewportAdapter.ScaleMatrix;
+            return GetVirtualViewMatrix(parallaxFactor) * _scalingMatrixProvider.ScaleMatrix;
         }
 
         private Matrix GetVirtualViewMatrix(Vector2 parallaxFactor)
@@ -256,8 +255,8 @@ namespace FbonizziMonoGame.Drawing
 
         private Matrix GetProjectionMatrix(Matrix viewMatrix)
         {
-            var projection = Matrix.CreateOrthographicOffCenter(0, _viewportAdapter.VirtualWidth,
-                _viewportAdapter.VirtualHeight, 0, -1, 0);
+            var projection = Matrix.CreateOrthographicOffCenter(0, _scalingMatrixProvider.VirtualWidth,
+                _scalingMatrixProvider.VirtualHeight, 0, -1, 0);
             Matrix.Multiply(ref viewMatrix, ref projection, out projection);
             return projection;
         }

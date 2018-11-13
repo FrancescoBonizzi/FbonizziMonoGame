@@ -1,4 +1,4 @@
-﻿using FbonizziMonoGame.Sprites;
+﻿using FbonizziMonoGame.Drawing;
 using FbonizziMonoGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -42,7 +42,7 @@ namespace FbonizziMonoGame.Extensions
         /// <param name="spriteBatch"></param>
         /// <param name="sprite"></param>
         /// <param name="spatialObject"></param>
-        /// <param name="isDebugModeEnabled"></param>
+        /// <param name="isDebugModeEnabled">It draws a visible boxing rectangle</param>
         public static void Draw(
             this SpriteBatch spriteBatch,
             Sprite sprite,

@@ -1,23 +1,55 @@
-﻿using FbonizziMonoGame.Sprites;
+﻿using FbonizziMonoGame.Drawing;
 using Microsoft.Xna.Framework;
 using System;
 
 namespace FbonizziMonoGame.Particles
 {
     /// <summary>
-    /// Una particella da utilizzare in un motore particellare,
-    /// caratterizzata da proprietà spaziali e ciclo di vita.
+    /// A particle to be used in a particle generator
     /// </summary>
     public class Particle : DrawingInfos
     {
-        public Vector2 Velocity { get; set; }
-        public Vector2 Acceleration { get; set; }
-        public TimeSpan TimeSinceStart { get; set; }
-        public float InitalScale { get; set; }
+        /// <summary>
+        /// The particle velocity
+        /// </summary>
+        public Vector2 Velocity { get; private set; }
 
-        public float RotationSpeed { get; set; }
-        public TimeSpan LifeTime { get; set; }
+        /// <summary>
+        /// The particle acceleration
+        /// </summary>
+        public Vector2 Acceleration { get; private set; }
 
+        /// <summary>
+        /// The particle alive time
+        /// </summary>
+        public TimeSpan TimeSinceStart { get; private set; }
+
+        /// <summary>
+        /// The particle initial scale
+        /// </summary>
+        public float InitalScale { get; private set; }
+
+        /// <summary>
+        /// The particle rotation speed
+        /// </summary>
+        public float RotationSpeed { get; private set; }
+
+        /// <summary>
+        /// The particle lifetime
+        /// </summary>
+        public TimeSpan LifeTime { get; private set; }
+
+        /// <summary>
+        /// It initializes the particle
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="velocity"></param>
+        /// <param name="acceleration"></param>
+        /// <param name="initialRotation"></param>
+        /// <param name="rotationSpeed"></param>
+        /// <param name="color"></param>
+        /// <param name="scale"></param>
+        /// <param name="lifetime"></param>
         public void Initialize(
             Vector2 position,
             Vector2 velocity,
@@ -41,9 +73,16 @@ namespace FbonizziMonoGame.Particles
             TimeSinceStart = TimeSpan.Zero;
         }
 
+        /// <summary>
+        /// It returns true if the particle can be considered active
+        /// </summary>
         public bool IsActive 
             => TimeSinceStart < LifeTime || OverlayColor.A < 0;
 
+        /// <summary>
+        /// It manages the particle life logic
+        /// </summary>
+        /// <param name="elapsed"></param>
         public void Update(TimeSpan elapsed)
         {
             float elapsedSeconds = (float)elapsed.TotalSeconds;

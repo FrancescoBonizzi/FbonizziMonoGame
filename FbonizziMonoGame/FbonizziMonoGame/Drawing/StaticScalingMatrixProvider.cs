@@ -1,26 +1,24 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FbonizziMonoGame.Drawing.Abstractions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace FbonizziMonoGame.Drawing
 {
     /// <summary>
-    /// Generates a view matrix that represents the transformation needed
-    /// to scale a virtual rectangle to fit the real graphics device viewport.
-    /// For example: your game view screen is a 800x600 rectangle but you need to fit 
-    /// it into a 1920x1080 device screen.
+    /// Generates a scaling view matrix calculated only once created
     /// </summary>
-    public class ScalingMatrixProvider : IScreenTransformationMatrixProvider
+    public class StaticScalingMatrixProvider : IScreenTransformationMatrixProvider
     {
         /// <summary>
         /// The device screen width in which the <see cref="VirtualWidth"/> has to fit 
         /// </summary>
-        public int RealScreenWidth { get; protected set; }
+        public int RealScreenWidth { get; }
 
         /// <summary>
         /// The device screen height in which the <see cref="VirtualHeight"/> has to fit 
         /// </summary>
-        public int RealScreenHeight { get; protected set; }
+        public int RealScreenHeight { get; }
 
         /// <summary>
         /// The virtual width that should fit to the <see cref="RealScreenWidth"/>
@@ -36,15 +34,15 @@ namespace FbonizziMonoGame.Drawing
         /// The scale matrix that defines the transformation needed to fit <see cref="VirtualWidth"/> and <see cref="VirtualHeight"/>
         /// into <see cref="RealScreenWidth"/> and <see cref="RealScreenHeight"/>
         /// </summary>
-        public Matrix ScaleMatrix { get; protected set; }
+        public Matrix ScaleMatrix { get; }
 
         /// <summary>
-        /// Scaling matrix provider constructor
+        /// Static scaling matrix provider constructor
         /// </summary>
         /// <param name="graphicsDevice"></param>
         /// <param name="virtualWidth"></param>
         /// <param name="virtualHeight"></param>
-        public ScalingMatrixProvider(
+        public StaticScalingMatrixProvider(
             GraphicsDevice graphicsDevice,
             int virtualWidth,
             int virtualHeight)

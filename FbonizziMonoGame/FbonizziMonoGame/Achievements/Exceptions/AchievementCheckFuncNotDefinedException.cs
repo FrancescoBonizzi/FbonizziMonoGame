@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziMonoGame.Exceptions
+namespace FbonizziMonoGame.Achievements.Exceptions
 {
     public class AchievementCheckFuncNotDefinedException : Exception
     {

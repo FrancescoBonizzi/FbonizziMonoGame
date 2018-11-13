@@ -2,24 +2,50 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace FbonizziMonoGame.UI
+namespace FbonizziMonoGame.TransformationObjects
 {
+    /// <summary>
+    /// A virtual object that popups on the screen sliding up and then disappears
+    /// </summary>
     public class PopupObject
     {
         private readonly TimeSpan _lifeTime;
-        private Color _originalColor;
         private readonly float _upSpeed;
+
+        private Color _originalColor;
         private TimeSpan _elapsed;
 
+        /// <summary>
+        /// Current object color
+        /// </summary>
         public Color OverlayColor { get; set; }
+
+        /// <summary>
+        /// Current object opacity
+        /// </summary>
         public float Alpha { get; private set; }
+
+        /// <summary>
+        /// Current object position
+        /// </summary>
         public Vector2 Position { get; set; }
 
         private readonly Vector2 _startingPosition;
 
+        /// <summary>
+        /// Raised when the popup animation has completed
+        /// </summary>
         public event EventHandler Completed;
+
         private FadeState _currentFadeState;
 
+        /// <summary>
+        /// Popup object constructor
+        /// </summary>
+        /// <param name="lifeTime"></param>
+        /// <param name="startingPosition"></param>
+        /// <param name="originalColor"></param>
+        /// <param name="upSpeed"></param>
         public PopupObject(
             TimeSpan lifeTime,
             Vector2 startingPosition,
@@ -34,6 +60,9 @@ namespace FbonizziMonoGame.UI
             _currentFadeState = FadeState.Static;
         }
 
+        /// <summary>
+        /// Returns true if the animation has completed
+        /// </summary>
         public bool IsCompleted =>
             _currentFadeState == FadeState.Static;
 
@@ -43,6 +72,9 @@ namespace FbonizziMonoGame.UI
             PoppingUp
         }
 
+        /// <summary>
+        /// Starts the popup animation
+        /// </summary>
         public void Popup()
         {
             _elapsed = TimeSpan.Zero;
@@ -51,6 +83,10 @@ namespace FbonizziMonoGame.UI
             _currentFadeState = FadeState.PoppingUp;
         }
 
+        /// <summary>
+        /// It manages the popup logic
+        /// </summary>
+        /// <param name="elapsed"></param>
         public void Update(TimeSpan elapsed)
         {
             switch (_currentFadeState)

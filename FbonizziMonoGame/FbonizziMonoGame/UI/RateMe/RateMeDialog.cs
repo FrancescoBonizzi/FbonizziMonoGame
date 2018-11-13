@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FbonizziMonoGame.PlatformAbstractions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Globalization;
 
-namespace FbonizziMonoGame.UI
+namespace FbonizziMonoGame.UI.RateMe
 {
     /// <summary>
     /// A dialog to be drawn on the screen to ask for rating the App
@@ -20,12 +20,13 @@ namespace FbonizziMonoGame.UI
         private const string _dateFirstLaunchSettingKey = "RateMe|DateFirstLaunch";
         private const string _rateMeLaunchCountSettingKey = "RateMe|RateMeLaunchCount";
 
-        private ISettingsRepository _settingsRepository;
+        private readonly ISettingsRepository _settingsRepository;
+        private readonly ILocalizedStringsRepository _localizedStringsRepository;
+
         private readonly int _launchesUntilPrompt;
         private readonly int _maxRateShowTimes;
         private readonly string _appName;
         private readonly Uri _rateAppUri;
-
         private readonly Dialog _titleButtonButtonDialog;
 
         /// <summary>
@@ -38,9 +39,7 @@ namespace FbonizziMonoGame.UI
         /// </summary>
         /// <param name="launchesUntilPrompt"></param>
         /// <param name="maxRateShowTimes"></param>
-        /// <param name="appName"></param>
         /// <param name="rateAppUri"></param>
-        /// <param name="currentCulture"></param>
         /// <param name="dialogDefinition"></param>
         /// <param name="font"></param>
         /// <param name="localizedStringsRepository"></param>
@@ -61,11 +60,9 @@ namespace FbonizziMonoGame.UI
         public RateMeDialog(
             int launchesUntilPrompt,
             int maxRateShowTimes,
-            string appName,
             Uri rateAppUri,
-            CultureInfo currentCulture,
             Rectangle dialogDefinition,
-            SpriteFont font, // TODO Secondo me è da spacchettare
+            SpriteFont font,
             ILocalizedStringsRepository localizedStringsRepository,
             RateMeDialogStrings rateMeDialogStrings,
             IWebPageOpener webPageOpener,
@@ -84,11 +81,11 @@ namespace FbonizziMonoGame.UI
         {
             _launchesUntilPrompt = launchesUntilPrompt;
             _maxRateShowTimes = maxRateShowTimes;
-            _appName = appName;
             _rateAppUri = rateAppUri;
-            AddStrings(currentCulture);
-
+            _localizedStringsRepository = localizedStringsRepository;
             _settingsRepository = settingsRepository;
+
+            AddStrings(rateMeDialogStrings);
 
             var buttonA = new ButtonWithText(
                 font: font,
@@ -154,7 +151,7 @@ namespace FbonizziMonoGame.UI
             _settingsRepository.SetInt(_appLaunchCountSettingKey, appLaunchCount);
 
             int rateMeLaunchCount = _settingsRepository.GetOrSetInt(_rateMeLaunchCountSettingKey, 0);
-                      
+
             if (rateMeLaunchCount < _maxRateShowTimes)
             {
                 if (appLaunchCount >= _launchesUntilPrompt)
@@ -177,24 +174,12 @@ namespace FbonizziMonoGame.UI
         public void Draw(SpriteBatch spriteBatch)
             => _titleButtonButtonDialog.Draw(spriteBatch);
 
-        private void AddStrings(CultureInfo currentCulture)
+        private void AddStrings(RateMeDialogStrings rateMeDialogStrings)
         {
-            // si fa il rateMeDialogStrings.Add
-            // Al posto di questo prepara dei pacchetti già fatti DefaultItalianRateMeDialogString e DefaultEnglish...
-            if (InMemoryLocalizedStringsRepository.IsItalian(currentCulture))
-            {
-                InMemoryLocalizedStringsRepository.Add(_titleTextKey, $"Valuta {_appName}");
-                InMemoryLocalizedStringsRepository.Add(_messageTextKey, $"Ti piace {_appName}?\nLascia una recensione!\nGrazie!");
-                InMemoryLocalizedStringsRepository.Add(_rateItButtonTextKey, "Ok!");
-                InMemoryLocalizedStringsRepository.Add(_notNowButtonTextKey, "Non ora");
-            }
-            else
-            {
-                InMemoryLocalizedStringsRepository.Add(_titleTextKey, $"Rate {_appName}");
-                InMemoryLocalizedStringsRepository.Add(_messageTextKey, $"Enjoy {_appName}?\nRate it, please!\nThanks!");
-                InMemoryLocalizedStringsRepository.Add(_rateItButtonTextKey, "Rate it!");
-                InMemoryLocalizedStringsRepository.Add(_notNowButtonTextKey, "Not now");
-            }
+            _localizedStringsRepository.AddString(_titleTextKey, rateMeDialogStrings.TitleText);
+            _localizedStringsRepository.AddString(_messageTextKey, rateMeDialogStrings.MessageText);
+            _localizedStringsRepository.AddString(_rateItButtonTextKey, rateMeDialogStrings.RateItButtonText);
+            _localizedStringsRepository.AddString(_notNowButtonTextKey, rateMeDialogStrings.NotNowButtonText);
         }
     }
 }

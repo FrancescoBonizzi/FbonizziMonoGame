@@ -1,4 +1,5 @@
 ﻿using FbonizziMonoGame.Extensions;
+using FbonizziMonoGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,40 +9,96 @@ using System.Linq;
 namespace FbonizziMonoGame.Particles
 {
     /// <summary>
-    /// Motore particellare
+    /// Particle generator
     /// </summary>
     public abstract class ParticleGenerator
     {
-        private Sprite _sprite;
-        private Color _particleOverlayColor = Color.White;
+        private readonly Sprite _sprite;
+        private readonly Color _particleOverlayColor = Color.White;
         private Vector2 _origin;
 
         private Particle[] _activeParticles;
         private Queue<Particle> _freeParticles;
         
+        /// <summary>
+        /// Density of particles each generation
+        /// </summary>
         protected abstract int Density { get; }
 
+        /// <summary>
+        /// Minimum number of particles
+        /// </summary>
         protected abstract int MinNumParticles { get; }
+
+        /// <summary>
+        /// Maximum number of particles
+        /// </summary>
         protected abstract int MaxNumParticles { get; }
 
+        /// <summary>
+        /// Minimum initial speed of the particles
+        /// </summary>
         protected abstract float MinInitialSpeed { get; }
+
+        /// <summary>
+        /// Maximum initial speed of the particles
+        /// </summary>
         protected abstract float MaxInitialSpeed { get; }
 
+        /// <summary>
+        /// Minimum acceleration of the particles
+        /// </summary>
         protected abstract float MinAcceleration { get; }
+
+        /// <summary>
+        /// Maximum acceleration of the particles
+        /// </summary>
         protected abstract float MaxAcceleration { get; }
 
+        /// <summary>
+        /// Minimum rotation speed of the particles
+        /// </summary>
         protected abstract float MinRotationSpeed { get; }
+
+        /// <summary>
+        /// Maximum rotation speed of the particles
+        /// </summary>
         protected abstract float MaxRotationSpeed { get; }
 
+        /// <summary>
+        /// Minimum lifetime of the particles
+        /// </summary>
         protected abstract TimeSpan MinLifetime { get; }
+
+        /// <summary>
+        /// Maximum lifetime of the particles
+        /// </summary>
         protected abstract TimeSpan MaxLifetime { get; }
 
+        /// <summary>
+        /// Minimum particles scale
+        /// </summary>
         protected abstract float MinScale { get; }
+
+        /// <summary>
+        /// Maximum particles scale
+        /// </summary>
         protected abstract float MaxScale { get; }
 
+        /// <summary>
+        /// Minimum particles spawn angle
+        /// </summary>
         protected abstract float MinSpawnAngle { get; }
+
+        /// <summary>
+        /// Maximum particles spawn angle
+        /// </summary>
         protected abstract float MaxSpawnAngle { get; }
 
+        /// <summary>
+        /// A particle generator with a single sprite as particle template
+        /// </summary>
+        /// <param name="particleSprite"></param>
         public ParticleGenerator(Sprite particleSprite)
         {
             _sprite = particleSprite ?? throw new ArgumentNullException(nameof(particleSprite));
@@ -54,7 +111,7 @@ namespace FbonizziMonoGame.Particles
         }
 
         /// <summary>
-        /// Inizializza il generatore, creando le particelle e la coda di particelle morte
+        /// Initializes the particle generator, creating all particles and putting them in the dead particles queue
         /// </summary>
         private void Initialize()
         {
@@ -68,12 +125,12 @@ namespace FbonizziMonoGame.Particles
         }
 
         /// <summary>
-        /// Prende, se ci sono numParticles morte e le reinizializza
+        /// Adds new paticles taking them from the dead particles queue
         /// </summary>
         /// <param name="where"></param>
         public void AddParticles(Vector2 where)
         {
-            int numParticles = MathHelperExtensions.RandomBetween(
+            int numParticles = Numbers.RandomBetween(
                 MinNumParticles,
                 MaxNumParticles);
 
@@ -84,11 +141,14 @@ namespace FbonizziMonoGame.Particles
             }
         }
 
+        /// <summary>
+        /// True if there are active particles
+        /// </summary>
         public bool HasActiveParticles
             => _freeParticles.Count != _activeParticles.Count();
 
         /// <summary>
-        /// Inizializza una singola particella con valori casuali entro i range stabiliti nell'override delle varie proprietà
+        /// Initializes a single particle with random values in the range of the properties defined in this class
         /// </summary>
         /// <param name="p"></param>
         /// <param name="where"></param>
@@ -99,12 +159,12 @@ namespace FbonizziMonoGame.Particles
             Vector2 direction = PickRandomDirection();
 
             // Valori casuali per inizializzare la particella
-            float velocity = MathHelperExtensions.RandomBetween(MinInitialSpeed, MaxInitialSpeed);
-            float acceleration = MathHelperExtensions.RandomBetween(MinAcceleration, MaxAcceleration);
-            TimeSpan lifetime = MathHelperExtensions.RandomBetween(MinLifetime, MaxLifetime);
-            float scale = MathHelperExtensions.RandomBetween(MinScale, MaxScale);
-            float rotationSpeed = MathHelperExtensions.RandomBetween(MinRotationSpeed, MaxRotationSpeed);
-            float initialRotation = MathHelperExtensions.RandomBetween(0, MathHelper.TwoPi);
+            float velocity = Numbers.RandomBetween(MinInitialSpeed, MaxInitialSpeed);
+            float acceleration = Numbers.RandomBetween(MinAcceleration, MaxAcceleration);
+            TimeSpan lifetime = Numbers.RandomBetween(MinLifetime, MaxLifetime);
+            float scale = Numbers.RandomBetween(MinScale, MaxScale);
+            float rotationSpeed = Numbers.RandomBetween(MinRotationSpeed, MaxRotationSpeed);
+            float initialRotation = Numbers.RandomBetween(0, MathHelper.TwoPi);
 
             p.Initialize(
                 where,
@@ -118,12 +178,12 @@ namespace FbonizziMonoGame.Particles
         }
 
         /// <summary>
-        /// Ritorna una direzione casuale entro il range [_minSpawnAngle; _maxSpawnAngle]
+        /// It returns a random direction in the interval [MinSpawnAngle; MaxSpawnAngle]
         /// </summary>
         /// <returns></returns>
         private Vector2 PickRandomDirection()
         {
-            float radians = MathHelperExtensions.RandomBetween(
+            float radians = Numbers.RandomBetween(
                 MathHelper.ToRadians(MinSpawnAngle),
                 MathHelper.ToRadians(MaxSpawnAngle));
 
@@ -134,6 +194,10 @@ namespace FbonizziMonoGame.Particles
             return direction;
         }
 
+        /// <summary>
+        /// Manages the particle generator logic
+        /// </summary>
+        /// <param name="elapsed"></param>
         public virtual void Update(TimeSpan elapsed)
         {
             for (int i = 0; i < _activeParticles.Length; ++i)
@@ -150,6 +214,10 @@ namespace FbonizziMonoGame.Particles
             }
         }
 
+        /// <summary>
+        /// Draws the effect
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < _activeParticles.Length; ++i)
@@ -159,27 +227,22 @@ namespace FbonizziMonoGame.Particles
                 if (!p.IsActive)
                     continue;
 
-                // Il valore di vita normalizzato è un valore tra 0 e 1 che quantifica
-                // la vita di una particella.
-                //  0: appena nata
-                // .5: a metà della sua vita
-                //  1: la sua vita è terminata
-                // Questo valore viene usato per calcolarne l'opacità e la scala
+                // Normalized lifetime is a [0; 1] value that means:
+                //  0: just born
+                // .5: at half of its life
+                //  1: his life is ended
+                // I use this value to calculate opacity and scale
                 double normalizedLifetime = p.TimeSinceStart.TotalSeconds / p.LifeTime.TotalSeconds;
 
-                // Le particelle devono fare fadein e fadeout, questa è la funzione che ne calcola l'opacità
-                // in relazione alla quantificazione della sua vita normalizzata.
-                // Con questa formula mi assicuro che:
-                // - quando la sua vita è 0 o 1, alpha sia zero.
-                // - la massima opacità sia raggiunta quando è a metà della sua vita, come una stella
-                // - dato che in questo modo, la massima opacità verrebbe .25, considerando che la vita è a metà a 0.5 (0.5 * (1 - 0.5)) = 0.25,
-                //   scalo l'equazione di 4, così che la massima opacità diventi 1.0 
+                // Particles must do fadein/fadeout in relation to its lifetime
+                // Here I ensure that:
+                // - When its dead, it's opacity is 0
+                // - Its max opacity (1) it at half of its life
                 double alpha = 4 * normalizedLifetime * (1 - normalizedLifetime);
                 p.OverlayColor = Color.White.WithAlpha((float)alpha);
 
-                // Le particelle devono anche aumentare e diminuire in scala:
-                // questa è la funzione che la determina.
-                // Iniziano al 75% della loro dimensione e arrivano al 100% quando muoiono
+                // A particle changes their scale in relation to its lifetime:
+                // It begin with 75% of their dimension and it arrives to 100% when dead
                 double scale = p.InitalScale * (0.75 + 0.25 * normalizedLifetime);
                 p.Scale = (float)scale;
 
