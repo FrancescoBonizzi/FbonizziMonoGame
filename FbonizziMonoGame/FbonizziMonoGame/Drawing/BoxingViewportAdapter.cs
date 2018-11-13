@@ -12,7 +12,7 @@ namespace FbonizziMonoGame.Drawing
         Pillarbox
     }
 
-    public class BoxingViewportAdapter : ScalingViewportAdapter
+    public class BoxingViewportAdapter : ScalingMatrixProvider
     {
         private readonly GraphicsDeviceManager _graphicsDeviceManager;
         private readonly GameWindow _window;

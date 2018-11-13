@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziMonoGame
+namespace FbonizziMonoGame.PlatformAbstractions
 {
     /// <summary>
     /// Abstracts each platform settings store

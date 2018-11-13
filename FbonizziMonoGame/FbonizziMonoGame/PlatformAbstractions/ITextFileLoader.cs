@@ -1,4 +1,4 @@
-﻿namespace FbonizziMonoGame
+﻿namespace FbonizziMonoGame.PlatformAbstractions
 {
     /// <summary>
     /// Abstracts the loading of a text file

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziMonoGame
+namespace FbonizziMonoGame.PlatformAbstractions
 {
     /// <summary>
     /// A little abstraction to be implemented in each platform

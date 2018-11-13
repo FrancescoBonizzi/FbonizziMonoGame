@@ -9,7 +9,7 @@ namespace FbonizziMonoGame.Drawing
     /// </summary>
     public class Camera2D
     {
-        private readonly ScalingViewportAdapter _viewportAdapter;
+        private readonly ScalingMatrixProvider _viewportAdapter;
         private float _maximumZoom = float.MaxValue;
         private float _minimumZoom;
         private float _zoom;
@@ -18,7 +18,7 @@ namespace FbonizziMonoGame.Drawing
         /// Camera constructor
         /// </summary>
         /// <param name="viewportAdapter"></param>
-        public Camera2D(ScalingViewportAdapter viewportAdapter)
+        public Camera2D(ScalingMatrixProvider viewportAdapter)
         {
             _viewportAdapter = viewportAdapter;
 

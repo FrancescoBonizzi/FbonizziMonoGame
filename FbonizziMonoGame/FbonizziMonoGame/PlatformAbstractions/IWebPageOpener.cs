@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FbonizziMonoGame
+namespace FbonizziMonoGame.PlatformAbstractions
 {
     /// <summary>
     /// Abstraction to provide methods to open a web page

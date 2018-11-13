@@ -1,4 +1,4 @@
-﻿namespace FbonizziMonoGame
+﻿namespace FbonizziMonoGame.PlatformAbstractions
 {
     /// <summary>
     /// It represents a repository that contains already localized strings
