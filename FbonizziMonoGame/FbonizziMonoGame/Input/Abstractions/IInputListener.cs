@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace FbonizziMonoGame.Input
+namespace FbonizziMonoGame.Input.Abstractions
 {
     /// <summary>
     /// An listener that pools for input

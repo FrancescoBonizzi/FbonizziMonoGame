@@ -1,13 +1,12 @@
 ﻿using FbonizziMonoGame.Drawing;
 using FbonizziMonoGame.Extensions;
-using FbonizziMonoGame.UI.RandomImageShower;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FbonizziMonoGame.RandomImageShower
+namespace FbonizziMonoGame.UI.RandomImageShower
 {
     /// <summary>
     /// Draws a random image from a list
