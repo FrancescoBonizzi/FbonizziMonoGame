@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FbonizziMonoGame.StringsLocalization.Abstractions;
+using System;
 using System.Collections.Generic;
 
 namespace FbonizziMonoGame.StringsLocalization

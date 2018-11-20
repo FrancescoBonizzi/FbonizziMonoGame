@@ -1,10 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copied from: https://github.com/craftworkgames/MonoGame.Extended
+
+using FbonizziMonoGame.Input.Abstractions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Linq;
 
 namespace FbonizziMonoGame.Input
 {
+    /// <summary>
+    /// Game pad listener
+    /// </summary>
     public class GamePadListener : IInputListener
     {
         private static readonly bool[] _gamePadConnections = new bool[4];
@@ -49,6 +55,9 @@ namespace FbonizziMonoGame.Input
         private float _vibrationStrengthLeft;
         private float _vibrationStrengthRight;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public GamePadListener()
         {
             PlayerIndex = PlayerIndex.One;
@@ -67,12 +76,11 @@ namespace FbonizziMonoGame.Input
         }
 
         /// <summary>
-        ///     If set to true, the static event <see cref="ControllerConnectionChanged" />
-        ///     will fire when any controller changes in connectivity status.
-        ///     <para>
-        ///         This functionality requires that you have one actively updating
-        ///         <see cref="InputListenerManager" />.
-        ///     </para>
+        /// If set to true, the static event <see cref="ControllerConnectionChanged" />
+        /// will fire when any controller changes in connectivity status.
+        /// <para>
+        ///     This functionality requires that you have one actively updating
+        /// </para>
         /// </summary>
         public static bool CheckControllerConnections { get; set; }
 

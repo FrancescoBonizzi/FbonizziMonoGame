@@ -1,10 +1,20 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿// Copied from: https://github.com/craftworkgames/MonoGame.Extended
+
+using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace FbonizziMonoGame.Input
 {
+    /// <summary>
+    /// Keyboard infos for keyboard event
+    /// </summary>
     public class KeyboardEventArgs : EventArgs
     {
+        /// <summary>
+        /// Keyboard infos for keyboard event
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="keyboardState"></param>
         public KeyboardEventArgs(Keys key, KeyboardState keyboardState)
         {
             Key = key;
@@ -21,9 +31,19 @@ namespace FbonizziMonoGame.Input
                 Modifiers |= KeyboardModifiers.Alt;
         }
 
+        /// <summary>
+        /// Pressed key
+        /// </summary>
         public Keys Key { get; }
+
+        /// <summary>
+        /// Pressed modifiers
+        /// </summary>
         public KeyboardModifiers Modifiers { get; }
 
+        /// <summary>
+        /// Character transform to char
+        /// </summary>
         public char? Character => ToChar(Key, Modifiers);
 
         private static char? ToChar(Keys key, KeyboardModifiers modifiers = KeyboardModifiers.None)

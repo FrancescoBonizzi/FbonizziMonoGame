@@ -1,9 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copied from: https://github.com/craftworkgames/MonoGame.Extended
+
+using Microsoft.Xna.Framework;
 
 namespace FbonizziMonoGame.Input.Abstractions
 {
     /// <summary>
-    /// An listener that pools for input
+    /// A listener that pools for input
     /// </summary>
     public interface IInputListener
     {

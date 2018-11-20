@@ -1,10 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copied from: https://github.com/craftworkgames/MonoGame.Extended
+
+using FbonizziMonoGame.Input.Abstractions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Linq;
 
 namespace FbonizziMonoGame.Input
 {
+    /// <summary>
+    /// Keyboard input listener
+    /// </summary>
     public class KeyboardListener : IInputListener
     {
         private bool _isInitial;
@@ -13,7 +19,9 @@ namespace FbonizziMonoGame.Input
         private Keys _previousKey;
         private KeyboardState _previousState;
 
-
+        /// <summary>
+        /// Keyboard input listener
+        /// </summary>
         public KeyboardListener()
         {
             RepeatPress = true;
@@ -21,14 +29,40 @@ namespace FbonizziMonoGame.Input
             RepeatDelayMilliseconds = 50;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool RepeatPress { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int InitialDelayMilliseconds { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int RepeatDelayMilliseconds { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<KeyboardEventArgs> KeyTyped;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<KeyboardEventArgs> KeyPressed;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<KeyboardEventArgs> KeyReleased;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             var currentState = Keyboard.GetState();

@@ -1,4 +1,6 @@
-﻿using FbonizziMonoGame.Drawing.Abstractions;
+﻿// Copied from: https://github.com/craftworkgames/MonoGame.Extended
+
+using FbonizziMonoGame.Drawing.Abstractions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using System;

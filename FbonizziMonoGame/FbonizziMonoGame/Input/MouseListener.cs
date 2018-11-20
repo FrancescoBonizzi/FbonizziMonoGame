@@ -1,10 +1,16 @@
-﻿using FbonizziMonoGame.Sprites.ViewportAdapters;
+﻿// Copied from: https://github.com/craftworkgames/MonoGame.Extended
+
+using FbonizziMonoGame.Drawing.Abstractions;
+using FbonizziMonoGame.Input.Abstractions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace FbonizziMonoGame.Input
 {
+    /// <summary>
+    /// Mouse input listener
+    /// </summary>
     public class MouseListener : IInputListener
     {
         private MouseState _currentState;
@@ -15,16 +21,21 @@ namespace FbonizziMonoGame.Input
         private MouseEventArgs _previousClickArgs;
         private MouseState _previousState;
 
-        public MouseListener(ScalingViewportAdapter viewportAdapter)
+        /// <summary>
+        /// Mouse input listener
+        /// </summary>
+        /// <param name="screenTransformationMatrixProvider"></param>
+        public MouseListener(IScreenTransformationMatrixProvider screenTransformationMatrixProvider)
         {
-            ViewportAdapter = viewportAdapter;
+            ScreenTransformationMatrixProvider = screenTransformationMatrixProvider;
             DoubleClickMilliseconds = 500;
             DragThreshold = 2;
         }
 
-        public ScalingViewportAdapter ViewportAdapter { get; }
+        public IScreenTransformationMatrixProvider ScreenTransformationMatrixProvider { get; }
 
         public int DoubleClickMilliseconds { get; }
+
         public int DragThreshold { get; }
 
         /// <summary>
@@ -48,7 +59,7 @@ namespace FbonizziMonoGame.Input
             if ((getButtonState(_currentState) == ButtonState.Pressed) &&
                 (getButtonState(_previousState) == ButtonState.Released))
             {
-                var args = new MouseEventArgs(ViewportAdapter, _gameTime.TotalGameTime, _previousState, _currentState, button);
+                var args = new MouseEventArgs(ScreenTransformationMatrixProvider, _gameTime.TotalGameTime, _previousState, _currentState, button);
 
                 MouseDown?.Invoke(this, args);
                 _mouseDownArgs = args;
@@ -74,7 +85,7 @@ namespace FbonizziMonoGame.Input
             if ((getButtonState(_currentState) == ButtonState.Released) &&
                 (getButtonState(_previousState) == ButtonState.Pressed))
             {
-                var args = new MouseEventArgs(ViewportAdapter, _gameTime.TotalGameTime, _previousState, _currentState, button);
+                var args = new MouseEventArgs(ScreenTransformationMatrixProvider, _gameTime.TotalGameTime, _previousState, _currentState, button);
 
                 if (_mouseDownArgs.Button == args.Button)
                 {
@@ -105,7 +116,7 @@ namespace FbonizziMonoGame.Input
             if ((getButtonState(_currentState) == ButtonState.Pressed) &&
                 (getButtonState(_previousState) == ButtonState.Pressed))
             {
-                var args = new MouseEventArgs(ViewportAdapter, _gameTime.TotalGameTime, _previousState, _currentState, button);
+                var args = new MouseEventArgs(ScreenTransformationMatrixProvider, _gameTime.TotalGameTime, _previousState, _currentState, button);
 
                 if (_mouseDownArgs.Button == args.Button)
                 {
@@ -147,7 +158,7 @@ namespace FbonizziMonoGame.Input
             if (HasMouseMoved)
             {
                 MouseMoved?.Invoke(this,
-                    new MouseEventArgs(ViewportAdapter, gameTime.TotalGameTime, _previousState, _currentState));
+                    new MouseEventArgs(ScreenTransformationMatrixProvider, gameTime.TotalGameTime, _previousState, _currentState));
 
                 CheckMouseDragged(s => s.LeftButton, MouseButton.Left);
                 CheckMouseDragged(s => s.MiddleButton, MouseButton.Middle);
@@ -160,7 +171,7 @@ namespace FbonizziMonoGame.Input
             if (_previousState.ScrollWheelValue != _currentState.ScrollWheelValue)
             {
                 MouseWheelMoved?.Invoke(this,
-                    new MouseEventArgs(ViewportAdapter, gameTime.TotalGameTime, _previousState, _currentState));
+                    new MouseEventArgs(ScreenTransformationMatrixProvider, gameTime.TotalGameTime, _previousState, _currentState));
             }
 
             _previousState = _currentState;
