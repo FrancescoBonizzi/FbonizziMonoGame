@@ -32,10 +32,19 @@ namespace FbonizziMonoGame.Input
             DragThreshold = 2;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public IScreenTransformationMatrixProvider ScreenTransformationMatrixProvider { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int DoubleClickMilliseconds { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int DragThreshold { get; }
 
         /// <summary>
@@ -44,14 +53,49 @@ namespace FbonizziMonoGame.Input
         /// <value><c>true</c> if the mouse has moved; otherwise, <c>false</c>.</value>
         public bool HasMouseMoved => (_previousState.X != _currentState.X) || (_previousState.Y != _currentState.Y);
 
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseDown;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseUp;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseClicked;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseDoubleClicked;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseMoved;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseWheelMoved;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseDragStart;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseDrag;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<MouseEventArgs> MouseDragEnd;
 
         private void CheckButtonPressed(Func<MouseState, ButtonState> getButtonState, MouseButton button)
@@ -137,6 +181,10 @@ namespace FbonizziMonoGame.Input
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             _gameTime = gameTime;

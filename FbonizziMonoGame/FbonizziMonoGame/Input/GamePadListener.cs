@@ -207,7 +207,6 @@ namespace FbonizziMonoGame.Input
         ///     This event fires whenever a thumbstick changes position.
         ///     <para>
         ///         The parameter governing the sensitivity of this functionality
-        ///         is <see cref="GamePadListenerSettings.ThumbStickDeltaTreshold" />.
         ///     </para>
         /// </summary>
         public event EventHandler<GamePadEventArgs> ThumbStickMoved;
@@ -216,7 +215,6 @@ namespace FbonizziMonoGame.Input
         ///     This event fires whenever a trigger changes position.
         ///     <para>
         ///         The parameter governing the sensitivity of this functionality
-        ///         is <see cref="GamePadListenerSettings.TriggerDeltaTreshold" />.
         ///     </para>
         /// </summary>
         public event EventHandler<GamePadEventArgs> TriggerMoved;
@@ -468,6 +466,10 @@ namespace FbonizziMonoGame.Input
                 Vibrate(0, rightStrength: 0);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             _gameTime = gameTime;
@@ -477,7 +479,6 @@ namespace FbonizziMonoGame.Input
                 return;
             CheckAllButtons();
             CheckRepeatButton();
-            //_lastPacketNumber = _currentState.PacketNumber;
             _previousGameTime = gameTime;
             _previousState = _currentState;
         }

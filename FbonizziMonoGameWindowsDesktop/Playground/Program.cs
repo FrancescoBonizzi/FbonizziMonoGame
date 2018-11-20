@@ -3,11 +3,14 @@ using System;
 
 namespace Playground
 {
+    /// <summary>
+    /// A simple application to manually try some library features
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            var settingsRepository = new WindowsSettingsRepository();
+            var settingsRepository = new FileWindowsSettingsRepository("test.txt");
 
             settingsRepository.GetOrSetBool("test", true);
             Console.WriteLine(settingsRepository.GetOrSetBool("test", true));

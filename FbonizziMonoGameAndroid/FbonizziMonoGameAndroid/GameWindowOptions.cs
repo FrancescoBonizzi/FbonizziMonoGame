@@ -1,10 +1,17 @@
 ﻿using Android.App;
 using Android.Views;
 
-namespace FlowsoftGamesAndroidToolkit
+namespace FbonizziMonoGameAndroid
 {
+    /// <summary>
+    /// Sets UI options for a game in an Android Activity
+    /// </summary>
     public static class GameWindowOptions
     {
+        /// <summary>
+        /// Sets UI options for a game in an Android Activity
+        /// </summary>
+        /// <param name="activity"></param>
         public static void SetGameOptions(this Activity activity)
         {
             var decorView = activity.Window.DecorView;

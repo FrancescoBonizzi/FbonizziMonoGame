@@ -1,15 +1,21 @@
 ﻿using Android.OS;
-using FbonizziMonogame;
-using FlowsoftGamesAndroidToolkit;
+using FbonizziMonoGame.PlatformAbstractions;
 using Microsoft.Xna.Framework;
 using System.Globalization;
 
-namespace FlowsoftGamesAndroid
+namespace FbonizziMonoGameAndroid
 {
+    /// <summary>
+    /// A base class to hide some Android Activity boilerplate when defining a MonoGame game activity
+    /// </summary>
     public abstract class FbonizziMonoGameActivity : AndroidGameActivity
     {
         private IFbonizziGame _game;
 
+        /// <summary>
+        /// Called when the activity is created
+        /// </summary>
+        /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -22,21 +28,34 @@ namespace FlowsoftGamesAndroid
         private void Game_ExitGameRequested(object sender, System.EventArgs e)
             => Game.Activity.MoveTaskToBack(true);
 
+        /// <summary>
+        /// Starts the game in this activity and returns the game instance.
+        /// Called on the <see cref="OnCreate(Bundle)"/> method
+        /// </summary>
+        /// <param name="cultureInfo"></param>
+        /// <returns></returns>
         protected abstract IFbonizziGame StartGame(CultureInfo cultureInfo);
 
+        /// <summary>
+        /// Called when the current Android.Views.Window of the activity gains or loses focus.
+        /// </summary>
+        /// <param name="hasFocus"></param>
         public override void OnWindowFocusChanged(bool hasFocus)
         {
             if (hasFocus)
             {
-                // Per fixare il fatto che con OREO il long press
-                // del power button deformi il layout
-                // ...buon candidato per finire nella mia : Activity
+                // To fix that with Android OREO 
+                // the power button long press changes the client size area bounds
+                // without considering the previous game options
                 this.SetGameOptions();
             }
 
             base.OnWindowFocusChanged(hasFocus);
         }
 
+        /// <summary>
+        /// Called when the activity must the totally release its resources
+        /// </summary>
         protected override void OnDestroy()
         {
             DisposeGame();
@@ -44,20 +63,25 @@ namespace FlowsoftGamesAndroid
             base.OnDestroy();
         }
 
+        /// <summary>
+        /// Releases the game unmanaged resources
+        /// </summary>
         protected abstract void DisposeGame();
-        protected virtual void PauseAd() { }
-        protected virtual void ResumeAd() { }
-        
+
+        /// <summary>
+        /// Called when the activity is paused
+        /// </summary>
         protected override void OnPause()
         {
-            PauseAd();
             _game?.Pause();
             base.OnPause();
         }
 
+        /// <summary>
+        /// Called when the activity is resumed from pause
+        /// </summary>
         protected override void OnResume()
         {
-            ResumeAd();
             _game?.Resume();
             base.OnResume();
         }

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>FbonizziMonoGame.WindowsDesktop</id>
+    <id>FbonizziMonoGame.Android</id>
     <version>1.0.0-alpha</version>
-    <title>FbonizziMonoGame.WindowsDesktop</title>
+    <title>FbonizziMonoGame.Android</title>
     <authors>Francesco Bonizzi</authors>
     <owners>Francesco Bonizzi</owners>
-    <description>FbonizziMonoGame windows desktop implementation</description>
+    <description>FbonizziMonoGame Android Xamarin implementation</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>monogame francesco bonizzi games videogames windows desktop</tags>
-    
+    <tags>monogame francesco bonizzi games videogames Android xamarin</tags>
+
     <dependencies>
-      <group targetFramework="net462"> 
+      <group targetFramework="monoandroid81">
         <dependency id="FbonizziMonoGame" version="1.0.0-alpha" />
+        <dependency id="MonoGame.Framework.Android" version="3.7.0" />
       </group>
     </dependencies>
-    
   </metadata>
-  
+
   <files>
-    <file src="FlowsoftGamesWindows\bin\Release\FbonizziMonoGameWindowsDesktop.*" target="lib\net462" />
+    <file src="\FbonizziMonoGameUWP\bin\Release\FbonizziMonoGame.*" target="lib\monoandroid81" />
   </files>
-  
+
 </package>

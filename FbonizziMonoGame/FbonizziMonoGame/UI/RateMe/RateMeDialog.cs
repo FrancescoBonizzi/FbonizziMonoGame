@@ -1,5 +1,4 @@
 ﻿using FbonizziMonoGame.PlatformAbstractions;
-using FbonizziMonoGame.StringsLocalization;
 using FbonizziMonoGame.StringsLocalization.Abstractions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,7 +26,6 @@ namespace FbonizziMonoGame.UI.RateMe
 
         private readonly int _launchesUntilPrompt;
         private readonly int _maxRateShowTimes;
-        private readonly string _appName;
         private readonly Uri _rateAppUri;
         private readonly Dialog _titleButtonButtonDialog;
 

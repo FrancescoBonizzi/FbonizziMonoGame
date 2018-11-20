@@ -45,6 +45,8 @@ namespace FbonizziMonoGame.Assets
             if (string.IsNullOrWhiteSpace(splashScreenPath))
                 throw new ArgumentNullException(nameof(splashScreenPath));
 
+            _splashScreenPath = splashScreenPath;
+
             _loadFunction = loadFunction ?? throw new ArgumentNullException(nameof(loadFunction));
             _contentManager = contentManager ?? throw new ArgumentNullException(nameof(contentManager));
 
