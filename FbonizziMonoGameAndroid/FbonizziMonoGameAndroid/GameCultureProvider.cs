@@ -1,9 +1,16 @@
 ﻿using System.Globalization;
 
-namespace FlowsoftGamesAndroidToolkit
+namespace FbonizziMonoGameAndroid
 {
+    /// <summary>
+    /// It returns the current app culture
+    /// </summary>
     public class GameCultureProvider
     {
+        /// <summary>
+        /// It returns the current app culture
+        /// </summary>
+        /// <returns></returns>
         public static CultureInfo GetCurrentCulture()
         {
             var androidLocale = Java.Util.Locale.Default;

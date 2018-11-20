@@ -115,18 +115,15 @@
     <EmbeddedResource Include="Properties\FlowsoftGamesUWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FbonizziMonoGame">
-      <Version>2018.5.21.1</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.4</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\FbonizziMonoGame\FbonizziMonoGame\FbonizziMonoGame.csproj">
       <Project>{348cd09e-d912-4fdf-a26b-b4cea9809cb2}</Project>
       <Name>FbonizziMonoGame</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.2</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

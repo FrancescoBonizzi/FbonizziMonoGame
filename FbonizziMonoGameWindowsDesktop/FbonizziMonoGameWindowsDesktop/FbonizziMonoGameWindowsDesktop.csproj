@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransientWindowsSettingsRepository.cs" />
-    <Compile Include="WindowsSettingsRepository.cs" />
+    <Compile Include="FileWindowsSettingsRepository.cs" />
     <Compile Include="WindowsTextFileImporter.cs" />
     <Compile Include="WindowsWebSiteOpener.cs" />
   </ItemGroup>

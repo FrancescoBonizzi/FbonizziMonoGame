@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FbonizziMonoGame.Android</id>
+    <version>1.0.0-alpha</version>
+    <title>FbonizziMonoGame.Android</title>
+    <authors>Francesco Bonizzi</authors>
+    <owners>Francesco Bonizzi</owners>
+    <description>FbonizziMonoGame Android Xamarin implementation</description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>monogame francesco bonizzi games videogames Android xamarin</tags>
+
+    <dependencies>
+      <group targetFramework="monoandroid81">
+        <dependency id="FbonizziMonoGame" version="1.0.0-alpha" />
+        <dependency id="MonoGame.Framework.Android" version="3.7.0" />
+      </group>
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="\FbonizziMonoGameUWP\bin\Release\FbonizziMonoGame.*" target="lib\monoandroid81" />
+  </files>
+
+</package>

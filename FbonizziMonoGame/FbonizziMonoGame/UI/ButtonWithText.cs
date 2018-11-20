@@ -1,10 +1,13 @@
-﻿using FbonizziMonogame.Extensions;
+﻿using FbonizziMonoGame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace FbonizziMonogame.UI
+namespace FbonizziMonoGame.UI
 {
+    /// <summary>
+    /// An UI button with a text
+    /// </summary>
     public class ButtonWithText
     {
         private readonly SpriteFont _font;
@@ -21,8 +24,22 @@ namespace FbonizziMonogame.UI
 
         private readonly Action _onClick;
 
+        /// <summary>
+        /// The button text scale
+        /// </summary>
         public float TextScale { get; set; }
 
+        /// <summary>
+        /// The button constructor
+        /// </summary>
+        /// <param name="font"></param>
+        /// <param name="text"></param>
+        /// <param name="collisionRectangle"></param>
+        /// <param name="backgroundColor"></param>
+        /// <param name="textColor"></param>
+        /// <param name="shadowColor"></param>
+        /// <param name="onClick"></param>
+        /// <param name="textPadding"></param>
         public ButtonWithText(
             SpriteFont font,
             string text,
@@ -58,6 +75,10 @@ namespace FbonizziMonogame.UI
             TextScale = expectedButtonTextWidth / textSize.X;
         }
 
+        /// <summary>
+        /// Manages user input
+        /// </summary>
+        /// <param name="inputPosition"></param>
         public void HandleInput(Vector2 inputPosition)
         {
             if (_collisionRectangle.Contains(inputPosition))
@@ -66,6 +87,10 @@ namespace FbonizziMonogame.UI
             }
         }
 
+        /// <summary>
+        /// Draws the button
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawRectangle(_shadowRectangle, _shadowColor);

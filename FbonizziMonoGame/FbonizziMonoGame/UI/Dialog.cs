@@ -1,9 +1,12 @@
-﻿using FbonizziMonogame.Extensions;
+﻿using FbonizziMonoGame.Extensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FbonizziMonogame.UI
+namespace FbonizziMonoGame.UI
 {
+    /// <summary>
+    /// A little dialog "form" with buttons
+    /// </summary>
     public class Dialog
     {
         private readonly Rectangle _backgroundRectangle;
@@ -20,6 +23,18 @@ namespace FbonizziMonogame.UI
 
         private readonly ButtonWithText[] _buttons;
 
+        /// <summary>
+        /// The dialog "form" constructor
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="font"></param>
+        /// <param name="dialogWindowDefinition"></param>
+        /// <param name="titlePositionOffset"></param>
+        /// <param name="backgroundColor"></param>
+        /// <param name="backgroundShadowColor"></param>
+        /// <param name="titleColor"></param>
+        /// <param name="titlePadding"></param>
+        /// <param name="buttons"></param>
         public Dialog(
             string title,
             SpriteFont font,
@@ -58,12 +73,20 @@ namespace FbonizziMonogame.UI
                 _backgroundRectangle.Height);
         }
 
+        /// <summary>
+        /// Handles user input
+        /// </summary>
+        /// <param name="inputPosition"></param>
         public void HandleInput(Vector2 inputPosition)
         {
             foreach (var button in _buttons)
                 button.HandleInput(inputPosition);
         }
 
+        /// <summary>
+        /// Draws the "form"
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawRectangle(_backgroundShadowRectangle, _backgroundShadowColor);

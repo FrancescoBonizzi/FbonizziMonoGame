@@ -1,7 +1,10 @@
 ﻿using System.Text;
 
-namespace FbonizziMonogame.Extensions
+namespace FbonizziMonoGame.Extensions
 {
+    /// <summary>
+    /// StringBuilder extensions
+    /// </summary>
     public static class StringBuilderExtensions
     {
         // 11 characters will fit -4294967296

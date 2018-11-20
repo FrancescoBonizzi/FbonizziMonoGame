@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>FlowsoftGamesWindows</id>
-    <version>$version$</version>
-    <title>FlowsoftGamesWindows</title>
-    <authors>Flowsoft Games</authors>
-    <owners>Flowsoft Games</owners>
-    <description>FbonizziMonoGame Windows implementation</description>
+    <id>FbonizziMonoGame.WindowsDesktop</id>
+    <version>1.0.0-alpha</version>
+    <title>FbonizziMonoGame.WindowsDesktop</title>
+    <authors>Francesco Bonizzi</authors>
+    <owners>Francesco Bonizzi</owners>
+    <description>FbonizziMonoGame windows desktop implementation</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>monogame flowsoft games windows</tags>
+    <tags>monogame francesco bonizzi games videogames windows desktop</tags>
+    
     <dependencies>
       <group targetFramework="net462"> 
-        <dependency id="FbonizziMonoGame" version="2017.11.2.1" />
+        <dependency id="FbonizziMonoGame" version="1.0.0-alpha" />
       </group>
     </dependencies>
+    
   </metadata>
+  
   <files>
-    <file src="FlowsoftGamesWindows\bin\Release\FlowsoftGamesWindows.dll" target="lib\net462" />
-    <file src="FlowsoftGamesWindows\bin\Release\FlowsoftGamesWindows.xml" target="lib\net462" />
+    <file src="FlowsoftGamesWindows\bin\Release\FbonizziMonoGameWindowsDesktop.*" target="lib\net462" />
   </files>
+  
 </package>
