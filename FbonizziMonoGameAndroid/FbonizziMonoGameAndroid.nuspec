@@ -22,7 +22,7 @@
   </metadata>
 
   <files>
-    <file src="FbonizziMonoGameAndroid\bin\Release\FbonizziMonoGame.*" target="lib\monoandroid81" />
+    <file src="FbonizziMonoGameAndroid\bin\Release\FbonizziMonoGameAndroid.*" target="lib\monoandroid81" />
   </files>
 
 </package>

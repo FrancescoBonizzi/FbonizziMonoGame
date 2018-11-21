@@ -22,7 +22,7 @@
   </metadata>
   
   <files>
-    <file src="FbonizziMonoGameUWP\bin\Release\FlowsoftGamesUWP.*" target="lib\uap10" />
+    <file src="FbonizziMonoGameUWP\bin\Release\FbonizziMonoGameUWP.*" target="lib\uap10" />
   </files>
   
 </package>
