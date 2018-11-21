@@ -9,6 +9,9 @@
     <owners>Francesco Bonizzi</owners>
     <description>Some libraries that I built over MonoGame Framework to make my games</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/FrancescoBonizzi/FbonizziMonoGame</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/FrancescoBonizzi/FbonizziMonoGame/master/logo-64x64.png</iconUrl>
+    <copyright>Copyright 2018</copyright>
     <tags>monogame francesco bonizzi games videogames android UWP UAP xamarin</tags>
 
     <dependencies>
