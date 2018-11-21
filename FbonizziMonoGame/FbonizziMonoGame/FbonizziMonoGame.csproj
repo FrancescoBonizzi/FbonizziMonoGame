@@ -97,7 +97,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="NuGetReferenceHintPathRewrite.targets" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="NuGetReferenceHintPathRewrite.targets" />
 </Project>
