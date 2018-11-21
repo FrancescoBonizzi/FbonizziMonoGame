@@ -11,6 +11,17 @@
     SizeToContent="Height"
     mc:Ignorable="d">
 
+    <Window.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0, 10" />
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="LinkContainer">
+            <Setter Property="Margin" Value="0, 2" />
+        </Style>
+    </Window.Resources>
+    
     <Grid>
 
         <Grid.RowDefinitions>

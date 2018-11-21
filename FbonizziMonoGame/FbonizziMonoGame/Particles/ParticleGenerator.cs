@@ -11,7 +11,7 @@ namespace FbonizziMonoGame.Particles
     /// <summary>
     /// Particle generator
     /// </summary>
-    public abstract class ParticleGenerator
+    public class ParticleGenerator
     {
         private readonly Sprite _sprite;
         private readonly Color _particleOverlayColor = Color.White;
@@ -23,89 +23,129 @@ namespace FbonizziMonoGame.Particles
         /// <summary>
         /// Density of particles each generation
         /// </summary>
-        protected abstract int Density { get; }
+        public int Density { get; set; }
 
         /// <summary>
         /// Minimum number of particles
         /// </summary>
-        protected abstract int MinNumParticles { get; }
+        public int MinNumParticles { get; set; }
 
         /// <summary>
         /// Maximum number of particles
         /// </summary>
-        protected abstract int MaxNumParticles { get; }
+        public int MaxNumParticles { get; set; }
 
         /// <summary>
         /// Minimum initial speed of the particles
         /// </summary>
-        protected abstract float MinInitialSpeed { get; }
+        public float MinInitialSpeed { get; set; }
 
         /// <summary>
         /// Maximum initial speed of the particles
         /// </summary>
-        protected abstract float MaxInitialSpeed { get; }
+        public float MaxInitialSpeed { get; set; }
 
         /// <summary>
         /// Minimum acceleration of the particles
         /// </summary>
-        protected abstract float MinAcceleration { get; }
+        public float MinAcceleration { get; set; }
 
         /// <summary>
         /// Maximum acceleration of the particles
         /// </summary>
-        protected abstract float MaxAcceleration { get; }
+        public float MaxAcceleration { get; set; }
 
         /// <summary>
         /// Minimum rotation speed of the particles
         /// </summary>
-        protected abstract float MinRotationSpeed { get; }
+        public float MinRotationSpeed { get; set; }
 
         /// <summary>
         /// Maximum rotation speed of the particles
         /// </summary>
-        protected abstract float MaxRotationSpeed { get; }
+        public float MaxRotationSpeed { get; set; }
 
         /// <summary>
         /// Minimum lifetime of the particles
         /// </summary>
-        protected abstract TimeSpan MinLifetime { get; }
+        public TimeSpan MinLifetime { get; set; }
 
         /// <summary>
         /// Maximum lifetime of the particles
         /// </summary>
-        protected abstract TimeSpan MaxLifetime { get; }
+        public TimeSpan MaxLifetime { get; set; }
 
         /// <summary>
         /// Minimum particles scale
         /// </summary>
-        protected abstract float MinScale { get; }
+        public float MinScale { get; set; }
 
         /// <summary>
         /// Maximum particles scale
         /// </summary>
-        protected abstract float MaxScale { get; }
+        public float MaxScale { get; set; }
 
         /// <summary>
         /// Minimum particles spawn angle
         /// </summary>
-        protected abstract float MinSpawnAngle { get; }
+        public float MinSpawnAngle { get; set; }
 
         /// <summary>
         /// Maximum particles spawn angle
         /// </summary>
-        protected abstract float MaxSpawnAngle { get; }
+        public float MaxSpawnAngle { get; set; }
 
         /// <summary>
         /// A particle generator with a single sprite as particle template
         /// </summary>
         /// <param name="particleSprite"></param>
-        public ParticleGenerator(Sprite particleSprite)
+        /// <param name="density"></param>
+        /// <param name="minNumParticles"></param>
+        /// <param name="maxNumParticles"></param>
+        /// <param name="minInitialSpeed"></param>
+        /// <param name="maxInitialSpeed"></param>
+        /// <param name="minAcceleration"></param>
+        /// <param name="maxAcceleration"></param>
+        /// <param name="minRotationSpeed"></param>
+        /// <param name="maxRotationSpeed"></param>
+        /// <param name="minLifetime"></param>
+        /// <param name="maxLifetime"></param>
+        /// <param name="minScale"></param>
+        /// <param name="maxScale"></param>
+        /// <param name="minSpawnAngle"></param>
+        /// <param name="maxSpawnAngle"></param>
+        public ParticleGenerator(
+            Sprite particleSprite,
+            int density, 
+            int minNumParticles, int maxNumParticles, 
+            float minInitialSpeed, float maxInitialSpeed, 
+            float minAcceleration, float maxAcceleration, 
+            float minRotationSpeed, float maxRotationSpeed, 
+            TimeSpan minLifetime, TimeSpan maxLifetime, 
+            float minScale, float maxScale, 
+            float minSpawnAngle, float maxSpawnAngle)
         {
             _sprite = particleSprite ?? throw new ArgumentNullException(nameof(particleSprite));
-            
+
             _origin = new Vector2(
                 particleSprite.Width / 2,
                 particleSprite.Height / 2);
+
+            Density = density;
+            MinNumParticles = minNumParticles;
+            MaxNumParticles = maxNumParticles;
+            MinInitialSpeed = minInitialSpeed;
+            MaxInitialSpeed = maxInitialSpeed;
+            MinAcceleration = minAcceleration;
+            MaxAcceleration = maxAcceleration;
+            MinRotationSpeed = minRotationSpeed;
+            MaxRotationSpeed = maxRotationSpeed;
+            MinLifetime = minLifetime;
+            MaxLifetime = maxLifetime;
+            MinScale = minScale;
+            MaxScale = maxScale;
+            MinSpawnAngle = minSpawnAngle;
+            MaxSpawnAngle = maxSpawnAngle;
 
             Initialize();
         }
@@ -158,7 +198,7 @@ namespace FbonizziMonoGame.Particles
         {
             Vector2 direction = PickRandomDirection();
 
-            // Valori casuali per inizializzare la particella
+            // Random values to initialize the particle
             float velocity = Numbers.RandomBetween(MinInitialSpeed, MaxInitialSpeed);
             float acceleration = Numbers.RandomBetween(MinAcceleration, MaxAcceleration);
             TimeSpan lifetime = Numbers.RandomBetween(MinLifetime, MaxLifetime);
