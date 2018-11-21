@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>FbonizziMonoGame.WindowsDesktop</id>
-    <version>1.0.0-alpha</version>
+    <version>1.0.1-alpha</version>
     <title>FbonizziMonoGame.WindowsDesktop</title>
     <authors>Francesco Bonizzi</authors>
     <owners>Francesco Bonizzi</owners>
@@ -15,7 +15,7 @@
     
     <dependencies>
       <group targetFramework="net462"> 
-        <dependency id="FbonizziMonoGame" version="1.0.0-alpha" />
+        <dependency id="FbonizziMonoGame" version="1.0.1-alpha" />
       </group>
     </dependencies>
     

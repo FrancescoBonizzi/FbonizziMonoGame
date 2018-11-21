@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>FbonizziMonoGame.UWP</id>
-    <version>1.0.0-alpha</version>
+    <version>1.0.1-alpha</version>
     <title>FbonizziMonoGame.UWP</title>
     <authors>Francesco Bonizzi</authors>
     <owners>Francesco Bonizzi</owners>
@@ -15,7 +15,7 @@
     
     <dependencies>
       <group targetFramework="UAP10"> 
-        <dependency id="FbonizziMonoGame" version="1.0.0-alpha" />
+        <dependency id="FbonizziMonoGame" version="1.0.1-alpha" />
         <dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="6.2.0" />
       </group>
     </dependencies>
