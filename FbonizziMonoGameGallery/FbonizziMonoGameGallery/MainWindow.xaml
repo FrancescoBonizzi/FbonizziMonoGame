@@ -1,0 +1,141 @@
+﻿<Window
+    x:Class="FbonizziMonoGameGallery.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="FbonizziMonoGame gallery"
+    Width="800"
+    MaxHeight="800"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#252831">
+
+            <Grid Margin="30, 15">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Column="0"
+                    Width="64"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="logo-64x64.png" />
+                <StackPanel
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#fdf50e"
+                        Text="FbonizziMonoGame" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        Text="Features gallery" />
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="15"
+            Orientation="Vertical">
+
+            <GroupBox Header="Particles">
+
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="ParticleGeneratorTimedEffect" x:Name="ParticleGeneratorTimeEffectButton" Click="ParticleGeneratorTimeEffectButton_Click" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </GroupBox>
+
+            <GroupBox Header="Sprites">
+
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="SpriteAnimation" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </GroupBox>
+
+            <GroupBox Header="TransformationObjects">
+
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="ColorChangingObject" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="FadeObject" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="PopupObject" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="ScalingObject" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </GroupBox>
+
+            <GroupBox Header="UI">
+
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="RandomImageShower" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="RateMe" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="Dialog" IsEnabled="False" />
+                        <TextBlock Text="Description... TODO" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </GroupBox>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>
