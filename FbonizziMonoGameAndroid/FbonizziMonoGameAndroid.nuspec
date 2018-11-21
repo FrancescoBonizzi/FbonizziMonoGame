@@ -8,6 +8,9 @@
     <owners>Francesco Bonizzi</owners>
     <description>FbonizziMonoGame Android Xamarin implementation</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/FrancescoBonizzi/FbonizziMonoGame</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/FrancescoBonizzi/FbonizziMonoGame/master/logo-64x64.png</iconUrl>
+    <copyright>Copyright 2018</copyright>
     <tags>monogame francesco bonizzi games videogames Android xamarin</tags>
 
     <dependencies>
