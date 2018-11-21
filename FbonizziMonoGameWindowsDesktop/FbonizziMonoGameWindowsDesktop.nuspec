@@ -22,7 +22,7 @@
   </metadata>
   
   <files>
-    <file src="FlowsoftGamesWindows\bin\Release\FbonizziMonoGameWindowsDesktop.*" target="lib\net462" />
+    <file src="FbonizziMonoGameWindowsDesktop\bin\Release\FbonizziMonoGameWindowsDesktop.*" target="lib\net462" />
   </files>
   
 </package>
