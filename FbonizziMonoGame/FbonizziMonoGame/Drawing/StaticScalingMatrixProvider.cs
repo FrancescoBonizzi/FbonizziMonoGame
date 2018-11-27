@@ -37,6 +37,11 @@ namespace FbonizziMonoGame.Drawing
         public Matrix ScaleMatrix { get; }
 
         /// <summary>
+        /// Virtual bounding rectangle
+        /// </summary>
+        public Rectangle VirtualBoundingRectangle => new Rectangle(0, 0, VirtualWidth, VirtualHeight);
+
+        /// <summary>
         /// Projects the given coordinates into screen coordinates
         /// </summary>
         /// <param name="x"></param>

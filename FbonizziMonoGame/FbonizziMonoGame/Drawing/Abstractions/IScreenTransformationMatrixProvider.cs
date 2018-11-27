@@ -43,5 +43,10 @@ namespace FbonizziMonoGame.Drawing.Abstractions
         /// <param name="y"></param>
         /// <returns></returns>
         Point PointToScreen(int x, int y);
+
+        /// <summary>
+        /// Virtual bounding rectangle
+        /// </summary>
+        Rectangle VirtualBoundingRectangle { get; }
     }
 }

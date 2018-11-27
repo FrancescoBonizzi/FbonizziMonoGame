@@ -41,6 +41,11 @@ namespace FbonizziMonoGame.Drawing
         public Matrix ScaleMatrix { get; private set; }
 
         /// <summary>
+        /// Virtual bounding rectangle
+        /// </summary>
+        public Rectangle VirtualBoundingRectangle => new Rectangle(0, 0, VirtualWidth, VirtualHeight);
+
+        /// <summary>
         /// Projects the given coordinates into screen coordinates
         /// </summary>
         /// <param name="x"></param>
@@ -71,6 +76,7 @@ namespace FbonizziMonoGame.Drawing
             VirtualHeight = virtualHeight;
 
             window.ClientSizeChanged += OnClientSizeChanged;
+            OnClientSizeChanged(null, EventArgs.Empty);
         }
 
         private void OnClientSizeChanged(object sender, EventArgs eventArgs)
