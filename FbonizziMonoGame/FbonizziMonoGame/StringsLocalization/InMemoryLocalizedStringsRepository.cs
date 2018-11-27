@@ -12,6 +12,14 @@ namespace FbonizziMonoGame.StringsLocalization
         private readonly IDictionary<string, string> _stringsRepository;
 
         /// <summary>
+        /// Creates an empty strings repository
+        /// </summary>
+        public InMemoryLocalizedStringsRepository()
+        {
+          
+        }
+
+        /// <summary>
         /// Creates the strings repository starting from a string dictionary
         /// </summary>
         /// <param name="localizedStrings"></param>
