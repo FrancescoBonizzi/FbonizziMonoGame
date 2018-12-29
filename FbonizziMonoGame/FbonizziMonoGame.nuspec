@@ -27,7 +27,7 @@
         <dependency id="MonoGame.Framework.WindowsDX" version="3.7.0.0" />
       </group>
 
-      <group targetFramework="portable">
+      <group targetFramework="portable-net45+win8+wpa81">
         <dependency id="MonoGame.Framework.Portable" version="3.7.0.0" />
       </group>
 
