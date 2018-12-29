@@ -46,6 +46,11 @@ namespace FbonizziMonoGame.Drawing
         public Rectangle VirtualBoundingRectangle => new Rectangle(0, 0, VirtualWidth, VirtualHeight);
 
         /// <summary>
+        /// Raises an event when the scale matrix changed (in relation to device screen size change)
+        /// </summary>
+        public event EventHandler ScaleMatrixChanged;
+
+        /// <summary>
         /// Projects the given coordinates into screen coordinates
         /// </summary>
         /// <param name="x"></param>
@@ -109,6 +114,8 @@ namespace FbonizziMonoGame.Drawing
             var scaleY = (float)_graphicsDevice.Viewport.Height / VirtualHeight;
             var scaleX = (float)_graphicsDevice.Viewport.Width / VirtualWidth;
             ScaleMatrix = Matrix.CreateScale(scaleX, scaleY, 1.0f);
+
+            ScaleMatrixChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
