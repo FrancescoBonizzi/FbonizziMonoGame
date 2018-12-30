@@ -74,7 +74,7 @@
 
                     <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
                         <Button Content="ParticleGeneratorTimedEffect" x:Name="ParticleGeneratorTimeEffectButton" Click="ParticleGeneratorTimeEffectButton_Click" />
-                        <TextBlock Text="Description... TODO" />
+                        <TextBlock Text="A particle generator used to achieve some effects like fire, smoke, farts..." />
                     </StackPanel>
 
                 </StackPanel>
