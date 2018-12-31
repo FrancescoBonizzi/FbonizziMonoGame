@@ -14,5 +14,11 @@ namespace FbonizziMonoGameGallery
             var gallery = new ParticleGeneratorTimedEffect.ParticleGeneratorTimedEffectWindow();
             gallery.ShowDialog();
         }
+
+        private void DynamicScalingMatrixProviderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var gallery = new Drawing.DynamicScalingMatrixProviderWindow();
+            gallery.ShowDialog();
+        }
     }
 }

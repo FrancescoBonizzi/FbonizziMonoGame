@@ -10,9 +10,8 @@ namespace FbonizziMonoGame.Drawing
     /// </summary>
     public class DynamicScalingMatrixProvider : IScreenTransformationMatrixProvider
     {
-        private readonly GraphicsDeviceManager _graphicsDeviceManager;
         private readonly GraphicsDevice _graphicsDevice;
-        private readonly GameWindow _window;
+        private readonly IScreenSizeChangedNotifier _window;
 
         /// <summary>
         /// The device screen width in which the <see cref="VirtualWidth"/> has to fit 
@@ -66,25 +65,25 @@ namespace FbonizziMonoGame.Drawing
         /// Dynamic scaling matrix provider constructor
         /// </summary>
         /// <param name="window"></param>
-        /// <param name="graphicsDeviceManager"></param>
+        /// <param name="graphicsDevice"></param>
         /// <param name="virtualWidth"></param>
         /// <param name="virtualHeight"></param>
         public DynamicScalingMatrixProvider(
-            GameWindow window, GraphicsDeviceManager graphicsDeviceManager, 
+            IScreenSizeChangedNotifier window,
+            GraphicsDevice graphicsDevice,
             int virtualWidth, int virtualHeight)
         {
-            _graphicsDeviceManager = graphicsDeviceManager ?? throw new ArgumentNullException(nameof(graphicsDeviceManager));
             _window = window ?? throw new ArgumentNullException(nameof(window));
-            _graphicsDevice = graphicsDeviceManager.GraphicsDevice;
+            _graphicsDevice = graphicsDevice;
 
             VirtualWidth = virtualWidth;
             VirtualHeight = virtualHeight;
 
-            window.ClientSizeChanged += OnClientSizeChanged;
-            OnClientSizeChanged(null, EventArgs.Empty);
+            window.OnScreenSizeChanged += OnScreenSizeChanged;
+            OnScreenSizeChanged(null, EventArgs.Empty);
         }
 
-        private void OnClientSizeChanged(object sender, EventArgs eventArgs)
+        private void OnScreenSizeChanged(object sender, EventArgs eventArgs)
         {
             var viewport = _graphicsDevice.Viewport;
             RealScreenWidth = viewport.Width;
@@ -92,29 +91,9 @@ namespace FbonizziMonoGame.Drawing
 
             var worldScaleX = (float)viewport.Width / VirtualWidth;
             var worldScaleY = (float)viewport.Height / VirtualHeight;
+            var scale = MathHelper.Min(worldScaleX, worldScaleY);
 
-            var scale = MathHelper.Max(worldScaleX, worldScaleY);
-
-            var width = (int)(scale * VirtualWidth + 0.5f);
-            var height = (int)(scale * VirtualHeight + 0.5f);
-
-            var x = viewport.Width / 2 - width / 2;
-            var y = viewport.Height / 2 - height / 2;
-            _graphicsDevice.Viewport = new Viewport(x, y, width, height);
-
-            if ((_graphicsDeviceManager != null) &&
-                ((_graphicsDeviceManager.PreferredBackBufferWidth != _window.ClientBounds.Width) ||
-                 (_graphicsDeviceManager.PreferredBackBufferHeight != _window.ClientBounds.Height)))
-            {
-                _graphicsDeviceManager.PreferredBackBufferWidth = _window.ClientBounds.Width;
-                _graphicsDeviceManager.PreferredBackBufferHeight = _window.ClientBounds.Height;
-                _graphicsDeviceManager.ApplyChanges();
-            }
-
-            var scaleY = (float)_graphicsDevice.Viewport.Height / VirtualHeight;
-            var scaleX = (float)_graphicsDevice.Viewport.Width / VirtualWidth;
-            ScaleMatrix = Matrix.CreateScale(scaleX, scaleY, 1.0f);
-
+            ScaleMatrix = Matrix.CreateScale(scale, scale, 1.0f);
             ScaleMatrixChanged?.Invoke(this, EventArgs.Empty);
         }
     }

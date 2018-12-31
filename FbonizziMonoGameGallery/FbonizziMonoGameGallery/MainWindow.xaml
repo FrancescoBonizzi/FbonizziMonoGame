@@ -145,6 +145,20 @@
 
             </GroupBox>
 
+
+            <GroupBox Header="Drawing">
+
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal" Style="{StaticResource LinkContainer}">
+                        <Button Content="DynamicScalingMatrixProvider" x:Name="DynamicScalingMatrixProviderButton" Click="DynamicScalingMatrixProviderButton_Click" />
+                        <TextBlock Text="Generates a scaling view matrix that changes when the device screen is resized" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </GroupBox>
+
         </StackPanel>
 
     </Grid>

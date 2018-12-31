@@ -46,7 +46,7 @@ The first thing you could do is to download one of my games to see what these li
 
 ### FbonizziMonoGameGallery
 
-I started a little WPF application with some example of what the library can do. I started by showing how the `ParticleGenerator` could work:
+I started a little WPF application with some examples of what the library can do. I started by showing how the `ParticleGenerator` could work:
 
 ![FbonizziMonoGameGallery home image](images/FbonizziMonoGameGallery-Home.png)
 ![FbonizziMonoGameGallery particleGenerator image](images/FbonizziMonoGameGallery-ParticleGenerator.png)

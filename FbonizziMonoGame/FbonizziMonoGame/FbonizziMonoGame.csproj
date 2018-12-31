@@ -35,6 +35,8 @@
     <DocumentationFile>bin\Release\FbonizziMonoGame.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Drawing\Abstractions\IScreenSizeChangedNotifier.cs" />
+    <Compile Include="Drawing\GameWindowScreenSizeChangedNotifier.cs" />
     <Compile Include="UI\RandomImageShower\ImageWithText.cs" />
     <Compile Include="UI\RandomImageShower\RandomImageShower.cs" />
     <Compile Include="Assets\Abstractions\ISpriteImporter.cs" />
@@ -92,13 +94,13 @@
     <Compile Include="UI\Dialog.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="MonoGame.Framework, Version=3.7.0.1708, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.Portable.3.7.0.1708\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="NuGetReferenceHintPathRewrite.targets" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\FbonizziMonoGameGallery\packages\MonoGame.Framework.Portable.3.7.1.189\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="NuGetReferenceHintPathRewrite.targets" />
