@@ -50,7 +50,7 @@ The first thing you could do is to download one of my games to see what these li
 
 ### FbonizziMonoGameGallery
 
-I started a little WPF application (thanks to MarcStan/MonoGame.Framework.WpfInterop for the library) with some examples of what the library can do:
+I started a little WPF application (thanks to [MarcStan/MonoGame.Framework.WpfInterop](https://github.com/MarcStan/MonoGame.Framework.WpfInterop) for the library) with some examples of what the library can do:
 
 ![FbonizziMonoGameGallery home image](images/FbonizziMonoGameGallery-Home.png)
 
