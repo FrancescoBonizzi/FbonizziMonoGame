@@ -7,6 +7,8 @@ All my games are **totally free** and **open source**, you can find them in my o
 - TODO
 - ...
 
+---
+
 ### What these libraries can do
 
 Work in progress / talk about the gallery solution with some image
@@ -41,15 +43,18 @@ It's the Windows Desktop implementation of `FbonizziMonoGame`
 ##### FbonizziMonoGame.Android
 It's the Xamarin/Android implementation of `FbonizziMonoGame`
 
+---
+
 ### Getting started
 The first thing you could do is to download one of my games to see what these libraries can do. Secondly you could just install one of them via `Nuget` and play a little with it :-)
 
 ### FbonizziMonoGameGallery
 
-I started a little WPF application with some examples of what the library can do:
+I started a little WPF application (thanks to MarcStan/MonoGame.Framework.WpfInterop for the library) with some examples of what the library can do:
 
 ![FbonizziMonoGameGallery home image](images/FbonizziMonoGameGallery-Home.png)
 
+---
 
 ### How to contribute
 
@@ -58,6 +63,8 @@ I started a little WPF application with some examples of what the library can do
 - Asking for a pull request on dev branch
 - Playing my games ;-)
 - Just telling your opinion
+
+---
 
 ## Infrastructure status
 
