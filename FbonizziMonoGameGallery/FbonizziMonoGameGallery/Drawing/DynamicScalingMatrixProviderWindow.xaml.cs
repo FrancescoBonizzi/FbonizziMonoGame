@@ -31,5 +31,10 @@ namespace FbonizziMonoGameGallery.Drawing
             _game.Dispose();
             base.OnClosing(e);
         }
+
+        private void ChbMantainProportions_Click(object sender, RoutedEventArgs e)
+        {
+            _game.MantainProportionsOnScalingMatrix = chbMantainProportions.IsChecked ?? false;
+        }
     }
 }

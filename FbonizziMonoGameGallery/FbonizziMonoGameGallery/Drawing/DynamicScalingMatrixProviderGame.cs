@@ -34,6 +34,20 @@ namespace FbonizziMonoGameGallery.Drawing
             _screenSizeChangedNotifier = screenSizeChangedNotifier ?? throw new ArgumentNullException(nameof(screenSizeChangedNotifier));
         }
 
+
+        public bool MantainProportionsOnScalingMatrix
+        {
+            set
+            {
+                _scalingMatrixProvider = new DynamicScalingMatrixProvider(
+                    _screenSizeChangedNotifier,
+                    _graphicsDeviceManager.GraphicsDevice,
+                    (int)_virtualWidth,
+                    (int)_virtuaHeight,
+                    value);
+            }
+        }
+
         protected override void LoadContent()
         {
             using (var fileStream = new FileStream("SampleImages/useYourImmagination.png", FileMode.Open))
@@ -73,7 +87,8 @@ namespace FbonizziMonoGameGallery.Drawing
                 _screenSizeChangedNotifier,
                 _graphicsDeviceManager.GraphicsDevice,
                 (int)_virtualWidth,
-                (int)_virtuaHeight);
+                (int)_virtuaHeight,
+                true);
 
             // Must be called after the WpfGraphicsDeviceService instance was created
             base.Initialize();

@@ -24,6 +24,7 @@
                 Text="DynamicScalingMatrixProvider" />
 
             <TextBlock Text="Resize the window to see the effect" />
+            <CheckBox Margin="0, 5, 0, 0" x:Name="chbMantainProportions" Content="Mantain proportions" Click="ChbMantainProportions_Click" IsChecked="True" />
 
         </StackPanel>
 

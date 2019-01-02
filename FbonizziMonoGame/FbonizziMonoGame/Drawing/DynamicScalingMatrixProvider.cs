@@ -11,33 +11,35 @@ namespace FbonizziMonoGame.Drawing
     public class DynamicScalingMatrixProvider : IScreenTransformationMatrixProvider
     {
         private readonly GraphicsDevice _graphicsDevice;
-        private readonly IScreenSizeChangedNotifier _window;
+        private readonly bool _mantainProportions;
+
+        private StaticScalingMatrixProvider _staticScalingMatrixProvider;
 
         /// <summary>
         /// The device screen width in which the <see cref="VirtualWidth"/> has to fit 
         /// </summary>
-        public int RealScreenWidth { get; private set; }
+        public int RealScreenWidth => _staticScalingMatrixProvider.RealScreenWidth;
 
         /// <summary>
         /// The device screen height in which the <see cref="VirtualHeight"/> has to fit 
         /// </summary>
-        public int RealScreenHeight { get; private set; }
+        public int RealScreenHeight => _staticScalingMatrixProvider.RealScreenHeight;
 
         /// <summary>
         /// The virtual width that should fit to the <see cref="RealScreenWidth"/>
         /// </summary>
-        public int VirtualWidth { get; }
+        public int VirtualWidth { get; private set; }
 
         /// <summary>
         /// The virtual height that should fit to the <see cref="RealScreenHeight"/>
         /// </summary>
-        public int VirtualHeight { get; }
+        public int VirtualHeight { get; private set; }
 
         /// <summary>
         /// The scale matrix that defines the transformation needed to fit <see cref="VirtualWidth"/> and <see cref="VirtualHeight"/>
         /// into <see cref="RealScreenWidth"/> and <see cref="RealScreenHeight"/>
         /// </summary>
-        public Matrix ScaleMatrix { get; private set; }
+        public Matrix ScaleMatrix => _staticScalingMatrixProvider.ScaleMatrix;
 
         /// <summary>
         /// Virtual bounding rectangle
@@ -68,13 +70,16 @@ namespace FbonizziMonoGame.Drawing
         /// <param name="graphicsDevice"></param>
         /// <param name="virtualWidth"></param>
         /// <param name="virtualHeight"></param>
+        /// <param name="mantainProportions"></param>
         public DynamicScalingMatrixProvider(
             IScreenSizeChangedNotifier window,
             GraphicsDevice graphicsDevice,
-            int virtualWidth, int virtualHeight)
+            int virtualWidth, 
+            int virtualHeight,
+            bool mantainProportions)
         {
-            _window = window ?? throw new ArgumentNullException(nameof(window));
-            _graphicsDevice = graphicsDevice;
+            _graphicsDevice = graphicsDevice ?? throw new ArgumentNullException(nameof(graphicsDevice));
+            _mantainProportions = mantainProportions;
 
             VirtualWidth = virtualWidth;
             VirtualHeight = virtualHeight;
@@ -85,15 +90,12 @@ namespace FbonizziMonoGame.Drawing
 
         private void OnScreenSizeChanged(object sender, EventArgs eventArgs)
         {
-            var viewport = _graphicsDevice.Viewport;
-            RealScreenWidth = viewport.Width;
-            RealScreenHeight = viewport.Height;
+            _staticScalingMatrixProvider = new StaticScalingMatrixProvider(
+                _graphicsDevice,
+                VirtualWidth,
+                VirtualHeight,
+                _mantainProportions);
 
-            var worldScaleX = (float)viewport.Width / VirtualWidth;
-            var worldScaleY = (float)viewport.Height / VirtualHeight;
-            var scale = MathHelper.Min(worldScaleX, worldScaleY);
-
-            ScaleMatrix = Matrix.CreateScale(scale, scale, 1.0f);
             ScaleMatrixChanged?.Invoke(this, EventArgs.Empty);
         }
     }

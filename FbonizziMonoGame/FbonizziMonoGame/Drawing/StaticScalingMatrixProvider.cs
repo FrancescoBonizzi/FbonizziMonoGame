@@ -59,10 +59,12 @@ namespace FbonizziMonoGame.Drawing
         /// <param name="graphicsDevice"></param>
         /// <param name="virtualWidth"></param>
         /// <param name="virtualHeight"></param>
+        /// <param name="mantainProportions"></param>
         public StaticScalingMatrixProvider(
             GraphicsDevice graphicsDevice,
             int virtualWidth,
-            int virtualHeight)
+            int virtualHeight,
+            bool mantainProportions)
         {
             if (graphicsDevice == null)
                 throw new ArgumentNullException(nameof(graphicsDevice));
@@ -75,7 +77,16 @@ namespace FbonizziMonoGame.Drawing
 
             var scaleX = (float)RealScreenWidth / virtualWidth;
             var scaleY = (float)RealScreenHeight / virtualHeight;
-            ScaleMatrix = Matrix.CreateScale(scaleX, scaleY, 1.0f);
+
+            if (!mantainProportions)
+            {
+                ScaleMatrix = Matrix.CreateScale(scaleX, scaleY, 1.0f);
+            }
+            else
+            {
+                var scale = Math.Min(scaleX, scaleY);
+                ScaleMatrix = Matrix.CreateScale(scale, scale, 1.0f);
+            }
         }
 
     }
