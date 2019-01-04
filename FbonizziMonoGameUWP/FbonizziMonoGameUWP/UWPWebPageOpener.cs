@@ -1,5 +1,6 @@
 ﻿using FbonizziMonoGame.PlatformAbstractions;
 using System;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
 namespace FbonizziMonoGameUWP
@@ -9,14 +10,28 @@ namespace FbonizziMonoGameUWP
     /// </summary>
     public class UWPWebPageOpener : IWebPageOpener
     {
+        private readonly Window _uiWindow;
+
+        /// <summary>
+        /// Construct the UWPWebPageOpener given a reference to the UI thread Window
+        /// </summary>
+        /// <param name="uiThreadWindow"></param>
+        public UWPWebPageOpener(Window uiThreadWindow)
+        {
+            _uiWindow = uiThreadWindow;
+        }
+
         /// <summary>
         /// Opens an URI in browser
         /// </summary>
         /// <param name="uri"></param>
         public void OpenWebpage(Uri uri)
-            => Window.Current.Dispatcher.RunAsync(
+        {
+            var currentDispatcher = _uiWindow.Dispatcher;
+            var task = currentDispatcher.RunAsync(
                 Windows.UI.Core.CoreDispatcherPriority.Normal,
-                async () => await Windows.System.Launcher.LaunchUriAsync(uri))
-            .GetAwaiter().GetResult();
+                async () => await Windows.System.Launcher.LaunchUriAsync(uri));
+            Task.WaitAll(task.AsTask());
+        }
     }
 }

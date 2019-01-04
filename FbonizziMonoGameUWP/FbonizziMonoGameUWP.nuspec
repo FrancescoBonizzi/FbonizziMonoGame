@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>FbonizziMonoGame.UWP</id>
-    <version>1.0.4-alpha</version>
+    <version>1.0.5-alpha</version>
     <title>FbonizziMonoGame.UWP</title>
     <authors>Francesco Bonizzi</authors>
     <owners>Francesco Bonizzi</owners>
