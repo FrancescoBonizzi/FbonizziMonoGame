@@ -60,7 +60,7 @@ I started a little WPF application (thanks to [MarcStan/MonoGame.Framework.WpfIn
 
 - Report any issues
 - Propose new features / improvements
-- Asking for a pull request on dev branch
+- Asking for a pull request
 - Playing my games ;-)
 - Just telling your opinion
 
