@@ -3,7 +3,7 @@
 These are some libraries that I built over `MonoGame` Framework to make my games. You can find them on `Windows Store` and `Android Play Store` by searching for **Francesco Bonizzi**. 
 
 All my games are **totally free** and **open source**, you can find them in my other repositories. Actually, my games are:
-- [Rellow](https://github.com/FrancescoBonizzi/Rellow): the most colorful concentration game
+- [Rellow](https://github.com/FrancescoBonizzi/Rellow): the most colorful concentration game!
 - TODO
 - ...
 
@@ -63,6 +63,7 @@ I started a little WPF application (thanks to [MarcStan/MonoGame.Framework.WpfIn
 - Asking for a pull request
 - Playing my games ;-)
 - Just telling your opinion
+- [Offer me an espresso!](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=DTT7P8N3TV7N6&currency_code=EUR&source=url) ;-)
 
 ---
 
