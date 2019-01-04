@@ -15,7 +15,7 @@
     
     <dependencies>
       <group targetFramework="UAP10"> 
-        <dependency id="FbonizziMonoGame" version="1.0.5-alpha" />
+        <dependency id="FbonizziMonoGame" version="1.0.6-alpha" />
         <dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="6.2.0" />
       </group>
     </dependencies>

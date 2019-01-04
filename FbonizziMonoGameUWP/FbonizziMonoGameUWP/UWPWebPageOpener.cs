@@ -1,5 +1,6 @@
 ﻿using FbonizziMonoGame.PlatformAbstractions;
 using System;
+using Windows.UI.Xaml;
 
 namespace FbonizziMonoGameUWP
 {
@@ -13,6 +14,9 @@ namespace FbonizziMonoGameUWP
         /// </summary>
         /// <param name="uri"></param>
         public void OpenWebpage(Uri uri)
-            => Windows.System.Launcher.LaunchUriAsync(uri).GetAwaiter().GetResult();
+            => Window.Current.Dispatcher.RunAsync(
+                Windows.UI.Core.CoreDispatcherPriority.Normal,
+                async () => await Windows.System.Launcher.LaunchUriAsync(uri))
+            .GetAwaiter().GetResult();
     }
 }
