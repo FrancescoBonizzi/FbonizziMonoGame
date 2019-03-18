@@ -58,6 +58,23 @@ namespace FbonizziMonoGame.Sprites
                 SourceRectangle.Width / 2,
                 SourceRectangle.Height / 2);
         }
+
+        /// <summary>
+        /// The Sprite costructor that creates a Sprite with the same size of the sheet used
+        /// </summary>
+        /// <param name="sheet">The image in which the Sprite is contained</param>
+        public Sprite(Texture2D sheet)
+            : this(new SpriteDescription()
+            {
+                X = 0,
+                Y = 0,
+                Width = sheet.Width,
+                Height = sheet.Height
+            },
+            sheet)
+        {
+
+        }
         
     }
 }
