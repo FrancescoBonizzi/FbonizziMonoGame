@@ -74,6 +74,7 @@ I started a little WPF application (thanks to [MarcStan/MonoGame.Framework.WpfIn
 | Name | Status |
 | ---- | ------ |
 | All repository build | [![Build status](https://flowsoftproject.visualstudio.com/GithubOpenSource/_apis/build/status/All%20repository%20build)](https://flowsoftproject.visualstudio.com/GithubOpenSource/_build/latest?definitionId=12) |
+| SonarCloud | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=FrancescoBonizzi_FbonizziMonoGame&metric=alert_status)](https://sonarcloud.io/dashboard?id=FrancescoBonizzi_FbonizziMonoGame) |
 
 ### Nuget
 
