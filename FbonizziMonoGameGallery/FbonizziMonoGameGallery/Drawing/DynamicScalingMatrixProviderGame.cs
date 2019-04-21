@@ -34,7 +34,6 @@ namespace FbonizziMonoGameGallery.Drawing
             _screenSizeChangedNotifier = screenSizeChangedNotifier ?? throw new ArgumentNullException(nameof(screenSizeChangedNotifier));
         }
 
-
         public bool MantainProportionsOnScalingMatrix
         {
             set
@@ -94,12 +93,12 @@ namespace FbonizziMonoGameGallery.Drawing
             base.Initialize();
         }
 
-        protected override void Update(GameTime time)
+        protected override void Update(GameTime gameTime)
         {
-            _sampleImageDrawingInfos.Rotation += (float)(0.5 * time.ElapsedGameTime.TotalSeconds);
+            _sampleImageDrawingInfos.Rotation += (float)(0.5 * gameTime.ElapsedGameTime.TotalSeconds);
         }
 
-        protected override void Draw(GameTime time)
+        protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
             _spriteBatch.Begin(transformMatrix: _scalingMatrixProvider.ScaleMatrix);

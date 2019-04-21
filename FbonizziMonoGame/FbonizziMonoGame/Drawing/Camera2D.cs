@@ -224,11 +224,11 @@ namespace FbonizziMonoGame.Drawing
         private Matrix GetVirtualViewMatrix(Vector2 parallaxFactor)
         {
             return
-                Matrix.CreateTranslation(new Vector3(-Position * parallaxFactor, 0.0f)) *
-                Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) *
-                Matrix.CreateRotationZ(Rotation) *
-                Matrix.CreateScale(Zoom, Zoom, 1) *
-                Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
+                Matrix.CreateTranslation(new Vector3(-Position * parallaxFactor, 0.0f))
+                * Matrix.CreateTranslation(new Vector3(-Origin, 0.0f))
+                * Matrix.CreateRotationZ(Rotation)
+                * Matrix.CreateScale(Zoom, Zoom, 1)
+                * Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
         }
 
         private Matrix GetVirtualViewMatrix()

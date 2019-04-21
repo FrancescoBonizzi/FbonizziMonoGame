@@ -67,11 +67,13 @@ namespace FbonizziMonoGame.Drawing
             bool mantainProportions)
         {
             if (graphicsDevice == null)
+            {
                 throw new ArgumentNullException(nameof(graphicsDevice));
+            }
 
             RealScreenWidth = graphicsDevice.Viewport.Width;
             RealScreenHeight = graphicsDevice.Viewport.Height;
-         
+
             VirtualWidth = virtualWidth;
             VirtualHeight = virtualHeight;
 
@@ -84,8 +86,13 @@ namespace FbonizziMonoGame.Drawing
             }
             else
             {
+                var screenCenter = new Vector2(RealScreenWidth / 2f, RealScreenHeight / 2f);
+                var origin = new Vector2(VirtualWidth / 2f, VirtualHeight / 2f);
                 var scale = Math.Min(scaleX, scaleY);
-                ScaleMatrix = Matrix.CreateScale(scale, scale, 1.0f);
+                ScaleMatrix =
+                       Matrix.CreateTranslation(new Vector3(-origin, 0.0f))
+                      * Matrix.CreateScale(scale, scale, 1.0f)
+                      * Matrix.CreateTranslation(new Vector3(screenCenter, 0f));
             }
         }
 
