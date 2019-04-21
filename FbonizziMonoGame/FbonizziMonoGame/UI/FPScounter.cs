@@ -12,7 +12,7 @@ namespace FbonizziMonoGame.UI
     {
         private static readonly TimeSpan _oneSecondTimeSpan = new TimeSpan(0, 0, 1);
         private TimeSpan _timer = _oneSecondTimeSpan;
-        private StringBuilder _fpsString = new StringBuilder();
+        private readonly StringBuilder _fpsString = new StringBuilder();
 
         /// <summary>
         /// Manages counter logic
@@ -24,7 +24,6 @@ namespace FbonizziMonoGame.UI
             if (_timer <= _oneSecondTimeSpan)
                 return;
 
-            FramesPerSecond = FramesPerSecond;
             FramesPerSecond = 0;
             _timer -= _oneSecondTimeSpan;
             _fpsString.Clear();
