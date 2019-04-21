@@ -7,13 +7,15 @@ namespace FbonizziMonoGameUWP
     /// <summary>
     /// Windows Universal implementation of <see cref="ISettingsRepository"/> using LocalSettings UWP API
     /// </summary>
-    public class UWPSettingsRepository : ISettingsRepository
+    public class UwpSettingsRepository : ISettingsRepository
     {
         private T GetOrSetValue<T>(string key, T defaultValue)
         {
             var localSettings = ApplicationData.Current.LocalSettings;
             if (localSettings.Values.ContainsKey(key))
+            {
                 return (T)localSettings.Values[key];
+            }
 
             SetValue(key, defaultValue);
             return defaultValue;

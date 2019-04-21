@@ -6,9 +6,9 @@ namespace Playground
     /// <summary>
     /// A simple application to manually try some library features
     /// </summary>
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var settingsRepository = new FileWindowsSettingsRepository("test.txt");
 

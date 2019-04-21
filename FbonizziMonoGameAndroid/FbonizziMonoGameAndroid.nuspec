@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>FbonizziMonoGame.Android</id>
-    <version>1.0.2-alpha</version>
+    <version>1.0.0</version>
     <title>FbonizziMonoGame.Android</title>
     <authors>Francesco Bonizzi</authors>
     <owners>Francesco Bonizzi</owners>
@@ -15,7 +15,7 @@
 
     <dependencies>
       <group targetFramework="monoandroid81">
-        <dependency id="FbonizziMonoGame" version="1.0.1-alpha" />
+        <dependency id="FbonizziMonoGame" version="1.0.0" />
         <dependency id="MonoGame.Framework.Android" version="3.7.0.0" />
       </group>
     </dependencies>

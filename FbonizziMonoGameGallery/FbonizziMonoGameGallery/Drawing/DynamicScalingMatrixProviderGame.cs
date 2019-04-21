@@ -34,8 +34,10 @@ namespace FbonizziMonoGameGallery.Drawing
             _screenSizeChangedNotifier = screenSizeChangedNotifier ?? throw new ArgumentNullException(nameof(screenSizeChangedNotifier));
         }
 
+        private bool _mantainProportionsOnScalingMatrix;
         public bool MantainProportionsOnScalingMatrix
         {
+            get => _mantainProportionsOnScalingMatrix;
             set
             {
                 _scalingMatrixProvider = new DynamicScalingMatrixProvider(
@@ -44,6 +46,7 @@ namespace FbonizziMonoGameGallery.Drawing
                     (int)_virtualWidth,
                     (int)_virtuaHeight,
                     value);
+                _mantainProportionsOnScalingMatrix = value;
             }
         }
 

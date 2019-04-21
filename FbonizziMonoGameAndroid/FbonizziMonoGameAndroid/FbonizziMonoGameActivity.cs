@@ -15,10 +15,10 @@ namespace FbonizziMonoGameAndroid
         /// <summary>
         /// Called when the activity is created
         /// </summary>
-        /// <param name="bundle"></param>
-        protected override void OnCreate(Bundle bundle)
+        /// <param name="savedInstanceState"></param>
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
             
             this.SetGameOptions();
             _game = StartGame(GameCultureProvider.GetCurrentCulture());

@@ -22,7 +22,9 @@ namespace FbonizziMonoGame.UI
         {
             _timer += gameTime.ElapsedGameTime;
             if (_timer <= _oneSecondTimeSpan)
+            {
                 return;
+            }
 
             FramesPerSecond = 0;
             _timer -= _oneSecondTimeSpan;

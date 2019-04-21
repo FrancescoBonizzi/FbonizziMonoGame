@@ -6,7 +6,7 @@ namespace FbonizziMonoGameUWP
     /// <summary>
     /// UWP implementation of <see cref="ITextFileLoader"/>
     /// </summary>
-    public class UWPTextFileImporter : ITextFileLoader
+    public class UwpTextFileImporter : ITextFileLoader
     {
         /// <summary>
         /// Loads a text file from path

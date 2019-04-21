@@ -35,7 +35,7 @@ namespace FbonizziMonoGame.Input
         /// <param name="location"></param>
         public TouchEventArgs(
             IScreenTransformationMatrixProvider screenTransformationMatrixProvider,
-            TimeSpan time, 
+            TimeSpan time,
             TouchLocation location)
         {
             RawTouchLocation = location;
@@ -48,14 +48,16 @@ namespace FbonizziMonoGame.Input
         /// <summary>
         /// Two TouchEventArgs are equal if their RawTouchLocation.Id is the same
         /// </summary>
-        /// <param name="other"></param>
+        /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object other)
+        public override bool Equals(object obj)
         {
-            var args = other as TouchEventArgs;
+            var args = obj as TouchEventArgs;
 
             if (args == null)
+            {
                 return false;
+            }
 
             return ReferenceEquals(this, args) || RawTouchLocation.Id.Equals(args.RawTouchLocation.Id);
         }

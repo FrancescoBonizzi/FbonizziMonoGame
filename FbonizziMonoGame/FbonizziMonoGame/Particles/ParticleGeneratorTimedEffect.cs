@@ -9,7 +9,7 @@ namespace FbonizziMonoGame.Particles
     /// </summary>
     public class ParticleGeneratorTimedEffect
     {
-        private ParticleGenerator _particleGenerator;
+        private readonly ParticleGenerator _particleGenerator;
         private Vector2 _generatorPosition;
 
         private TimeSpan _generationInterval;
@@ -23,12 +23,15 @@ namespace FbonizziMonoGame.Particles
             set
             {
                 if (_generationInterval == value)
+                {
                     return;
+                }
 
                 _generationInterval = value;
                 _originalGenerationInterval = value;
             }
         }
+
         private TimeSpan? _effectAliveTime;
         private TimeSpan _originalGenerationInterval;
 
@@ -64,8 +67,8 @@ namespace FbonizziMonoGame.Particles
         /// It returns true if the effect alive time is totally expired
         /// </summary>
         public bool HasFinished
-            => _effectAliveTime == null 
-            ? false  
+            => _effectAliveTime == null
+            ? false
             : (!_particleGenerator.HasActiveParticles && _effectAliveTime <= TimeSpan.Zero);
 
         /// <summary>
@@ -83,7 +86,7 @@ namespace FbonizziMonoGame.Particles
 
             _particleGenerator.Update(elapsed);
 
-            if (_generationInterval <= TimeSpan.Zero 
+            if (_generationInterval <= TimeSpan.Zero
                 && (_effectAliveTime == null || _effectAliveTime > TimeSpan.Zero))
             {
                 _generationInterval = _originalGenerationInterval;

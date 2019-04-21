@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace FbonizziMonoGameWindowsDesktop
 {
@@ -38,14 +39,14 @@ namespace FbonizziMonoGameWindowsDesktop
 
         private string Serialize()
         {
-            string serializedString = string.Empty;
-
+            var serializedString = new StringBuilder();
+            
             foreach (var setting in _storage)
             {
-                serializedString += $"{setting.Key}:{setting.Value}{Environment.NewLine}";
+                serializedString.Append(setting.Key).Append(':').Append(setting.Value).Append(Environment.NewLine);
             }
 
-            return serializedString;
+            return serializedString.ToString();
         }
 
         private void Deserialize(string[] data)

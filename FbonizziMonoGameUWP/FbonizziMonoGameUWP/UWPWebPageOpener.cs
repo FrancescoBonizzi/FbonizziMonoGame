@@ -8,7 +8,7 @@ namespace FbonizziMonoGameUWP
     /// <summary>
     /// UWP implementation of <see cref="IWebPageOpener"/>
     /// </summary>
-    public class UWPWebPageOpener : IWebPageOpener
+    public class UwpWebPageOpener : IWebPageOpener
     {
         private readonly Window _uiWindow;
 
@@ -16,7 +16,7 @@ namespace FbonizziMonoGameUWP
         /// Construct the UWPWebPageOpener given a reference to the UI thread Window
         /// </summary>
         /// <param name="uiThreadWindow"></param>
-        public UWPWebPageOpener(Window uiThreadWindow)
+        public UwpWebPageOpener(Window uiThreadWindow)
         {
             _uiWindow = uiThreadWindow;
         }

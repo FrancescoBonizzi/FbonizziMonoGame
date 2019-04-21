@@ -56,7 +56,7 @@ namespace FbonizziMonoGame.Input
         private float _vibrationStrengthRight;
 
         /// <summary>
-        /// 
+        /// GamePadListener constructor
         /// </summary>
         public GamePadListener()
         {
@@ -244,15 +244,22 @@ namespace FbonizziMonoGame.Input
             float rightStrength = float.NegativeInfinity)
         {
             if (!VibrationEnabled)
+            {
                 return false;
+            }
 
             var lstrength = MathHelper.Clamp(leftStrength, 0, 1);
             var rstrength = MathHelper.Clamp(rightStrength, 0, 1);
 
             if (float.IsNegativeInfinity(leftStrength))
+            {
                 lstrength = _leftCurVibrationStrength;
+            }
+
             if (float.IsNegativeInfinity(rightStrength))
+            {
                 rstrength = _rightCurVibrationStrength;
+            }
 
             var success = GamePad.SetVibration(PlayerIndex, lstrength * VibrationStrengthLeft,
                 rstrength * VibrationStrengthRight);
@@ -262,23 +269,35 @@ namespace FbonizziMonoGame.Input
                 _rightVibrating = true;
 
                 if (leftStrength > 0)
+                {
                     _vibrationDurationLeft = new TimeSpan(0, 0, 0, 0, durationMs);
+                }
                 else
                 {
                     if (lstrength > 0)
+                    {
                         _vibrationDurationLeft -= _gameTime.TotalGameTime - _vibrationStart;
+                    }
                     else
+                    {
                         _leftVibrating = false;
+                    }
                 }
 
                 if (rightStrength > 0)
+                {
                     _vibrationDurationRight = new TimeSpan(0, 0, 0, 0, durationMs);
+                }
                 else
                 {
                     if (rstrength > 0)
+                    {
                         _vibrationDurationRight -= _gameTime.TotalGameTime - _vibrationStart;
+                    }
                     else
+                    {
                         _rightVibrating = false;
+                    }
                 }
 
                 _vibrationStart = _gameTime.TotalGameTime;
@@ -293,16 +312,22 @@ namespace FbonizziMonoGame.Input
         {
             // PacketNumber only and always changes if there is a difference between GamePadStates.
             // ...At least, that's the theory. It doesn't seem to be implemented. Disabled for now.
-            //if (_lastPacketNumber == _currentState.PacketNumber)
-            //    return;
             foreach (Buttons button in Enum.GetValues(typeof(Buttons)))
             {
                 if (_excludedButtons.Contains(button))
+                {
                     break;
+                }
+
                 if (_currentState.IsButtonDown(button) && _previousState.IsButtonUp(button))
+                {
                     RaiseButtonDown(button);
+                }
+
                 if (_currentState.IsButtonUp(button) && _previousState.IsButtonDown(button))
+                {
                     RaiseButtonUp(button);
+                }
             }
 
             // Checks triggers as buttons and floats
@@ -325,9 +350,13 @@ namespace FbonizziMonoGame.Input
             {
                 RaiseButtonDown(button);
                 if (button == Buttons.RightTrigger)
+                {
                     _rightTriggerDown = true;
+                }
                 else
+                {
                     _leftTriggerDown = true;
+                }
             }
             else
             {
@@ -335,9 +364,13 @@ namespace FbonizziMonoGame.Input
                 {
                     RaiseButtonUp(button);
                     if (button == Buttons.RightTrigger)
+                    {
                         _rightTriggerDown = false;
+                    }
                     else
+                    {
                         _leftTriggerDown = false;
+                    }
                 }
             }
 
@@ -373,30 +406,46 @@ namespace FbonizziMonoGame.Input
             if (curVector.Y > curVector.X)
             {
                 if (curVector.Y > -curVector.X)
+                {
                     curdir = right ? Buttons.RightThumbstickUp : Buttons.LeftThumbstickUp;
+                }
                 else
+                {
                     curdir = right ? Buttons.RightThumbstickLeft : Buttons.LeftThumbstickLeft;
+                }
             }
             else
             {
                 if (curVector.Y < -curVector.X)
+                {
                     curdir = right ? Buttons.RightThumbstickDown : Buttons.LeftThumbstickDown;
+                }
                 else
+                {
                     curdir = right ? Buttons.RightThumbstickRight : Buttons.LeftThumbstickRight;
+                }
             }
 
             if (!prevdown && curdown)
             {
                 if (right)
+                {
                     _lastRightStickDirection = curdir;
+                }
                 else
+                {
                     _lastLeftStickDirection = curdir;
+                }
 
                 RaiseButtonDown(curdir);
                 if (button == Buttons.RightStick)
+                {
                     _rightStickDown = true;
+                }
                 else
+                {
                     _leftStickDown = true;
+                }
             }
             else
             {
@@ -404,9 +453,13 @@ namespace FbonizziMonoGame.Input
                 {
                     RaiseButtonUp(prevdir);
                     if (button == Buttons.RightStick)
+                    {
                         _rightStickDown = false;
+                    }
                     else
+                    {
                         _leftStickDown = false;
+                    }
                 }
                 else
                 {
@@ -414,9 +467,14 @@ namespace FbonizziMonoGame.Input
                     {
                         RaiseButtonUp(prevdir);
                         if (right)
+                        {
                             _lastRightStickDirection = curdir;
+                        }
                         else
+                        {
                             _lastLeftStickDirection = curdir;
+                        }
+
                         RaiseButtonDown(curdir);
                     }
                 }
@@ -444,7 +502,9 @@ namespace FbonizziMonoGame.Input
         internal static void CheckConnections()
         {
             if (!CheckControllerConnections)
+            {
                 return;
+            }
 
             foreach (PlayerIndex index in Enum.GetValues(typeof(PlayerIndex)))
             {
@@ -461,9 +521,14 @@ namespace FbonizziMonoGame.Input
         private void CheckVibrate()
         {
             if (_leftVibrating && (_vibrationStart + _vibrationDurationLeft < _gameTime.TotalGameTime))
+            {
                 Vibrate(0, 0);
+            }
+
             if (_rightVibrating && (_vibrationStart + _vibrationDurationRight < _gameTime.TotalGameTime))
+            {
                 Vibrate(0, rightStrength: 0);
+            }
         }
 
         /// <summary>
@@ -476,7 +541,10 @@ namespace FbonizziMonoGame.Input
             _currentState = GamePad.GetState(PlayerIndex);
             CheckVibrate();
             if (!_currentState.IsConnected)
+            {
                 return;
+            }
+
             CheckAllButtons();
             CheckRepeatButton();
             _previousGameTime = gameTime;
@@ -510,7 +578,9 @@ namespace FbonizziMonoGame.Input
             _repeatedButtonTimer += _gameTime.ElapsedGameTime.Milliseconds;
 
             if ((_repeatedButtonTimer < RepeatInitialDelay) || (_lastButton == 0))
+            {
                 return;
+            }
 
             if (_repeatedButtonTimer < RepeatInitialDelay + RepeatDelay)
             {

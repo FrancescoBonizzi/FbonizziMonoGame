@@ -17,7 +17,6 @@ namespace FbonizziMonoGame.Assets
         private readonly Action _loadFunction;
         private readonly ContentManager _contentManager;
         private readonly string _splashScreenPath;
-        private Task _assetsLoadingTask;
         private Sprite _splashScreenSprite;
         private FadeObject _splashScreenFadingObject;
 
@@ -43,13 +42,14 @@ namespace FbonizziMonoGame.Assets
             string splashScreenPath)
         {
             if (string.IsNullOrWhiteSpace(splashScreenPath))
+            {
                 throw new ArgumentNullException(nameof(splashScreenPath));
+            }
 
             _splashScreenPath = splashScreenPath;
 
             _loadFunction = loadFunction ?? throw new ArgumentNullException(nameof(loadFunction));
             _contentManager = contentManager ?? throw new ArgumentNullException(nameof(contentManager));
-
         }
 
         /// <summary>
@@ -71,11 +71,11 @@ namespace FbonizziMonoGame.Assets
                 splashScreenTexture);
             _splashScreenFadingObject = new FadeObject(TimeSpan.FromSeconds(1), Color.White);
             _splashScreenFadingObject.FadeIn();
-            _splashScreenFadingObject.FadeOutCompleted += _splashScreen_FadeOutCompleted;
+            _splashScreenFadingObject.FadeOutCompleted += SplashScreen_FadeOutCompleted;
 
             // Loads the assets in background
             // TODO! It fails silently!
-            _assetsLoadingTask = LoadAndManageSplashScreen();
+            var assetsLoadingTask = LoadAndManageSplashScreen();
         }
 
         /// <summary>
@@ -83,8 +83,8 @@ namespace FbonizziMonoGame.Assets
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _splashScreen_FadeOutCompleted(object sender, EventArgs e)
-            => Completed?.Invoke(null, EventArgs.Empty);
+        private void SplashScreen_FadeOutCompleted(object sender, EventArgs e)
+            => Completed?.Invoke(this, EventArgs.Empty);
 
         private async Task LoadAndManageSplashScreen()
         {
@@ -96,7 +96,9 @@ namespace FbonizziMonoGame.Assets
             // MininumSplashScreenDuration management
             var lastingSplashScreenDuration = MininumSplashScreenDuration - loadTimer.Elapsed;
             if (lastingSplashScreenDuration > TimeSpan.Zero)
-                await Task.Delay(lastingSplashScreenDuration);
+            {
+                await Task.Delay(lastingSplashScreenDuration).ConfigureAwait(false);
+            }
 
             // When loading is completed, fade out the SplashScreen image
             _splashScreenFadingObject.FadeOut();

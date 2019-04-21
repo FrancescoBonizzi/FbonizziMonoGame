@@ -11,7 +11,7 @@ namespace FbonizziMonoGame.TransformationObjects
     {
         private readonly TimeSpan _fadeDuration;
 
-        private Color _originalColor;
+        private readonly Color _originalColor;
         private TimeSpan _elapsed;
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace FbonizziMonoGame.TransformationObjects
             CurrentAlpha = 1f;
         }
 
-        enum FadeState
+        private enum FadeState
         {
             Static,
             FadeIn,

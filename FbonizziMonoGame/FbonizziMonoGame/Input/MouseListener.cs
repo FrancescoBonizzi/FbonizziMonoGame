@@ -139,7 +139,9 @@ namespace FbonizziMonoGame.Input
                     if (clickMovement < DragThreshold)
                     {
                         if (!_hasDoubleClicked)
+                        {
                             MouseClicked?.Invoke(this, args);
+                        }
                     }
                     else // If the mouse has moved between mouse down and mouse up
                     {
@@ -165,7 +167,9 @@ namespace FbonizziMonoGame.Input
                 if (_mouseDownArgs.Button == args.Button)
                 {
                     if (_dragging)
+                    {
                         MouseDrag?.Invoke(this, args);
+                    }
                     else
                     {
                         // Only start to drag based on DragThreshold
@@ -223,11 +227,6 @@ namespace FbonizziMonoGame.Input
             }
 
             _previousState = _currentState;
-        }
-
-        private static int DistanceBetween(Point a, Point b)
-        {
-            return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
         }
 
         private static int DistanceBetween(Vector2 a, Vector2 b)

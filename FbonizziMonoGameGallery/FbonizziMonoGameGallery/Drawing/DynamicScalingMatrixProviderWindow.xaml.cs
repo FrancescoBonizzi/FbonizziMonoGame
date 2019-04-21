@@ -20,12 +20,6 @@ namespace FbonizziMonoGameGallery.Drawing
             GameGrid.Children.Add(_game);
         }
 
-        protected override void OnInitialized(EventArgs e)
-        {
-            
-            base.OnInitialized(e);
-        }
-
         protected override void OnClosing(CancelEventArgs e)
         {
             _game.Dispose();

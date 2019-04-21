@@ -5,7 +5,7 @@ namespace FbonizziMonoGameAndroid
     /// <summary>
     /// It returns the current app culture
     /// </summary>
-    public class GameCultureProvider
+    public static class GameCultureProvider
     {
         /// <summary>
         /// It returns the current app culture
@@ -15,8 +15,7 @@ namespace FbonizziMonoGameAndroid
         {
             var androidLocale = Java.Util.Locale.Default;
             var netLocale = androidLocale.ToString().Replace("_", "-");
-            var currentCulture = CultureInfo.CreateSpecificCulture(netLocale);
-            return currentCulture;
+            return CultureInfo.CreateSpecificCulture(netLocale);
         }
     }
 }

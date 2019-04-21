@@ -18,7 +18,6 @@ namespace FbonizziMonoGame.UI.RateMe
 
         private const string _dontShowAgainSettingKey = "RateMe|DontShowAgain";
         private const string _appLaunchCountSettingKey = "RateMe|AppLaunchCount";
-        private const string _dateFirstLaunchSettingKey = "RateMe|DateFirstLaunch";
         private const string _rateMeLaunchCountSettingKey = "RateMe|RateMeLaunchCount";
 
         private readonly ISettingsRepository _settingsRepository;
@@ -98,7 +97,7 @@ namespace FbonizziMonoGame.UI.RateMe
                 {
                     _settingsRepository.SetBool(_dontShowAgainSettingKey, true);
                     ShouldShowDialog = false;
-                    webPageOpener.OpenWebpage(rateAppUri);
+                    webPageOpener.OpenWebpage(_rateAppUri);
                 },
                 textPadding: buttonTextPadding);
 

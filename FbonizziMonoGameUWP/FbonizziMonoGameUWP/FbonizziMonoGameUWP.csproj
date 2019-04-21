@@ -108,10 +108,10 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="UWPSettingsRepository.cs" />
+    <Compile Include="UwpSettingsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UWPTextFileImporter.cs" />
-    <Compile Include="UWPWebPageOpener.cs" />
+    <Compile Include="UwpTextFileImporter.cs" />
+    <Compile Include="UwpWebPageOpener.cs" />
     <EmbeddedResource Include="Properties\FlowsoftGamesUWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>

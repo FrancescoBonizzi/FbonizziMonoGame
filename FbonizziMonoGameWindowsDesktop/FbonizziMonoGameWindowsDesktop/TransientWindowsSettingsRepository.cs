@@ -9,7 +9,7 @@ namespace FbonizziMonoGameWindowsDesktop
     /// </summary>
     public class TransientWindowsSettingsRepository : ISettingsRepository
     {
-        private Dictionary<string, object> _storage = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> _storage = new Dictionary<string, object>();
 
         /// <summary>
         /// 
@@ -20,7 +20,9 @@ namespace FbonizziMonoGameWindowsDesktop
         public bool GetOrSetBool(string key, bool defaultValue)
         {
             if (_storage.ContainsKey(key))
+            {
                 return (bool)_storage[key];
+            }
 
             _storage.Add(key, defaultValue);
             return defaultValue;
@@ -35,7 +37,9 @@ namespace FbonizziMonoGameWindowsDesktop
         public int GetOrSetInt(string key, int defaultValue)
         {
             if (_storage.ContainsKey(key))
+            {
                 return (int)_storage[key];
+            }
 
             _storage.Add(key, defaultValue);
             return defaultValue;
@@ -50,7 +54,9 @@ namespace FbonizziMonoGameWindowsDesktop
         public long GetOrSetLong(string key, long defaultValue)
         {
             if (_storage.ContainsKey(key))
+            {
                 return (long)_storage[key];
+            }
 
             _storage.Add(key, defaultValue);
             return defaultValue;
@@ -65,7 +71,9 @@ namespace FbonizziMonoGameWindowsDesktop
         public string GetOrSetString(string key, string defaultValue)
         {
             if (_storage.ContainsKey(key))
+            {
                 return (string)_storage[key];
+            }
 
             _storage.Add(key, defaultValue);
             return defaultValue;
@@ -80,7 +88,9 @@ namespace FbonizziMonoGameWindowsDesktop
         public TimeSpan GetOrSetTimeSpan(string key, TimeSpan defaultValue)
         {
             if (_storage.ContainsKey(key))
+            {
                 return (TimeSpan)_storage[key];
+            }
 
             _storage.Add(key, defaultValue);
             return defaultValue;
@@ -95,7 +105,9 @@ namespace FbonizziMonoGameWindowsDesktop
         public DateTime GetOrSetDateTime(string key, DateTime defaultValue)
         {
             if (_storage.ContainsKey(key))
+            {
                 return (DateTime)_storage[key];
+            }
 
             _storage.Add(key, defaultValue);
             return defaultValue;
@@ -109,9 +121,13 @@ namespace FbonizziMonoGameWindowsDesktop
         public void SetBool(string key, bool value)
         {
             if (_storage.ContainsKey(key))
+            {
                 _storage[key] = value;
+            }
             else
+            {
                 _storage.Add(key, value);
+            }
         }
 
         /// <summary>
@@ -122,9 +138,13 @@ namespace FbonizziMonoGameWindowsDesktop
         public void SetInt(string key, int value)
         {
             if (_storage.ContainsKey(key))
+            {
                 _storage[key] = value;
+            }
             else
+            {
                 _storage.Add(key, value);
+            }
         }
 
         /// <summary>
@@ -135,9 +155,13 @@ namespace FbonizziMonoGameWindowsDesktop
         public void SetLong(string key, long value)
         {
             if (_storage.ContainsKey(key))
+            {
                 _storage[key] = value;
+            }
             else
+            {
                 _storage.Add(key, value);
+            }
         }
 
         /// <summary>
@@ -148,9 +172,13 @@ namespace FbonizziMonoGameWindowsDesktop
         public void SetString(string key, string value)
         {
             if (_storage.ContainsKey(key))
+            {
                 _storage[key] = value;
+            }
             else
+            {
                 _storage.Add(key, value);
+            }
         }
 
         /// <summary>
@@ -161,9 +189,13 @@ namespace FbonizziMonoGameWindowsDesktop
         public void SetTimeSpan(string key, TimeSpan value)
         {
             if (_storage.ContainsKey(key))
+            {
                 _storage[key] = value;
+            }
             else
+            {
                 _storage.Add(key, value);
+            }
         }
 
         /// <summary>
@@ -174,9 +206,13 @@ namespace FbonizziMonoGameWindowsDesktop
         public void SetDateTime(string key, DateTime value)
         {
             if (_storage.ContainsKey(key))
+            {
                 _storage[key] = value;
+            }
             else
+            {
                 _storage.Add(key, value);
+            }
         }
     }
 }

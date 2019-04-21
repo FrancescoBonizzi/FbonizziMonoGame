@@ -12,7 +12,7 @@ namespace FbonizziMonoGame.TransformationObjects
         private readonly TimeSpan _lifeTime;
         private readonly float _upSpeed;
 
-        private Color _originalColor;
+        private readonly Color _originalColor;
         private TimeSpan _elapsed;
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace FbonizziMonoGame.TransformationObjects
         public bool IsCompleted =>
             _currentFadeState == FadeState.Static;
 
-        enum FadeState
+        private enum FadeState
         {
             Static,
             PoppingUp

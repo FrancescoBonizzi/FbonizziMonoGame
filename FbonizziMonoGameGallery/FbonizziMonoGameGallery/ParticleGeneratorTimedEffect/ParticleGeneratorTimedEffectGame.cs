@@ -36,13 +36,13 @@ namespace FbonizziMonoGameGallery.ParticleGeneratorTimedEffect
             using (var fileStream = new FileStream(particleImagePath, FileMode.Open))
             {
                 var particleImage = Texture2D.FromStream(_graphicsDeviceManager.GraphicsDevice, fileStream);
-                
+
                 var particleSprite = new Sprite(new FbonizziMonoGame.Assets.SpriteDescription()
                 {
                     Name = "particle",
                     Width = particleImage.Width,
                     Height = particleImage.Height,
-                    X = 0, 
+                    X = 0,
                     Y = 0
                 }, particleImage);
 
@@ -65,9 +65,9 @@ namespace FbonizziMonoGameGallery.ParticleGeneratorTimedEffect
             }
         }
 
-        protected override void Update(GameTime time)
+        protected override void Update(GameTime gameTime)
         {
-            ParticleGeneratorTimedEffect?.Update(time.ElapsedGameTime);
+            ParticleGeneratorTimedEffect?.Update(gameTime.ElapsedGameTime);
         }
 
         protected override void Draw(GameTime time)

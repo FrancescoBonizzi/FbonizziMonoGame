@@ -15,11 +15,10 @@ namespace FbonizziMonoGame.Particles
     {
         private readonly Sprite _sprite;
         private readonly Color _particleOverlayColor = Color.White;
-        private Vector2 _origin;
 
         private Particle[] _activeParticles;
         private Queue<Particle> _freeParticles;
-        
+
         /// <summary>
         /// Density of particles each generation
         /// </summary>
@@ -116,20 +115,16 @@ namespace FbonizziMonoGame.Particles
         /// <param name="maxSpawnAngle"></param>
         public ParticleGenerator(
             Sprite particleSprite,
-            int density, 
-            int minNumParticles, int maxNumParticles, 
-            float minInitialSpeed, float maxInitialSpeed, 
-            float minAcceleration, float maxAcceleration, 
-            float minRotationSpeed, float maxRotationSpeed, 
-            TimeSpan minLifetime, TimeSpan maxLifetime, 
-            float minScale, float maxScale, 
+            int density,
+            int minNumParticles, int maxNumParticles,
+            float minInitialSpeed, float maxInitialSpeed,
+            float minAcceleration, float maxAcceleration,
+            float minRotationSpeed, float maxRotationSpeed,
+            TimeSpan minLifetime, TimeSpan maxLifetime,
+            float minScale, float maxScale,
             float minSpawnAngle, float maxSpawnAngle)
         {
             _sprite = particleSprite ?? throw new ArgumentNullException(nameof(particleSprite));
-
-            _origin = new Vector2(
-                particleSprite.Width / 2,
-                particleSprite.Height / 2);
 
             Density = density;
             MinNumParticles = minNumParticles;
@@ -249,7 +244,9 @@ namespace FbonizziMonoGame.Particles
                     p.Update(elapsed);
 
                     if (!p.IsActive)
+                    {
                         _freeParticles.Enqueue(p);
+                    }
                 }
             }
         }
@@ -265,7 +262,9 @@ namespace FbonizziMonoGame.Particles
                 Particle p = _activeParticles[i];
 
                 if (!p.IsActive)
+                {
                     continue;
+                }
 
                 // Normalized lifetime is a [0; 1] value that means:
                 //  0: just born

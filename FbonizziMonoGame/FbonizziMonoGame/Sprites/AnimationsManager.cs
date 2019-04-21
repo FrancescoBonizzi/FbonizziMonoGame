@@ -10,8 +10,8 @@ namespace FbonizziMonoGame.Sprites
     /// It contains a collection of named animations and permits to play, stop, resume them
     /// </summary>
     public class AnimationsManager
-    { 
-        private IDictionary<string, SpriteAnimation> _animations;
+    {
+        private readonly IDictionary<string, SpriteAnimation> _animations;
 
         /// <summary>
         /// Returns the current animation name
@@ -43,9 +43,14 @@ namespace FbonizziMonoGame.Sprites
            SpriteAnimation animation)
         {
             if (animationKey == null)
+            {
                 throw new ArgumentNullException(nameof(animationKey));
+            }
+
             if (animation == null)
+            {
                 throw new ArgumentNullException(nameof(animation));
+            }
 
             _animations.Add(animationKey, animation);
             return this;
@@ -58,7 +63,9 @@ namespace FbonizziMonoGame.Sprites
         public void PlayAnimation(string animationKey)
         {
             if (CurrentAnimationName == animationKey)
+            {
                 return;
+            }
 
             CurrentAnimationName = animationKey;
             _animations[CurrentAnimationName].Play();
@@ -89,7 +96,9 @@ namespace FbonizziMonoGame.Sprites
             DrawingInfos spatialInfos)
         {
             if (CurrentAnimationName == null)
+            {
                 return;
+            }
 
             spriteBatch.Draw(
                 _animations[CurrentAnimationName].CurrentFrame,
