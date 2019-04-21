@@ -13,31 +13,31 @@ namespace FbonizziMonoGame.Input
         /// <summary>
         /// Nothing
         /// </summary>
-        None,
+        None = 0,
 
         /// <summary>
         /// Left button
         /// </summary>
-        Left,
+        Left = 1,
 
         /// <summary>
         /// Middle button
         /// </summary>
-        Middle,
+        Middle = 2,
 
         /// <summary>
         /// Right button
         /// </summary>
-        Right,
+        Right = 4,
 
         /// <summary>
         /// X button 1
         /// </summary>
-        XButton1,
+        XButton1 = 8,
 
         /// <summary>
         /// X button 2
         /// </summary>
-        XButton2
+        XButton2 = 16
     }
 }
