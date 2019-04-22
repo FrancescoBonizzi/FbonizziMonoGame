@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Drawing\Abstractions\IScreenSizeChangedNotifier.cs" />
     <Compile Include="Drawing\GameWindowScreenSizeChangedNotifier.cs" />
+    <Compile Include="Drawing\IdentityMatrixProvider.cs" />
     <Compile Include="UI\RandomImageShower\ImageWithText.cs" />
     <Compile Include="UI\RandomImageShower\RandomImageShower.cs" />
     <Compile Include="Assets\Abstractions\ISpriteImporter.cs" />

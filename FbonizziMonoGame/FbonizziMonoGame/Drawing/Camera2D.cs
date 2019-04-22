@@ -1,5 +1,6 @@
 ﻿using FbonizziMonoGame.Drawing.Abstractions;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace FbonizziMonoGame.Drawing
@@ -16,19 +17,27 @@ namespace FbonizziMonoGame.Drawing
         private float _zoom;
 
         /// <summary>
-        /// Camera constructor
+        /// Camera constructor with scale matrix provider
         /// </summary>
         /// <param name="screenTransformationMatrixProvider"></param>
         public Camera2D(IScreenTransformationMatrixProvider screenTransformationMatrixProvider)
         {
-            _scalingMatrixProvider = screenTransformationMatrixProvider;
-
             Rotation = 0;
             Zoom = 1;
-            Origin = new Vector2(screenTransformationMatrixProvider.VirtualWidth / 2f, screenTransformationMatrixProvider.VirtualHeight / 2f);
             Position = Vector2.Zero;
+            _scalingMatrixProvider = screenTransformationMatrixProvider;
+            Origin = new Vector2(screenTransformationMatrixProvider.VirtualWidth / 2f, screenTransformationMatrixProvider.VirtualHeight / 2f);
         }
-        
+
+        /// <summary>
+        /// Camera constructor without scale matrix provider
+        /// </summary>
+        public Camera2D(int width, int height)
+            : this(new IdentityMatrixProvider(width, height))
+        {
+
+        }
+
         /// <summary>
         /// Camera origin
         /// </summary>
