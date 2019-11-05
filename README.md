@@ -5,6 +5,7 @@ These are some libraries that I built over `MonoGame` Framework to make my games
 All my games are **totally free** and **open source**, you can find them in my other repositories. Actually, my games are:
 - [Rellow](https://github.com/FrancescoBonizzi/Rellow): the most colorful concentration game!
 - [Starfall](https://github.com/FrancescoBonizzi/StarfallGame): you are a fallen star, catch the glows and avoid black holes to run back home!
+- [INFART](https://github.com/FrancescoBonizzi/InfartGame): avoid hamburgers and holes, and don't forget to bring a towel!
 - ...
 
 ---
