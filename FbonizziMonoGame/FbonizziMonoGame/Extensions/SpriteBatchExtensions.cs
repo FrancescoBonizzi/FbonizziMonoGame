@@ -58,7 +58,7 @@ namespace FbonizziMonoGame.Extensions
                 spatialObject.Origin,
                 spatialObject.Scale,
                 spatialObject.IsFlipped ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                0f);
+                spatialObject.LayerDepth);
 
             if (isDebugModeEnabled)
             {
@@ -109,7 +109,7 @@ namespace FbonizziMonoGame.Extensions
                 spatialInfos.Origin,
                 spatialInfos.Scale,
                 spatialInfos.IsFlipped ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
-                0f);
+                spatialInfos.LayerDepth);
         }
     }
 }

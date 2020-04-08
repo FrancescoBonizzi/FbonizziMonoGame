@@ -43,6 +43,11 @@ namespace FbonizziMonoGame.Drawing
         public Rectangle HitBoxTolerance { get; set; } = Rectangle.Empty;
 
         /// <summary>
+        /// The object layer depth for drawing sort
+        /// </summary>
+        public float LayerDepth { get; set; } = 0.0f;
+
+        /// <summary>
         /// The object hitbox calculated with <see cref="HitBoxTolerance"/>, given its dimensions
         /// </summary>
         /// <param name="width"></param>
