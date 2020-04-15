@@ -14,10 +14,14 @@ namespace FbonizziMonoGame.Particles
     public class ParticleGenerator
     {
         private readonly Sprite _sprite;
-        private readonly Color _particleOverlayColor = Color.White;
 
         private Particle[] _activeParticles;
         private Queue<Particle> _freeParticles;
+
+        /// <summary>
+        /// Overlay color for all particles
+        /// </summary>
+        public Color ParticleOverlayColor { get; set; } = Color.White;
 
         /// <summary>
         /// Density of particles each generation
@@ -207,7 +211,7 @@ namespace FbonizziMonoGame.Particles
                 acceleration * direction,
                 initialRotation,
                 rotationSpeed,
-                _particleOverlayColor,
+                ParticleOverlayColor,
                 scale,
                 lifetime);
         }
@@ -278,7 +282,7 @@ namespace FbonizziMonoGame.Particles
                 // - When its dead, it's opacity is 0
                 // - Its max opacity (1) it at half of its life
                 double alpha = 4 * normalizedLifetime * (1 - normalizedLifetime);
-                p.OverlayColor = Color.White.WithAlpha((float)alpha);
+                p.OverlayColor = ParticleOverlayColor.WithAlpha((float)alpha);
 
                 // A particle changes their scale in relation to its lifetime:
                 // It begin with 75% of their dimension and it arrives to 100% when dead
