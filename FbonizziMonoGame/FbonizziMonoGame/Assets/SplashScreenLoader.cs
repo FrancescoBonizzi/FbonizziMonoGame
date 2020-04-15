@@ -71,11 +71,15 @@ namespace FbonizziMonoGame.Assets
                 splashScreenTexture);
             _splashScreenFadingObject = new FadeObject(TimeSpan.FromSeconds(1), Color.White);
             _splashScreenFadingObject.FadeIn();
+            _splashScreenFadingObject.FadeInCompleted += _splashScreenFadingObject_FadeInCompleted;
             _splashScreenFadingObject.FadeOutCompleted += SplashScreen_FadeOutCompleted;
+        }
 
-            // Loads the assets in background
-            // TODO! It fails silently!
-            var assetsLoadingTask = LoadAndManageSplashScreen();
+        private void _splashScreenFadingObject_FadeInCompleted(object sender, EventArgs e)
+        {
+            // Loads the assets in background when the splash screen FadeIn is completed
+            var assetsLoadingTask = Task.Run(() => LoadAndManageSplashScreen());
+            assetsLoadingTask.Wait();
         }
 
         /// <summary>
