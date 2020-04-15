@@ -18,10 +18,17 @@ namespace FbonizziMonoGame.Particles
         private Particle[] _activeParticles;
         private Queue<Particle> _freeParticles;
 
+        private bool _particleColorSwitch;
+
         /// <summary>
-        /// Overlay color for all particles
+        /// Overlay color for half particles
         /// </summary>
-        public Color ParticleOverlayColor { get; set; } = Color.White;
+        public Color PrimaryParticleOverlayColor { get; set; } = Color.White;
+
+        /// <summary>
+        /// Overlay color for half particles
+        /// </summary>
+        public Color SecondaryParticleOverlayColor { get; set; } = Color.White;
 
         /// <summary>
         /// Density of particles each generation
@@ -205,13 +212,21 @@ namespace FbonizziMonoGame.Particles
             float rotationSpeed = Numbers.RandomBetween(MinRotationSpeed, MaxRotationSpeed);
             float initialRotation = Numbers.RandomBetween(0, MathHelper.TwoPi);
 
+            Color overlayColor;
+            if (_particleColorSwitch)
+                overlayColor = SecondaryParticleOverlayColor;
+            else
+                overlayColor = PrimaryParticleOverlayColor;
+
+            _particleColorSwitch = !_particleColorSwitch;
+
             p.Initialize(
                 where,
                 velocity * direction,
                 acceleration * direction,
                 initialRotation,
                 rotationSpeed,
-                ParticleOverlayColor,
+                overlayColor,
                 scale,
                 lifetime);
         }
@@ -282,7 +297,7 @@ namespace FbonizziMonoGame.Particles
                 // - When its dead, it's opacity is 0
                 // - Its max opacity (1) it at half of its life
                 double alpha = 4 * normalizedLifetime * (1 - normalizedLifetime);
-                p.OverlayColor = ParticleOverlayColor.WithAlpha((float)alpha);
+                p.OverlayColor = p.StartingColor.WithAlpha((float)alpha);
 
                 // A particle changes their scale in relation to its lifetime:
                 // It begin with 75% of their dimension and it arrives to 100% when dead
