@@ -40,6 +40,11 @@ namespace FbonizziMonoGame.Particles
         public TimeSpan LifeTime { get; private set; }
 
         /// <summary>
+        /// The particle starting color
+        /// </summary>
+        public Color StartingColor { get; private set; }
+
+        /// <summary>
         /// It initializes the particle
         /// </summary>
         /// <param name="position"></param>
@@ -71,6 +76,7 @@ namespace FbonizziMonoGame.Particles
             LifeTime = lifetime;
 
             TimeSinceStart = TimeSpan.Zero;
+            StartingColor = color;
         }
 
         /// <summary>
