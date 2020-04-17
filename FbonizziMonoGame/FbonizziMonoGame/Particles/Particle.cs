@@ -55,6 +55,7 @@ namespace FbonizziMonoGame.Particles
         /// <param name="color"></param>
         /// <param name="scale"></param>
         /// <param name="lifetime"></param>
+        /// <param name="layerDepth"></param>
         public void Initialize(
             Vector2 position,
             Vector2 velocity,
@@ -63,7 +64,8 @@ namespace FbonizziMonoGame.Particles
             float rotationSpeed,
             Color color,
             float scale,
-            TimeSpan lifetime)
+            TimeSpan lifetime,
+            float layerDepth)
         {
             Position = position;
             Velocity = velocity;
@@ -74,7 +76,7 @@ namespace FbonizziMonoGame.Particles
             InitalScale = scale;
             Scale = InitalScale;
             LifeTime = lifetime;
-
+            LayerDepth = layerDepth;
             TimeSinceStart = TimeSpan.Zero;
             StartingColor = color;
         }

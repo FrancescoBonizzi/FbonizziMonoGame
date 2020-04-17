@@ -105,6 +105,8 @@ namespace FbonizziMonoGame.Particles
         /// </summary>
         public float MaxSpawnAngle { get; set; }
 
+        public float LayerDepth { get; set; }
+
         /// <summary>
         /// A particle generator with a single sprite as particle template
         /// </summary>
@@ -124,6 +126,7 @@ namespace FbonizziMonoGame.Particles
         /// <param name="maxScale"></param>
         /// <param name="minSpawnAngle"></param>
         /// <param name="maxSpawnAngle"></param>
+        /// <param name="layerDepth"></param>
         public ParticleGenerator(
             Sprite particleSprite,
             int density,
@@ -133,7 +136,8 @@ namespace FbonizziMonoGame.Particles
             float minRotationSpeed, float maxRotationSpeed,
             TimeSpan minLifetime, TimeSpan maxLifetime,
             float minScale, float maxScale,
-            float minSpawnAngle, float maxSpawnAngle)
+            float minSpawnAngle, float maxSpawnAngle,
+            float layerDepth = 0f)
         {
             _sprite = particleSprite ?? throw new ArgumentNullException(nameof(particleSprite));
 
@@ -152,6 +156,7 @@ namespace FbonizziMonoGame.Particles
             MaxScale = maxScale;
             MinSpawnAngle = minSpawnAngle;
             MaxSpawnAngle = maxSpawnAngle;
+            LayerDepth = layerDepth;
 
             Initialize();
         }
@@ -228,7 +233,8 @@ namespace FbonizziMonoGame.Particles
                 rotationSpeed,
                 overlayColor,
                 scale,
-                lifetime);
+                lifetime,
+                LayerDepth);
         }
 
         /// <summary>
