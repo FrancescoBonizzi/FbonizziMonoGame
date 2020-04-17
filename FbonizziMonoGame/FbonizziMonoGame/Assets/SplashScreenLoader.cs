@@ -19,6 +19,8 @@ namespace FbonizziMonoGame.Assets
         private readonly string _splashScreenPath;
         private Sprite _splashScreenSprite;
         private FadeObject _splashScreenFadingObject;
+        private bool _fadeInCompleted;
+        private TimeSpan _elapsedWithFullSplashScreen;
 
         /// <summary>
         /// It defines the minimum time in which splash screen will be on the screen
@@ -50,6 +52,7 @@ namespace FbonizziMonoGame.Assets
 
             _loadFunction = loadFunction ?? throw new ArgumentNullException(nameof(loadFunction));
             _contentManager = contentManager ?? throw new ArgumentNullException(nameof(contentManager));
+            _elapsedWithFullSplashScreen = TimeSpan.Zero;
         }
 
         /// <summary>
@@ -77,9 +80,8 @@ namespace FbonizziMonoGame.Assets
 
         private void _splashScreenFadingObject_FadeInCompleted(object sender, EventArgs e)
         {
-            // Loads the assets in background when the splash screen FadeIn is completed
-            var assetsLoadingTask = Task.Run(() => LoadAndManageSplashScreen());
-            assetsLoadingTask.Wait();
+            _fadeInCompleted = true;
+            _loadFunction();
         }
 
         /// <summary>
@@ -90,30 +92,25 @@ namespace FbonizziMonoGame.Assets
         private void SplashScreen_FadeOutCompleted(object sender, EventArgs e)
             => Completed?.Invoke(this, EventArgs.Empty);
 
-        private async Task LoadAndManageSplashScreen()
-        {
-            var loadTimer = new Stopwatch();
-            loadTimer.Start();
-            _loadFunction();
-            loadTimer.Stop();
-
-            // MininumSplashScreenDuration management
-            var lastingSplashScreenDuration = MininumSplashScreenDuration - loadTimer.Elapsed;
-            if (lastingSplashScreenDuration > TimeSpan.Zero)
-            {
-                await Task.Delay(lastingSplashScreenDuration).ConfigureAwait(false);
-            }
-
-            // When loading is completed, fade out the SplashScreen image
-            _splashScreenFadingObject.FadeOut();
-        }
-
         /// <summary>
         /// It manages SplashScreen fading logic
         /// </summary>
         /// <param name="elapsed"></param>
         public void Update(TimeSpan elapsed)
-            => _splashScreenFadingObject.Update(elapsed);
+        {
+            _splashScreenFadingObject.Update(elapsed);
+
+            if (_fadeInCompleted && !_splashScreenFadingObject.IsFading)
+            {
+                _elapsedWithFullSplashScreen += elapsed;
+                if (_elapsedWithFullSplashScreen >= MininumSplashScreenDuration)
+                {
+                    // When loading is completed, and the minimum time has passed,
+                    // fade out the SplashScreen image
+                    _splashScreenFadingObject.FadeOut();
+                }
+            }
+        }
 
         /// <summary>
         /// It draws the SplashScreen
