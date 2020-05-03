@@ -227,10 +227,15 @@ namespace FbonizziMonoGame.Drawing
         /// <returns></returns>
         public Matrix GetViewMatrix(Vector2 parallaxFactor)
         {
-            return GetVirtualViewMatrix(parallaxFactor) * _scalingMatrixProvider.ScaleMatrix;
+            return GetWorldMatrix(parallaxFactor) * _scalingMatrixProvider.ScaleMatrix;
         }
 
-        private Matrix GetVirtualViewMatrix(Vector2 parallaxFactor)
+        /// <summary>
+        /// Returns the world matrix
+        /// </summary>
+        /// <param name="parallaxFactor"></param>
+        /// <returns></returns>
+        public Matrix GetWorldMatrix(Vector2 parallaxFactor)
         {
             return
                 Matrix.CreateTranslation(new Vector3(-Position * parallaxFactor, 0.0f))
@@ -240,9 +245,13 @@ namespace FbonizziMonoGame.Drawing
                 * Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
         }
 
-        private Matrix GetVirtualViewMatrix()
+        /// <summary>
+        /// Returns the world matrix
+        /// </summary>
+        /// <returns></returns>
+        public Matrix GetVirtualViewMatrix()
         {
-            return GetVirtualViewMatrix(Vector2.One);
+            return GetWorldMatrix(Vector2.One);
         }
 
         /// <summary>
