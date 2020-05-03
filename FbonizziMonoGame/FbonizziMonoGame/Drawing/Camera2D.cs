@@ -263,7 +263,12 @@ namespace FbonizziMonoGame.Drawing
             return Matrix.Invert(GetViewMatrix());
         }
 
-        private Matrix GetProjectionMatrix(Matrix viewMatrix)
+        /// <summary>
+        /// It returns the projection matrix
+        /// </summary>
+        /// <param name="viewMatrix"></param>
+        /// <returns></returns>
+        public Matrix GetProjectionMatrix(Matrix viewMatrix)
         {
             var projection = Matrix.CreateOrthographicOffCenter(0, _scalingMatrixProvider.VirtualWidth,
                 _scalingMatrixProvider.VirtualHeight, 0, -1, 0);
