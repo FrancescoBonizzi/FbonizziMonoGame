@@ -103,7 +103,7 @@ namespace FbonizziMonoGame.Extensions
             spriteBatch.Draw(
                 texture,
                 spatialObject.Position,
-                texture.Bounds,
+                sourceRectangle: null,
                 spatialObject.OverlayColor,
                 spatialObject.Rotation,
                 spatialObject.Origin,
@@ -134,7 +134,7 @@ namespace FbonizziMonoGame.Extensions
             spriteBatch.Draw(
                 texture,
                 Vector2.Zero,
-                texture.Bounds,
+                sourceRectangle: null,
                 color ?? Color.White);
         }
 
