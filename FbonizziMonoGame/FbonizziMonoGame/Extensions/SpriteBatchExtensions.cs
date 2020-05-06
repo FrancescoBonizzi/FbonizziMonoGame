@@ -88,6 +88,57 @@ namespace FbonizziMonoGame.Extensions
         }
 
         /// <summary>
+        /// It draws a <see cref="Texture2D"/> in a given position
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="texture"></param>
+        /// <param name="spatialObject"></param>
+        /// <param name="isDebugModeEnabled">It draws a visible boxing rectangle</param>
+        public static void Draw(
+            this SpriteBatch spriteBatch,
+            Texture2D texture,
+            DrawingInfos spatialObject,
+            bool isDebugModeEnabled = false)
+        {
+            spriteBatch.Draw(
+                texture,
+                spatialObject.Position,
+                texture.Bounds,
+                spatialObject.OverlayColor,
+                spatialObject.Rotation,
+                spatialObject.Origin,
+                spatialObject.Scale,
+                spatialObject.IsFlipped ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                spatialObject.LayerDepth);
+
+            if (isDebugModeEnabled)
+            {
+                DrawRectangle(
+                    spriteBatch,
+                    spatialObject.HitBox(texture.Width, texture.Height),
+                    _hitBoxColor);
+            }
+        }
+
+        /// <summary>
+        /// It draws a <see cref="Texture2D"/> in Vector2.Zero position
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="texture"></param>
+        /// <param name="color"></param>
+        public static void Draw(
+            this SpriteBatch spriteBatch,
+            Texture2D texture,
+            Color? color = null)
+        {
+            spriteBatch.Draw(
+                texture,
+                Vector2.Zero,
+                texture.Bounds,
+                color ?? Color.White);
+        }
+
+        /// <summary>
         /// It draws a string in a given position
         /// </summary>
         /// <param name="spriteBatch"></param>
