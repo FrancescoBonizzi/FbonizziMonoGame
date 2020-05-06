@@ -37,6 +37,38 @@ namespace FbonizziMonoGame.Extensions
         }
 
         /// <summary>
+        /// It draws a rectangle shape filled with a color and a layer depth
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="rectangleDefinition"></param>
+        /// <param name="fillColor"></param>
+        /// <param name="origin"></param>
+        /// <param name="layerDepth"></param>
+        public static void DrawRectangle(
+           this SpriteBatch spriteBatch,
+           Rectangle rectangleDefinition,
+           Color fillColor,
+           Vector2 origin,
+           float layerDepth)
+        {
+            if (_rectangleTexture == null)
+            {
+                _rectangleTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+                _rectangleTexture.SetData(new Color[] { Color.White });
+            }
+
+            spriteBatch.Draw(
+                texture: _rectangleTexture,
+                destinationRectangle: rectangleDefinition,
+                sourceRectangle: null,
+                color: fillColor,
+                rotation: 0f,
+                origin: origin,
+                effects: SpriteEffects.None,
+                layerDepth: layerDepth);
+        }
+
+        /// <summary>
         /// It draws a <see cref="Sprite"/> in a given position
         /// </summary>
         /// <param name="spriteBatch"></param>
