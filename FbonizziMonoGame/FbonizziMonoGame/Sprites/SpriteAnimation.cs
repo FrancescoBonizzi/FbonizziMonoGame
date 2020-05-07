@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 
 namespace FbonizziMonoGame.Sprites
 {
@@ -11,9 +12,14 @@ namespace FbonizziMonoGame.Sprites
     public class SpriteAnimation
     {
         /// <summary>
-        /// Thi animation frames
+        /// This animation frames
         /// </summary>
         public Sprite[] Frames { get; private set; }
+
+        /// <summary>
+        /// This animation normal map frames
+        /// </summary>
+        public Sprite[] NormalMapFrames { get; private set; }
 
         private TimeSpan _currentFrameElapsed = TimeSpan.Zero;
         private int _currentFrameIndex = 0;
@@ -45,6 +51,31 @@ namespace FbonizziMonoGame.Sprites
                 throw new ArgumentNullException(nameof(frames));
 
             Frames = frames.ToArray();
+            IsAnimationLooped = isAnimationLooped;
+            FrameDuration = frameDuration;
+            _framesCount = Frames.Length;
+            _lastFrameIndex = _framesCount - 1;
+        }
+
+        /// <summary>
+        /// A SpriteAnimation needs a sequence of sprites and a frame duration. 
+        /// Normal map overload.
+        /// </summary>
+        /// <param name="frames"></param>
+        /// <param name="normalMapFrames"></param>
+        /// <param name="frameDuration"></param>
+        /// <param name="isAnimationLooped"></param>
+        public SpriteAnimation(
+            IEnumerable<Sprite> frames,
+            IEnumerable<Sprite> normalMapFrames,
+            TimeSpan frameDuration,
+            bool isAnimationLooped = true)
+        {
+            if (frames == null)
+                throw new ArgumentNullException(nameof(frames));
+
+            Frames = frames.ToArray();
+            NormalMapFrames = normalMapFrames.ToArray();
             IsAnimationLooped = isAnimationLooped;
             FrameDuration = frameDuration;
             _framesCount = Frames.Length;
@@ -84,6 +115,12 @@ namespace FbonizziMonoGame.Sprites
         /// </summary>
         public Sprite CurrentFrame
             => Frames[_currentFrameIndex];
+
+        /// <summary>
+        /// It returns the normal map of the current frame
+        /// </summary>
+        public Sprite CurrentFrameNormalMap
+            => NormalMapFrames?[_currentFrameIndex];
 
         /// <summary>
         /// The frame duration of this animation

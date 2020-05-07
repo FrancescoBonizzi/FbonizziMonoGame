@@ -105,5 +105,28 @@ namespace FbonizziMonoGame.Sprites
                 spatialInfos);
         }
 
+        /// <summary>
+        /// Draws the current animation frame with its normal map, if exists
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="spatialInfos"></param>
+        public void DrawNormalMap(
+            SpriteBatch spriteBatch,
+            DrawingInfos spatialInfos)
+        {
+            if (CurrentAnimationName == null)
+            {
+                return;
+            }
+
+            if (_animations[CurrentAnimationName].CurrentFrameNormalMap == null)
+            {
+                return;
+            }
+
+            spriteBatch.Draw(
+                _animations[CurrentAnimationName].CurrentFrameNormalMap,
+                spatialInfos);
+        }
     }
 }
