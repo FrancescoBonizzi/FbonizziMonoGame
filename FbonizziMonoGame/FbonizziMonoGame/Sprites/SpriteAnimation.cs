@@ -75,7 +75,7 @@ namespace FbonizziMonoGame.Sprites
                 throw new ArgumentNullException(nameof(frames));
 
             Frames = frames.ToArray();
-            NormalMapFrames = normalMapFrames.ToArray();
+            NormalMapFrames = normalMapFrames?.ToArray();
             IsAnimationLooped = isAnimationLooped;
             FrameDuration = frameDuration;
             _framesCount = Frames.Length;
