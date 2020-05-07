@@ -31,7 +31,7 @@ namespace FbonizziMonoGame.Sprites
         /// </summary>
         /// <param name="animation"></param>
         public SpriteAnimation(SpriteAnimation animation)
-            : this(animation.Frames, animation.FrameDuration, animation.IsAnimationLooped)
+            : this(animation.Frames, animation.NormalMapFrames, animation.FrameDuration, animation.IsAnimationLooped)
         {
 
         }
