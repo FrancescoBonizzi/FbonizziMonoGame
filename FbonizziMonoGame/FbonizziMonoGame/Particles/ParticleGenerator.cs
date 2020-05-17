@@ -105,6 +105,9 @@ namespace FbonizziMonoGame.Particles
         /// </summary>
         public float MaxSpawnAngle { get; set; }
 
+        /// <summary>
+        /// The particles layer depth
+        /// </summary>
         public float LayerDepth { get; set; }
 
         /// <summary>
@@ -280,7 +283,7 @@ namespace FbonizziMonoGame.Particles
         /// Draws the effect
         /// </summary>
         /// <param name="spriteBatch"></param>
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < _activeParticles.Length; ++i)
             {
