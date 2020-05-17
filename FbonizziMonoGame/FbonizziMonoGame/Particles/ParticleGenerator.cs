@@ -15,7 +15,11 @@ namespace FbonizziMonoGame.Particles
     {
         private readonly Sprite _sprite;
 
-        private Particle[] _activeParticles;
+        /// <summary>
+        /// The current drawn particles
+        /// </summary>
+        protected Particle[] _activeParticles;
+
         private Queue<Particle> _freeParticles;
 
         private bool _particleColorSwitch;
