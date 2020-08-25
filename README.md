@@ -34,16 +34,6 @@ It contains, in particular:
   - `IFbonizziGame`: abstracts some basic game logic of my games: pause, resume
   - `IWebPageOpener`: nothing to explain :-)
 
-
-##### FbonizziMonoGame.UWP
-It's the Windows Universal implementation of `FbonizziMonoGame`
-
-##### FbonizziMonoGame.WindowsDesktop
-It's the Windows Desktop implementation of `FbonizziMonoGame`
-
-##### FbonizziMonoGame.Android
-It's the Xamarin/Android implementation of `FbonizziMonoGame`
-
 ---
 
 ### Getting started
@@ -75,7 +65,5 @@ I started a little WPF application (thanks to [MarcStan/MonoGame.Framework.WpfIn
 | Package | Version |
 | ------- | ------- |
 | FbonizziMonoGame | [![NuGet](https://img.shields.io/nuget/v/FbonizziMonoGame.svg)](https://www.nuget.org/packages/FbonizziMonoGame/) |
-| FbonizziMonoGame.UWP | [![NuGet](https://img.shields.io/nuget/v/FbonizziMonoGame.UWP.svg)](https://www.nuget.org/packages/FbonizziMonoGame.UWP/) |
-| FbonizziMonoGame.WindowsDesktop | [![NuGet](https://img.shields.io/nuget/v/FbonizziMonoGame.WindowsDesktop.svg)](https://www.nuget.org/packages/FbonizziMonoGame.WindowsDesktop/) |
-| FbonizziMonoGame.Android | [![NuGet](https://img.shields.io/nuget/v/FbonizziMonoGame.Android.svg)](https://www.nuget.org/packages/FbonizziMonoGame.Android/) |
+
 

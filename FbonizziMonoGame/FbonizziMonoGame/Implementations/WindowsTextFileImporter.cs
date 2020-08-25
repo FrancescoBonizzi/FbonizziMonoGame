@@ -1,7 +1,7 @@
 ﻿using FbonizziMonoGame.PlatformAbstractions;
 using System.IO;
 
-namespace FbonizziMonoGameWindowsDesktop
+namespace FbonizziMonoGame.Implementations
 {
     /// <summary>
     /// A <see cref="ITextFileLoader"/> that loads a file using System.IO.File windows API

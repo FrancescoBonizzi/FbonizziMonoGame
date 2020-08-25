@@ -1,7 +1,7 @@
 ﻿using FbonizziMonoGame.PlatformAbstractions;
 using System;
 
-namespace FbonizziMonoGameWindowsDesktop
+namespace FbonizziMonoGame.Implementations
 {
     /// <summary>
     /// Opens an URI with System.Diagnostics.Process.Start

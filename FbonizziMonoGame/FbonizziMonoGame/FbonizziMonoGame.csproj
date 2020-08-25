@@ -1,108 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{348CD09E-D912-4FDF-A26B-B4CEA9809CB2}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>FbonizziMonoGame</RootNamespace>
-    <AssemblyName>FbonizziMonoGame</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile44</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\FbonizziMonoGame.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\FbonizziMonoGame.xml</DocumentationFile>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.1.0</Version>
+    <Authors>Francesco Bonizzi</Authors>
+    <Company>Francesco Bonizzi</Company>
+    <Description>Some libraries that I built over MonoGame Framework to make my games</Description>
+    <PackageProjectUrl>https://github.com/FrancescoBonizzi/FbonizziMonoGame</PackageProjectUrl>
+    <PackageIcon>logo-64x64.png</PackageIcon>
+    <RepositoryUrl>https://github.com/FrancescoBonizzi/FbonizziMonoGame</RepositoryUrl>
+    <PackageTags>monogame francesco bonizzi games videogames android UWP UAP xamarin</PackageTags>
+    <PackageReleaseNotes>Conversion to .NET Core</PackageReleaseNotes>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Drawing\Abstractions\IScreenSizeChangedNotifier.cs" />
-    <Compile Include="Drawing\GameWindowScreenSizeChangedNotifier.cs" />
-    <Compile Include="Drawing\IdentityMatrixProvider.cs" />
-    <Compile Include="UI\RandomImageShower\ImageWithText.cs" />
-    <Compile Include="UI\RandomImageShower\RandomImageShower.cs" />
-    <Compile Include="Assets\Abstractions\ISpriteImporter.cs" />
-    <Compile Include="Drawing\Abstractions\IScreenTransformationMatrixProvider.cs" />
-    <Compile Include="Sprites\AnimationsManager.cs" />
-    <Compile Include="Assets\SplashScreenLoader.cs" />
-    <Compile Include="Extensions\CollectionsExtensions.cs" />
-    <Compile Include="StringsLocalization\Abstractions\ILocalizedStringsRepository.cs" />
-    <Compile Include="PlatformAbstractions\ITextFileLoader.cs" />
-    <Compile Include="Assets\CustomSpriteImporter.cs" />
-    <Compile Include="Assets\SpriteDescription.cs" />
-    <Compile Include="Drawing\DynamicScalingMatrixProvider.cs" />
-    <Compile Include="Drawing\Camera2D.cs" />
-    <Compile Include="Drawing\StaticScalingMatrixProvider.cs" />
-    <Compile Include="Extensions\ColorExtensions.cs" />
-    <Compile Include="Extensions\RectangleExtensions.cs" />
-    <Compile Include="Extensions\SpriteBatchExtensions.cs" />
-    <Compile Include="Extensions\SpriteFontExtensions.cs" />
-    <Compile Include="UI\FPScounter.cs" />
-    <Compile Include="Drawing\DrawingInfos.cs" />
-    <Compile Include="Extensions\Texture2DExtensions.cs" />
-    <Compile Include="Extensions\TimeSpanExtensions.cs" />
-    <Compile Include="PlatformAbstractions\IFbonizziGame.cs" />
-    <Compile Include="Input\GamePadEventArgs.cs" />
-    <Compile Include="Input\GamePadListener.cs" />
-    <Compile Include="Input\Abstractions\IInputListener.cs" />
-    <Compile Include="Input\KeyboardEventArgs.cs" />
-    <Compile Include="Input\KeyboardListener.cs" />
-    <Compile Include="Input\KeyboardModifiers.cs" />
-    <Compile Include="Input\MouseButton.cs" />
-    <Compile Include="Input\MouseEventArgs.cs" />
-    <Compile Include="Input\MouseListener.cs" />
-    <Compile Include="Input\TouchEventArgs.cs" />
-    <Compile Include="Input\TouchListener.cs" />
-    <Compile Include="Particles\ParticleGeneratorTimedEffect.cs" />
-    <Compile Include="UI\RateMe\DefaultEnglishRateMeDialogStrings.cs" />
-    <Compile Include="UI\RateMe\DefaultItalianRateMeDialogStrings.cs" />
-    <Compile Include="UI\RateMe\RateMeDialog.cs" />
-    <Compile Include="UI\ButtonWithText.cs" />
-    <Compile Include="TransformationObjects\ColorChangingObject.cs" />
-    <Compile Include="PlatformAbstractions\IWebPageOpener.cs" />
-    <Compile Include="StringsLocalization\InMemoryLocalizedStringsRepository.cs" />
-    <Compile Include="UI\RateMe\RateMeDialogStrings.cs" />
-    <Compile Include="TransformationObjects\ScalingObject.cs" />
-    <Compile Include="Extensions\Numbers.cs" />
-    <Compile Include="TransformationObjects\FadeObject.cs" />
-    <Compile Include="Particles\Particle.cs" />
-    <Compile Include="Particles\ParticleGenerator.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PlatformAbstractions\ISettingsRepository.cs" />
-    <Compile Include="Sprites\Sprite.cs" />
-    <Compile Include="Sprites\SpriteAnimation.cs" />
-    <Compile Include="Extensions\StringBuilderExtensions.cs" />
-    <Compile Include="TransformationObjects\PopupObject.cs" />
-    <Compile Include="UI\Dialog.cs" />
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NuGetReferenceHintPathRewrite.targets" />
-    <None Include="packages.config" />
+    <None Include="..\..\license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\logo-64x64.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\FbonizziMonoGameGallery\packages\MonoGame.Framework.Portable.3.7.1.189\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
-    </Reference>
+    <Folder Include="Implementations\" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="NuGetReferenceHintPathRewrite.targets" />
+
 </Project>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FbonizziMonoGameWindowsDesktop
+namespace FbonizziMonoGame.Implementations
 {
     /// <summary>
     /// An <see cref="ISettingsRepository"/> that saves a file in the format 'key:value\n'
