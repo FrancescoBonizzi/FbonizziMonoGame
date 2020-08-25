@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
     <Authors>Francesco Bonizzi</Authors>
     <Company>Francesco Bonizzi</Company>
     <Description>Some libraries that I built over MonoGame Framework to make my games</Description>
